@@ -1,0 +1,30 @@
+.row {
+    display: flex;
+}
+
+@mixin grid() {
+    $width: calc(100% / 12);
+    @media screen and (max-width: 600px) {
+        @for $i from 1 through 12 {
+            .col-sm-#{$i} {
+                width: $width * $i;
+            }
+        }
+    }
+
+    @media screen and (min-width: 600px) and (max-width: 900px) {
+        @for $i from 1 through 12 {
+            .col-md-#{$i} {
+                width: $width * $i;
+            }
+        }
+    }
+
+    @media screen and (min-width: 900px) {
+        @for $i from 1 through 12 {
+            .col-lg-#{$i} {
+                width: $width * $i;
+            }
+        }
+    }
+}
