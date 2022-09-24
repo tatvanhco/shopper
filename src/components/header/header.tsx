@@ -2,6 +2,7 @@ import clsx from 'clsx';
 import { url } from 'inspector';
 import { Fragment } from 'react';
 import styles from './header.module.scss';
+import '../../asset/globalStyle/globalStyle.scss';
 
 function header() {
     return (
