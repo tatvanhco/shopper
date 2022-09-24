@@ -1,0 +1,55 @@
+.headerTop {
+    background-color: #f5f5f5;
+}
+
+.headerContact {
+    height: 45px;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.titleShip {
+    font-size: 11px;
+    line-height: 15px;
+    padding: 0px 48px 0 9px;
+    font-weight: 600;
+}
+
+.icon {
+    transform: translateY(-5px);
+}
+
+.headerContactRightItem {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.headerContactLeftItems {
+    justify-content: space-between;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.headerContactR {
+    padding-right: 40px;
+}
+
+.headerBottom {
+    height: 90px;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.LogoIcon {
+    font-size: 35px;
+    text-decoration: none;
+    color: #000;
+    font-weight: 600;
+}
+
+.headerLogo {
+    justify-content: space-around;
+}

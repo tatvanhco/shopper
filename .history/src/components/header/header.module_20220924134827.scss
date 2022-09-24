@@ -1,0 +1,33 @@
+.headerTop {
+    background-color: #f5f5f5;
+}
+
+.headerContact {
+    height: 45px;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.headerFrom {
+    background-color: red;
+}
+
+.titleShip {
+    font-size: 11px;
+    line-height: 15px;
+    padding: 0px 48px 0 9px;
+    font-weight: 600;
+}
+
+.icon {
+    transform: translateY(-5px);
+    padding: 0;
+}
+
+.headerContactLeftItems {
+    justify-content: space-between;
+}
+
+.headerContactR {
+    padding-right: 40px;
+}
