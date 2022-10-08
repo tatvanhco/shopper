@@ -12,7 +12,7 @@
         }
     }
 
-    @media screen and (min-width: 600px) and (max-width: 900px) {
+    @media screen and (min-width: 768px) and (max-width: 992px) {
         @for $i from 1 through 12 {
             .col-md-#{$i} {
                 width: $width * $i;
@@ -20,7 +20,7 @@
         }
     }
 
-    @media screen and (min-width: 900px) {
+    @media screen and (min-width: 992px) {
         @for $i from 1 through 12 {
             .col-lg-#{$i} {
                 width: $width * $i;

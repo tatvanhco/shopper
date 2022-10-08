@@ -1,0 +1,36 @@
+/* Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@100;200;300;400&display=swap');
+
+/* Tailwind css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+    margin: 0;
+    padding: 0;
+    display: grid;
+    font-family: 'Jost', sans-serif;
+    color: #1f1f1f;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+    margin: 0;
+    padding: 0;
+}
+
+code {
+    //font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+p {
+    margin: 0 !important;
+    line-height: initial;
+}
+
+h1,
+h2 {
+    margin: 0;
+}

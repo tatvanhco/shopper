@@ -6,10 +6,10 @@ import Home from 'pages/home/home';
 
 function App() {
     return (
-        <div className="App">
+        <div className=" h-auto flex flex-col">
             <Header />
             <Home />
-            <div>update task</div>
+                <div className='lg:text-xl text-4xl'>update task</div>
             <Footer />
         </div>
     );
