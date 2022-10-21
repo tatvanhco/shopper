@@ -1,22 +1,62 @@
+import clsx from 'clsx';
 import styles from './home.module.scss';
+import DropdownHover from 'components/dropdown';
+import { ProductItems } from 'data/ProductItems';
+import SliderReview from 'components/SliderReview';
 import '../../asset/globalStyle/globalStyle.scss';
-import { FiTruck, FiRepeat, FiLock, FiTag } from 'react-icons/fi';
+import { BrowserRouter, NavLink, Outlet, Route, Routes } from 'react-router-dom';
+import { FiTruck, FiRepeat, FiLock, FiTag, FiArrowRight, FiHeart } from 'react-icons/fi';
+import Men from 'components/men';
+
+
 function Home() {
     return (
-        <div>
-            <div className="grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1 mt-4">
+        <div className="mb-16">
+            <div className="mb-4 flex items-center justify-center bg-neutral-800 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-1.svg')] py-3">
+                <span className="text-white uppercase text-xs font-semibold tracking-wider">
+                    ⚡️ Happy Holiday Deals on Everything ⚡️
+                </span>
+            </div>
+            <div className=" grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
                 <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-1.jpg')]">
                     <div className="flex flex-col text-center p-10">
                         <div className="mt-32">
                             <h1 className="text-5xl font-extrabold text-white">Women</h1>
                         </div>
-                        <div className="mt-32">
-                            <a className="rounded-none border-white px-6 py-3 bg-white font-semibold">Shop Women</a>
+                        <div className="group mt-32 w-48 m-auto bg-white border-white p-3">
+                            <a className=" text-base font-semibold flex justify-center items-center">
+                                Shop Women
+                                <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
                         </div>
                     </div>
                 </div>
-                <div className="bg-yellow-200"> fg</div>
-                <div className="bg-blue-200">3 fg</div>
+                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-2.jpg')]">
+                    <div className="flex flex-col text-center p-10">
+                        <div className="mt-32">
+                            <h1 className="text-5xl font-extrabold text-white">Men</h1>
+                        </div>
+                        <div className="group mt-32 w-40 m-auto bg-white border-white p-3">
+                            <a className=" text-base font-semibold flex justify-center items-center">
+                                Shop Men
+                                <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-3.jpg')]">
+                    <div className="flex flex-col text-center p-10">
+                        <div className="mt-32">
+                            <h1 className="text-5xl font-extrabold text-white">Kids</h1>
+                        </div>
+                        <div className="group mt-32 w-40 m-auto bg-white border-white p-3">
+                            <a className=" text-base font-semibold flex justify-center items-center">
+                                Shop Kids
+                                <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 sm:mx-18 mx-12 pt-4 pb-4 border-b border-e5e5e5">
@@ -57,100 +97,136 @@ function Home() {
                     </div>
                 </div>
             </div>
-        </div>
 
-        // <>
-        //     <section>
-        //         <div className={styles.containerPromo}>
-        //             <div className={clsx(styles.container)}>
-        //                 <div className="row">
-        //                     <div className={clsx(styles.headingPromo, 'col-lg-12', 'col-md-12', 'col-sm-12')}>
-        //                         <span> ⚡️ Happy Holiday Deals on Everything ⚡️ </span>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //         <div className={clsx(styles.container, 'row')}>
-        //             <div className={clsx(styles.cart, 'col-lg-4')}>
-        //                 <div className={styles.cartBody}>
-        //                     <h1>Women</h1>
-        //                     <a>Shop Women</a>
-        //                 </div>
-        //                 <img src={require('../../asset/img/cover-1.jpg')} alt="" />
-        //             </div>
-        //             <div className={clsx(styles.cart, 'col-lg-4')}>
-        //                 <div className={styles.cartBody}>
-        //                     <h1>Men</h1>
-        //                     <a>Shop Men</a>
-        //                 </div>
-        //                 <img src={require('../../asset/img/cover-2.jpg')} alt="" />
-        //             </div>
-        //             <div className={clsx(styles.cart, 'col-lg-4')}>
-        //                 <img src={require('../../asset/img/cover-3.jpg')} alt="" />
-        //                 <div className={styles.cartBody}>
-        //                     <h1>Kids</h1>
-        //                     <a>Shop Kids</a>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </section>
-        //     <div className={clsx(styles.container)}>
-        //         <div className="row flx-wrap pb-7 px-7 border-bottom">
-        //             <div className="col-lg-3 col-md-6 col-sm-12" style={{ backgroundColor: 'blue'}}>
-        //                 <div className="d-flex mb-6">
-        //                     {/* Icon*/}
-        //                     <FiTruck className="text-primary fs-lg" />
-        //                     {/* Body */}
-        //                     <div className="ms-6">
-        //                         {/* Heading */}
-        //                         <h6 className="heading-xxs mb-1">Free Shipping</h6>
-        //                         {/* Text */}
-        //                         <p className="fs-sm">From all orders over $100</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="col-lg-3 col-md-6 col-sm-12" style={{ backgroundColor: 'red' }}>
-        //             <div className="d-flex mb-6">
-        //                     {/* Icon*/}
-        //                     <FiTruck className="text-primary fs-lg" />
-        //                     {/* Body */}
-        //                     <div className="ms-6">
-        //                         {/* Heading */}
-        //                         <h6 className="heading-xxs mb-1">Free Shipping</h6>
-        //                         {/* Text */}
-        //                         <p className="fs-sm">From all orders over $100</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="col-lg-3 col-md-6 col-sm-12 " style={{ backgroundColor: 'yellow' }}>
-        //             <div className="d-flex mb-6">
-        //                     {/* Icon*/}
-        //                     <FiTruck className="text-primary fs-lg" />
-        //                     {/* Body */}
-        //                     <div className="ms-6">
-        //                         {/* Heading */}
-        //                         <h6 className="heading-xxs mb-1">Free Shipping</h6>
-        //                         {/* Text */}
-        //                         <p className="fs-sm">From all orders over $100</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //             <div className="col-lg-3 col-md-6 col-sm-12" style={{ backgroundColor: 'pink' }}>
-        //                 <div className="d-flex mb-6">
-        //                     {/* Icon*/}
-        //                     <FiTruck className="text-primary fs-lg" />
-        //                     {/* Body */}
-        //                     <div className="ms-6">
-        //                         {/* Heading */}
-        //                         <h6 className="heading-xxs mb-1">Free Shipping</h6>
-        //                         {/* Text */}
-        //                         <p className="fs-sm">From all orders over $100</p>
-        //                     </div>
-        //                 </div>
-        //             </div>
-        //         </div>
-        //     </div>
-        // </>
+            <section className="pt-20">
+                <div className="row justify-center">
+                    <div className="flex flex-col sm:basis-2/3 text-center px-8">
+                        {/* Pre-heading */}
+                        <h6 className="mb-3 text-Gray400 text-sm tracking-wide">NEW COLLECTION</h6>
+                        {/* Heading */}
+                        <h2 className="mb-4 text-4xl font-semibold">Best Picks 2022</h2>
+                        {/* Sub heading */}
+                        <p className="mb-6 text-Gray500">
+                            Appear, dry there darkness they're seas, dry waters thing fly midst. Beast, above fly
+                            brought Very green.
+                        </p>
+                    </div>
+                </div>
+                <div className="grid grid-cols-1 grid-rows-4 md:grid-rows-2 md:grid-cols-3 bg-blue-200 mt-16 gap-8 mx-10">
+                    <div className="group text-white bg-red-200 flex justify-center items-center bg-cover bg-center min-h-[25rem] bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-1.jpg')]">
+                        <div className="">
+                            <h4 className="e text-2xl md:text-3xl font-semibold mb-3">Bags Collection</h4>
+                            <a className="text-base font-semibold flex items-center ">
+                                Shop Now
+                                <FiArrowRight className="duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="group bg-yellow-200 text-black md:col-span-2 flex pl-14 bg-cover bg-center bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-2.jpg')]">
+                        <div className="absolute mt-6 right-16 w-[6rem] h-[6rem] rounded-full text-white bg-secondColor flex flex-col items-center justify-center">
+                            <strong>save</strong>
+                            <span className="text-[28px] font-semibold">30%</span>
+                        </div>
+                        <div className="flex flex-col justify-center">
+                            <h4 className="text-2xl md:text-3xl font-semibold mb-3">Printed men’s Shirts</h4>
+                            <a className="text-base font-semibold flex items-center ">
+                                Shop Now
+                                <FiArrowRight className="duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="group bg-yellow-200 text-black md:col-span-2 flex pl-14 bg-cover bg-center bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-3.jpg')]">
+                        <div className="flex flex-col justify-center">
+                            <h4 className="text-2xl md:text-3xl font-semibold mb-3">Basic women's Dresses</h4>
+                            <a className="text-base font-semibold flex items-center ">
+                                Shop Now
+                                <FiArrowRight className="duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
+                        </div>
+                    </div>
+                    <div className="group text-white bg-red-200 flex justify-center items-center bg-cover bg-center min-h-[25rem] bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-4.jpg')]">
+                        <div className="">
+                            <h4 className="e text-2xl md:text-3xl font-semibold mb-3">Sweatshirts</h4>
+                            <a className="text-base font-semibold flex items-center ">
+                                Shop Now
+                                <FiArrowRight className="duration-300 ml-2 group-hover:ml-4" size={'16'} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section className="pt-20">
+                <div className="row justify-center ">
+                    <div className="flex flex-col sm:basis-2/3 text-center px-8">
+                        {/* Heading */}
+                        <h2 className="mb-4 text-4xl font-semibold">Top month Sellers</h2>
+                        {/* Nav */}
+                    </div>
+                </div>
+                
+                <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 lg:grid-cols-4 bg-blue-200 gap-8 mx-10">
+                    {ProductItems.map((item, index) => {
+                        return (
+                            <div className="flex flex-col bg-slate-600 w-[254px] h-[417px]" key={index}>
+                                {/* Image product */}
+                                <div>
+                                    <img className="w-[254px] h-[302px]" 
+                                        src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg"
+                                        alt=""
+                                    />
+                                </div>
+                                {/* Info product*/}
+                                <div className="p-6 px-0">
+                                    <div className="text-sm">
+                                        <a href="">{item.category}</a>
+                                    </div>
+                                    <div className="font-semibold">
+                                        <a href="">{item.name}</a>
+                                    </div>
+                                    <div className="text-[#767676] font-semibold"> {item.price} </div>
+                                </div>
+                            </div>
+                        );
+                    })}
+                </div>
+            </section>
+
+            <section className="pt-20">
+                <div className="row justify-center">
+                    <div className="flex flex-col sm:basis-2/3 text-center px-8">
+                        {/* Pre-heading */}
+                        <h6 className="mb-3 text-Gray400 text-sm font-[600] tracking-wide">WHAT BUYERS SAY</h6>
+                        {/* Heading */}
+                        <h2 className="mb-4 text-4xl font-semibold tracking-wide">Latest buyers Reviews</h2>
+                    </div>
+                </div>
+            </section>
+
+            <section className="bg-f5f5f5 p-16">
+                <div className="flex flex-col sm:basis-2/3 text-center px-8">
+                    <h2 className="mb-4 text-4xl font-semibold tracking-wide">@shopper</h2>
+                    <p className="mb-6 text-Gray500 text-lg">Appear, dry there darkness they're seas, dry waters.</p>
+                </div>
+                <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 mb-10 mx-1">
+                    <div className='flex items-center relative'>
+                        {/* Image */}
+                        <img className='' src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg" alt="" />
+                        {/* Overlay */}
+                        <div className='w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white'>                                 
+                            <FiHeart/> 248 
+                            <FiHeart/> 7             
+                        </div>
+                    </div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <div>6</div>
+                </div>
+            </section>
+     
+        </div>
+       
     );
 }
 

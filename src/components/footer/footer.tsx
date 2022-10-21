@@ -15,7 +15,7 @@ function footer() {
                         placeholder="Enter Email *"
                         className="text-white text-base border-none outline-none pl-8 pr-60 py-4 bg-thirdColor"
                     />
-                    <button className="bg-btnGray500 text-white text-sm font-semibold px-8 py-4 ml-8 tracking-wider">
+                    <button className="bg-Gray500 text-white text-sm font-semibold px-8 py-4 ml-8 tracking-wider">
                         Subscribe
                     </button>
                 </div>
@@ -42,22 +42,22 @@ function footer() {
                     <h1 className="mb-3 font-semibold uppercase">Support</h1>
                     <ul className="text-footerColor">
                         <li>
-                            <a href="" className="hover:text-footerColor2">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Contact Us
                             </a>
                         </li>
                         <li>
-                            <a href="" className="hover:text-footerColor2">
+                            <a href="" className="hover:hover:text-[#a6a6a6]">
                                 FAQs
                             </a>
                         </li>
                         <li>
-                            <a href="" className="hover:text-footerColor2">
+                            <a href="" className="hover:hover:text-[#a6a6a6]">
                                 Size Guide
                             </a>
                         </li>
                         <li>
-                            <a href="" className="hover:text-footerColor2">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Shipping & Returns
                             </a>
                         </li>
@@ -67,22 +67,22 @@ function footer() {
                     <h1 className="mb-3 font-semibold uppercase">Shop</h1>
                     <ul className="text-footerColor">
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Men's Shopping
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Women's Shopping
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Kid's Shopping
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Discounts
                             </a>
                         </li>
@@ -92,22 +92,22 @@ function footer() {
                     <h1 className="mb-3 font-semibold uppercase">Company</h1>
                     <ul className="text-footerColor">
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Our Story
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Careers
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Terms & Conditions
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 Privacy & Cookie policy
                             </a>
                         </li>
@@ -117,22 +117,21 @@ function footer() {
                     <h1 className="mb-3 font-semibold uppercase">CONTACT</h1>
                     <ul className="text-footerColor">
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 1-202-555-0105
                             </a>
                         </li>
                         <li>
-                            <a href="" className="">
+                            <a href="" className="hover:text-[#a6a6a6]">
                                 help@shopper.com
                             </a>
                         </li>
                     </ul>
                 </div>
             </div>
-            <hr className="border-t border-thirdColor mt-12 mb-4" />
-            <div className="flex items-center justify-center mb-4 text-sm text-center">
+            <hr className="border-t border-thirdColor mt-12 pb-4" />
+            <div className="flex items-center justify-center pb-4 text-sm text-center">
                 <p>@shopper.com</p>
-               
             </div>
         </footer>
     );
