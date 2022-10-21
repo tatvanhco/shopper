@@ -1,0 +1,10 @@
+.errorMessage {
+    font-size: 12px;
+    padding: 3px;
+    color: red ;
+    display: none;
+}
+
+input:invalid ~ .errorMessage {
+    display: block;
+}

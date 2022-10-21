@@ -1,9 +1,9 @@
-import clsx from 'clsx';
 import { Fragment, useState } from 'react';
-import styles from './header.module.scss';
-import '../../asset/globalStyle/globalStyle.scss';
-import { MenuItems } from './MenuItems';
+import { Link } from 'react-router-dom';
+import { MenuItems } from '../../data/MenuItems';
+import Modal from 'components/modal/modal';
 
+import '../../asset/globalStyle/globalStyle.scss';
 import {
     FiFacebook,
     FiInstagram,
@@ -16,12 +16,13 @@ import {
     FiShoppingCart,
     FiMenu,
 } from 'react-icons/fi';
-import MobileNavigation from './MobileNavigation';
-import Navigation from './Navigation';
+import BasicMenu from 'components/menu/basicMenu';
 
 function Header() {
     let [open, setOpen] = useState(false);
     let [openMain, setOpenMain] = useState(false);
+
+    const [showModal, setShowModal] = useState(false);
 
     return (
         <div className="header">
@@ -37,7 +38,7 @@ function Header() {
                     </span>
                 </div>
                 <div
-                    className={`md:flex md:items-center justify-between w-full z-[1] md:py-0 py-2 px-12 md:pl-0 absolute md:static left-0 ${
+                    className={`md:flex md:items-center justify-between w-full z-[1] md:py-0 py-2 md:px-0 px-12 md:pl-0 absolute md:static left-0 ${
                         open ? 'top-auto bg-gray-100' : 'top-[-490px]'
                     }`}
                 >
@@ -51,6 +52,7 @@ function Header() {
                         </li>
                         <li className="md:my-0 pb-2 pt-2 text-sm font-medium cursor-pointer">USD</li>
                         <li className="md:my-0 pb-2 pt-2 text-sm font-medium cursor-pointer">English</li>
+                        <BasicMenu />
                     </ul>
                     <div className="md:flex ml-auto">
                         <ul className="md:flex items-center mr-10 gap-8">
@@ -85,47 +87,31 @@ function Header() {
                     w-full left-0 md:w-auto md:py-0 md:pl-0 px-12 md:px-0 gap-7
                     md:top-[-400px] ${openMain ? 'top-auto pb-8 bg-white' : 'top-[-400px]'} `}
                 >
-                    <li className="my-6 md:my-0">
-                        <a href="" className="text-base font-semibold hover:text-secondColor">
-                            Home
-                        </a>
-                    </li>
-                    <li className="my-6 md:my-0">
-                        <a href="" className="text-base font-semibold hover:text-secondColor">
-                            Catalog
-                        </a>
-                    </li>
-                    <li className="my-6 md:my-0">
-                        <a href="" className="text-base font-semibold hover:text-secondColor">
-                            Shop
-                        </a>
-                    </li>
-                    <li className="first:my-6 md:my-0">
-                        <a href="" className="text-base font-semibold hover:text-secondColor">
-                            Pages
-                        </a>
-                    </li>
-                    <li className="my-6 md:my-0">
-                        <a href="" className="text-base font-semibold hover:text-secondColor">
-                            Blog
-                        </a>
-                    </li>
-                    <li className="my-6 md:my-0">
-                        <a href="" className="text-base font-semibold hover:text-secondColor">
-                            Docs
-                        </a>
-                    </li>
+                    {MenuItems.map((item, index) => {
+                        return (
+                            <li key={index} className="my-6 md:my-0">
+                                <Link to={item.url} className="text-base font-semibold hover:text-secondColor">
+                                    {item.title}
+                                </Link>
+                            </li>
+                        );
+                    })}
                 </ul>
                 <ul
-                    className={`flex gap-4 items-center justify-between z-[1] md:z-auto md:static absolute left-0 md:w-auto md:py-0 py-3 px-12 ${
+                    className={`flex gap-4 items-center justify-between z-[1] md:z-auto md:static absolute left-0 md:w-auto md:py-0 py-3 md:px-0 px-12 ${
                         openMain ? 'pt-4 top-96' : 'top-[-400px]'
                     }`}
                 >
                     <li>
-                        <FiSearch className="cursor-pointer hover:text-secondColor" />
+                        <FiSearch
+                            className="cursor-pointer hover:text-secondColor"
+                            onClick={() => setShowModal(true)}
+                        />
                     </li>
                     <li>
-                        <FiUser className="cursor-pointer hover:text-secondColor" />
+                        <Link to={'/account-orders'}>
+                            <FiUser className="cursor-pointer hover:text-secondColor" />
+                        </Link>
                     </li>
                     <li>
                         <FiHeart className="cursor-pointer hover:text-secondColor" />
@@ -138,17 +124,6 @@ function Header() {
                     </li>
                 </ul>
             </div>
-            <div className="flex items-center justify-center bg-neutral-800 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-1.svg')] py-3">
-                <span className="text-white uppercase text-xs font-semibold tracking-wider">
-                    ⚡️ Happy Holiday Deals on Everything ⚡️
-                </span>
-            </div>
-
-            {/* <div className={clsx(styles.headerBottom, 'd-flex')}>
-                <span className={styles.brandName}>Shopper.</span>
-                <Navigation />
-                <MobileNavigation />
-            </div> */}
         </div>
     );
 }
