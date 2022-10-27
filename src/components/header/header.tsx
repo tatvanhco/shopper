@@ -27,7 +27,7 @@ function Header() {
     return (
         <div className="header">
             {/* Header top */}
-            <div className="md:flex w-full top-0 md:items-center md:justify-between py-1 px-12 bg-f5f5f5">
+            <div className="md:flex w-full top-0 md:items-center md:justify-between md:py-1 py-2 md:px-12 px-20 bg-f5f5f5">
                 <div className="flex flex-shrink-0 justify-between items-center md:mr-8">
                     <div className="flex">
                         <FiTruck className="text-sm mr-3" />
@@ -75,9 +75,11 @@ function Header() {
                 </div>
             </div>
             {/* nav */}
-            <div className="p-6 bg-white md:flex md:items-center justify-between px-12">
+            <div className="p-6 bg-white md:flex md:items-center justify-between md:px-12 px-20">
                 <div className="flex justify-between">
-                    <span className="text-3xl font-bold">Shopper.</span>
+                    <Link to={'/'}>
+                        <span className="text-3xl font-bold">Shopper.</span>
+                    </Link>
                     <span onClick={() => setOpenMain(!openMain)} className="text-2xl cursor-pointer md:hidden block">
                         <FiMenu />
                     </span>
@@ -114,7 +116,9 @@ function Header() {
                         </Link>
                     </li>
                     <li>
-                        <FiHeart className="cursor-pointer hover:text-secondColor" />
+                        <Link to={'/account-wishlist'}>
+                            <FiHeart className="cursor-pointer hover:text-secondColor" />
+                        </Link>
                     </li>
                     <li className="relative">
                         <FiShoppingCart className="cursor-pointer hover:text-secondColor" />

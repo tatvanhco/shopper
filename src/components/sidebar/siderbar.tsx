@@ -5,7 +5,7 @@ import { FiChevronRight } from 'react-icons/fi';
 
 function SideBar() {
     return (
-        <nav className="mb-10">
+        <nav className="mb-10 md:px-2 px-10">
             <div className="flex flex-col">
                 {SidebarItems.map((item, index) => {
                     return (

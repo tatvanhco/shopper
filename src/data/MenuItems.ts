@@ -22,5 +22,5 @@ export const MenuItems = [
     {
         title: 'Docs',
         url: '/docs',
-    }
+    },
 ];

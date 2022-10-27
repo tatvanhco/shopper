@@ -1,21 +1,19 @@
 import '../../asset/globalStyle/globalStyle.scss';
-import styles from './footer.module.scss';
-import clsx from 'clsx';
 import '../../asset/globalStyle/_grid.scss';
 import { FiFacebook, FiInstagram, FiYoutube, FiTwitter } from 'react-icons/fi';
 
 function footer() {
     return (
-        <footer className="bg-cover bg-stone-900 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-2.svg')] text-white text-sm px-12 pt-16">
-            <div className="flex flex-col items-center justify-between mb-12">
+        <footer className="bg-cover bg-stone-900 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-2.svg')] text-white text-sm md:px-12 px-4 pt-16">
+            <div className="flex flex-col mb-12 items-center">
                 <h1 className="text-2xl font-bold mb-6 tracking-wide">Want style Ideas and Treats? </h1>
-                <div className="">
+                <div className="flex gap-5">
                     <input
                         type="text"
                         placeholder="Enter Email *"
-                        className="text-white text-base border-none outline-none pl-8 pr-60 py-4 bg-thirdColor"
+                        className=" text-white text-base border-none outline-none pl-8 py-4 bg-thirdColor md:w-[24rem] sm:w-[24rem] w-[18rem]"
                     />
-                    <button className="bg-Gray500 text-white text-sm font-semibold px-8 py-4 ml-8 tracking-wider">
+                    <button className="bg-Gray500 text-white text-sm font-semibold px-8 py-4 tracking-wider">
                         Subscribe
                     </button>
                 </div>
