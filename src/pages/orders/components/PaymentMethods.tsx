@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Outlet } from 'react-router-dom';
 import { FiEdit2, FiX, FiPlus } from 'react-icons/fi';
 
 function PaymentMethods() {
@@ -41,13 +41,14 @@ function PaymentMethods() {
             </div>
             <div className="md:col-span-2">
                 <Link
-                    to={'/account-payment-edit'}
+                    to={'/order/account-payment/account-payment-edit'}
                     className="flex justify-center items-center border gap-2 p-4 font-semibold hover:border-[#1f1f1f]"
                 >
                     Add Payment Method
                     <FiPlus />
                 </Link>
             </div>
+            <Outlet />
         </div>
     );
 }

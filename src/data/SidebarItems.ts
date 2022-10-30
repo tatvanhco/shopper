@@ -1,26 +1,22 @@
 export const SidebarItems = [
     {
         name: 'Orders',
-        url: '/account-orders',
+        url: '/order/account-orders',
     },
     {
         name: 'Widhlist',
-        url: '/account-wishlist',
+        url: '/order/account-wishlist',
     },
     {
         name: 'Personal Info',
-        url: '/account-personal-info',
+        url: '/order/account-personal-info',
     },
     {
         name: 'Addresses',
-        url: '/account-address',
+        url: '/order/account-address',
     },
     {
         name: 'Payment Methods',
-        url: '/account-payment',
-    },
-    {
-        name: 'Logout',
-        url: '/',
+        url: '/order/account-payment',
     },
 ];

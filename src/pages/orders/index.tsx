@@ -1,11 +1,11 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
-import SideBar from 'components/sidebar/siderbar';
+import SideBar from 'components/layouts/sidebar/siderbar';
 
 function Orders() {
     return (
-        <section className="pb-20">
-            <div className="border-t pt-5">
+        <section className="pb-20 lg:px-[2rem] xl:px-[20%]">
+            <div className="pt-5">
                 <span className="mx-10">breadcrumb..</span>
             </div>
             <div className="">
@@ -16,7 +16,7 @@ function Orders() {
                     <div className="md:col-span-1 col-span-2 md:mr-16">
                         <SideBar />
                     </div>
-                    <div className="col-span-2 md:mx-0 mx-10">
+                    <div className="col-span-2">
                         <Outlet />
                     </div>
                 </div>

@@ -1,6 +1,4 @@
-
 export const ProductItems = [
-    
     {
         id: 1,
         name: 'Leather mid-heel Sandals',
@@ -30,7 +28,7 @@ export const ProductItems = [
         name: 'LFloral print midi Dress',
         price: '$50.00',
         category: 'Dresses',
-        img: '../../asset/img/cover-1.jpg'
+        img: '../../asset/img/cover-1.jpg',
     },
     {
         id: 6,
