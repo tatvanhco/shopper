@@ -25,6 +25,7 @@ import { RegisterPage } from 'pages/auth/registerPage';
 import { ForgotPass } from 'pages/auth/forgotPass';
 import { ConfirmPage } from 'pages/auth/confirmPage';
 import { ResetPassword } from 'pages/auth/resetpassword';
+import { ShopPage } from 'pages/shop/shoppage';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -47,6 +48,7 @@ root.render(
                                 <Route path="/" element={<Navigate replace to="/home" />} />
                                 <Route path="/home" element={<Home />} />
                                 <Route path="/product" element={<Product />} />
+                                <Route path="/shop" element={<ShopPage />} />
                                 <Route path="/order" element={<Orders />}>
                                     <Route path="/order/account-orders" element={<OrderContainer />} />
                                     <Route

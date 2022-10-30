@@ -1,5 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
+import Badge from '@mui/material/Badge';
+import MailIcon from '@mui/icons-material/Mail';
 
 import '../../../asset/globalStyle/globalStyle.scss';
 import { FiSearch, FiUser, FiHeart, FiShoppingCart, FiMenu } from 'react-icons/fi';
@@ -38,10 +40,13 @@ function Header() {
                         </Link>
                     </li>
                     <li className="relative">
-                        <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                        {/* <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
                         <div className="w-5 h-5 rounded-full border border-white border-1 bg-secondColor flex items-center justify-center absolute -top-3 -right-3">
-                            <p className="text-xs text-white font-medium">2</p>
-                        </div>
+                            <p className="text-xs text-white font-medium">99+</p>
+                        </div> */}
+                        <Badge badgeContent={1} color="error" className="w-5 h-5">
+                            <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                        </Badge>
                     </li>
                 </ul>
             </div>

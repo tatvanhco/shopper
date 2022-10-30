@@ -118,8 +118,8 @@ function Home() {
                                 </a>
                             </div>
                         </div>
-                        <div className="group bg-yellow-200 text-black md:col-span-2 flex pl-14 bg-cover bg-center bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-2.jpg')]">
-                            <div className="absolute mt-6 right-16 w-[6rem] h-[6rem] rounded-full text-white bg-secondColor flex flex-col items-center justify-center">
+                        <div className="group bg-yellow-200 text-black md:col-span-2 flex pl-14 bg-cover bg-center bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-2.jpg')] relative">
+                            <div className="absolute mt-6 right-10 w-[6rem] h-[6rem] rounded-full text-white bg-secondColor flex flex-col items-center justify-center">
                                 <strong>save</strong>
                                 <span className="text-[28px] font-semibold">30%</span>
                             </div>
@@ -159,9 +159,9 @@ function Home() {
                     </div>
 
                     <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        {ProductItems.map((item, index) => {
+                        {ProductItems.map((item) => {
                             return (
-                                <div className="flex flex-col w-[254px] h-[417px]" key={index}>
+                                <div className="flex flex-col w-[254px] h-[417px]" key={item.id}>
                                     <div>
                                         <img
                                             className="w-[254px] h-[302px]"
