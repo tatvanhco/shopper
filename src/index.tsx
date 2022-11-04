@@ -5,27 +5,30 @@ import { store } from './app/store';
 import { Provider } from 'react-redux';
 import { createRoot } from 'react-dom/client';
 import reportWebVitals from './reportWebVitals';
+import { InnerText } from 'components/innertext';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import Orders from 'pages/orders';
 import Home from 'pages/home/home';
 import Product from 'pages/product/product';
-import Orders from 'pages/orders';
-import OrderContainer from 'pages/orders/components/OrderContainer';
-import OrderDetail from 'pages/orders/components/OrderDetail';
-import OrderWishlist from 'pages/orders/components/wishlist';
-import PersonalInfo from 'pages/orders/components/PersonalInfo';
+import { LoginPage } from 'pages/auth/loginpage';
 import Address from 'pages/orders/components/Address';
 import AddAddress from 'pages/orders/components/AddAddress';
-import AddPaymentMethod from 'pages/orders/components/AddPaymentMethod';
+import OrderWishlist from 'pages/orders/components/wishlist';
+import OrderDetail from 'pages/orders/components/OrderDetail';
+import PersonalInfo from 'pages/orders/components/PersonalInfo';
+import OrderContainer from 'pages/orders/components/Order';
 import PaymentMethods from 'pages/orders/components/PaymentMethods';
-import { LoginPage } from 'pages/auth/loginpage';
-import { InnerText } from 'components/innertext';
+import AddPaymentMethod from 'pages/orders/components/AddPaymentMethod';
+import { ShopPage } from 'pages/shop/shoppage';
 import { PrivateRoute } from 'components/common/privateRoute';
 import { PublicRoute } from 'components/common/publicRoute';
 import { RegisterPage } from 'pages/auth/registerPage';
 import { ForgotPass } from 'pages/auth/forgotPass';
 import { ConfirmPage } from 'pages/auth/confirmPage';
 import { ResetPassword } from 'pages/auth/resetpassword';
-import { ShopPage } from 'pages/shop/shoppage';
+import ChoosePaymentMethod from 'pages/orders/components/ChoosePaymentMethod';
+import ShoppingCart from 'pages/cart/ShoppingCart';
+import Order from 'pages/orders/components/Order';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -49,8 +52,9 @@ root.render(
                                 <Route path="/home" element={<Home />} />
                                 <Route path="/product" element={<Product />} />
                                 <Route path="/shop" element={<ShopPage />} />
+                                <Route path="/shopping-cart" element={<ShoppingCart />} />
                                 <Route path="/order" element={<Orders />}>
-                                    <Route path="/order/account-orders" element={<OrderContainer />} />
+                                    <Route path="/order/account-orders" element={<Order />} />
                                     <Route
                                         path="/order/account-orders/account-order-detail"
                                         element={<OrderDetail />}
@@ -67,6 +71,10 @@ root.render(
                                         path="/order/account-payment/account-payment-edit"
                                         element={<AddPaymentMethod />}
                                     />
+                                    <Route
+                                        path="/order/account-payment-choose"
+                                        element={<ChoosePaymentMethod />}
+                                    ></Route>
                                 </Route>
                             </Route>
                         </Route>

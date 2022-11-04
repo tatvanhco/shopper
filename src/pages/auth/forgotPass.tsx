@@ -10,9 +10,9 @@ export const ForgotPass = () => {
     return (
         <div className={styles.register}>
             <div className={styles.register_from}>
-                <div className="p-10">
+                <div className="p-8">
                     <h1 className="mb-8 text-4xl font-bold tracking-widest text-center text">SHOPPER</h1>
-                    <p className="">Vui lòng nhập thông tin để đăng ký</p>
+                    <p className="mb-5">Vui lòng nhập địa chỉ email của bạn để nhận mã xác nhận lấy lại mật khẩu.</p>
                     <form action="" method="post">
                         <div className="grid grid-rows-7 grid-cols-1 md:grid-cols-2 text-[15px]">
                             <div className="md:col-span-2">
@@ -21,12 +21,6 @@ export const ForgotPass = () => {
                                     placeholder="Email Address *"
                                     className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
                                 />
-                            </div>
-                            <div className="md:col-span-2 mb-6">
-                                <p>
-                                    By registering your details, you agree with our Terms & Conditions, and Privacy and
-                                    Cookie Policy.
-                                </p>
                             </div>
                             <div className="md:col-span-2 flex justify-center">
                                 <Link to="/confirm">

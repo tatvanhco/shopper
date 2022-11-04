@@ -2,7 +2,8 @@ import clsx from 'clsx';
 import styles from './home.module.scss';
 import { ProductItems } from 'data/ProductItems';
 import '../../asset/globalStyle/globalStyle.scss';
-import { FiTruck, FiRepeat, FiLock, FiTag, FiArrowRight, FiHeart } from 'react-icons/fi';
+import { FiArrowRight, FiHeart } from 'react-icons/fi';
+import Features from 'components/Features';
 
 function Home() {
     return (
@@ -55,46 +56,7 @@ function Home() {
             </div>
 
             <div className="lg:px-[2rem] xl:px-[20%] px-10">
-                <div className="grid lg:grid-cols-4 md:grid-cols-2 sm:grid-cols-1 sm:mx-18 mx-12 pt-4 pb-4 border-b border-e5e5e5">
-                    <div className="p-3">
-                        <div className="flex">
-                            <FiTruck className="text-secondColor" size={'19'} />
-                            <div className="ml-4">
-                                <h6 className="text-sm mb-1 font-semibold uppercase tracking-wide">Free Shipping</h6>
-                                <p className="text-sm text-color767676">From all orders over $100</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="p-3">
-                        <div className="flex">
-                            <FiRepeat className="text-secondColor" size={'19'} />
-                            <div className="ml-4">
-                                <h6 className="text-sm mb-1 font-semibold uppercase tracking-wide">FREE RETURNS</h6>
-                                <p className="text-sm text-color767676">Return money within 30 days</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="p-3">
-                        <div className="flex">
-                            <FiLock className="text-secondColor" size={'19'} />
-                            <div className="ml-4">
-                                <h6 className="text-sm mb-1 font-semibold uppercase tracking-wide">SECURE SHOPPING</h6>
-                                <p className="text-sm text-color767676">You're in safe hands</p>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="p-3">
-                        <div className="flex">
-                            <FiTag className="text-secondColor" size={'19'} />
-                            <div className="ml-4">
-                                <h6 className="text-sm mb-1 font-semibold uppercase tracking-wide">
-                                    OVER 10,000 STYLES
-                                </h6>
-                                <p className="text-sm text-color767676">We have everything you need</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <Features />
                 <section className="pt-20">
                     <div className="row justify-center">
                         <div className="flex flex-col sm:basis-2/3 text-center px-8">

@@ -1,7 +1,7 @@
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
-import MailIcon from '@mui/icons-material/Mail';
+//import MailIcon from '@mui/icons-material/Mail';
 
 import '../../../asset/globalStyle/globalStyle.scss';
 import { FiSearch, FiUser, FiHeart, FiShoppingCart, FiMenu } from 'react-icons/fi';
