@@ -6,23 +6,23 @@ const Features = () => {
     const featureData: FeatureProps[] = [
         {
             icon: <FiTruck className="text-secondColor" size={'19'} />,
-            title: 'Nhin cai quan dui ne',
-            descript: 'Kkha cute',
+            title: 'FREE SHIPPING',
+            descript: 'tất cả sản phẩm dưới 100.000 VND',
         },
         {
             icon: <FiRepeat className="text-secondColor" size={'19'} />,
             title: 'FREE RETURNS',
-            descript: 'Return money within 30 days',
+            descript: 'Hoàn trả tiền trong 30 days',
         },
         {
             icon: <FiRepeat className="text-secondColor" size={'19'} />,
             title: 'SECURE SHOPPING',
-            descript: 'Youre in safe hands',
+            descript: 'Đưa đến tận tay khách hàng',
         },
         {
             icon: <FiRepeat className="text-secondColor" size={'19'} />,
             title: 'FREE RETURNS',
-            descript: 'We have everything you need',
+            descript: 'Chúng tôi có tất cả những gì bạn cần',
         },
     ];
     return (

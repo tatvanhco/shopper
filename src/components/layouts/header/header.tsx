@@ -1,17 +1,52 @@
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
-//import MailIcon from '@mui/icons-material/Mail';
-
 import '../../../asset/globalStyle/globalStyle.scss';
 import { FiSearch, FiUser, FiHeart, FiShoppingCart, FiMenu } from 'react-icons/fi';
+import { ModalSearch } from '../modal/modalSearch';
+import React from 'react';
+import { Box, SwipeableDrawer } from '@mui/material';
+import ClearIcon from '@mui/icons-material/Clear';
+
+type Anchor = 'top' | 'left' | 'bottom' | 'right';
 
 function Header() {
     let [openMain, setOpenMain] = useState(false);
+    const [state, setState] = React.useState({
+        right: false,
+    });
+
+    const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
+        if (
+            event &&
+            event.type === 'keydown' &&
+            ((event as React.KeyboardEvent).key === 'Tab' || (event as React.KeyboardEvent).key === 'Shift')
+        ) {
+            return;
+        }
+
+        setState({ ...state, [anchor]: open });
+    };
+
+    const list = (anchor: Anchor) => (
+        <Box sx={{ width: anchor === 'top' || anchor === 'bottom' ? 'auto' : 450 }} role="presentation">
+            <div className=" ">
+                <div className="bg-white w-[450px] p-7">
+                    <div className="flex px-4 items-center mb-6">
+                        <strong className="mx-auto text-xl">Search Products</strong>
+                        <ClearIcon
+                            onClick={toggleDrawer(anchor, false)}
+                            className="hover:cursor-pointer hover:opacity-50"
+                        />
+                    </div>
+                    <ModalSearch />
+                </div>
+            </div>
+        </Box>
+    );
 
     return (
         <div className="header border-b">
-            {/* nav */}
             <div className="p-6 bg-white md:flex md:items-center justify-between lg:px-[2rem] xl:px-[20%] px-10 ">
                 <div className="flex justify-between">
                     <Link to="/home">
@@ -27,7 +62,18 @@ function Header() {
                     }`}
                 >
                     <li>
-                        <FiSearch className="cursor-pointer hover:text-secondColor" />
+                        <FiSearch
+                            onClick={toggleDrawer('right', true)}
+                            className="cursor-pointer hover:text-secondColor"
+                        />
+                        <SwipeableDrawer
+                            anchor={'right'}
+                            open={state['right']}
+                            onClose={toggleDrawer('right', false)}
+                            onOpen={toggleDrawer('right', true)}
+                        >
+                            {list('right')}
+                        </SwipeableDrawer>
                     </li>
                     <li>
                         <Link to={'/order/account-orders'}>
@@ -40,13 +86,11 @@ function Header() {
                         </Link>
                     </li>
                     <li className="relative">
-                        {/* <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
-                        <div className="w-5 h-5 rounded-full border border-white border-1 bg-secondColor flex items-center justify-center absolute -top-3 -right-3">
-                            <p className="text-xs text-white font-medium">99+</p>
-                        </div> */}
-                        <Badge badgeContent={1} color="error" className="w-5 h-5">
-                            <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
-                        </Badge>
+                        <Link to="/home/shopping-cart">
+                            <Badge badgeContent={1} color="error" className="w-5 h-5">
+                                <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                            </Badge>
+                        </Link>
                     </li>
                 </ul>
             </div>

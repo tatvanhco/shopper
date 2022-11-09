@@ -1,3 +1,4 @@
+import { PaginationSize } from 'components/layouts/Paginations/Paginations';
 import { Link } from 'react-router-dom';
 
 interface OrderProps {
@@ -63,7 +64,7 @@ function Order() {
                             </div>
                         </div>
                     </div>
-                    {/* Dang lam` */}
+                    {/* Dang lam`  ahihi*/}
                     <div className="p-8">
                         <div className="grid grid-rows-1 md:grid-cols-2 grid-cols-1 items-center ">
                             <div className="grid grid-cols-4 grid-rows-1 gap-5 relative md:h-[64px] h-[96px] md:mb-0 mb-4">

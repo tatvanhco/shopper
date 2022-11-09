@@ -3,7 +3,7 @@ import { FiX } from 'react-icons/fi';
 
 const ProductCard = ({ item }: IProductCardProps) => {
     return (
-        <div className="flex flex-col bg-slate-600 relative" key={item.id}>
+        <div className="flex flex-col relative" key={item.id}>
             {/* Image product */}
             <div className="">
                 <div className="top-5 right-5 absolute w-[40px] h-[40px] bg-white rounded-full flex justify-center items-center cursor-pointer hover:text-white hover:bg-secondColor">

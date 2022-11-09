@@ -19,7 +19,7 @@ import PersonalInfo from 'pages/orders/components/PersonalInfo';
 import OrderContainer from 'pages/orders/components/Order';
 import PaymentMethods from 'pages/orders/components/PaymentMethods';
 import AddPaymentMethod from 'pages/orders/components/AddPaymentMethod';
-import { ShopPage } from 'pages/shop/shoppage';
+import { ShopPage } from 'pages/shop';
 import { PrivateRoute } from 'components/common/privateRoute';
 import { PublicRoute } from 'components/common/publicRoute';
 import { RegisterPage } from 'pages/auth/registerPage';
@@ -29,6 +29,9 @@ import { ResetPassword } from 'pages/auth/resetpassword';
 import ChoosePaymentMethod from 'pages/orders/components/ChoosePaymentMethod';
 import ShoppingCart from 'pages/cart/ShoppingCart';
 import Order from 'pages/orders/components/Order';
+import { NotFound } from 'components/layouts/404/404';
+import { CheckOut } from 'pages/checkout';
+import { OrderCompleted } from 'pages/orderCompleted/orderCompleted';
 
 const container = document.getElementById('root')!;
 const root = createRoot(container);
@@ -52,7 +55,9 @@ root.render(
                                 <Route path="/home" element={<Home />} />
                                 <Route path="/product" element={<Product />} />
                                 <Route path="/shop" element={<ShopPage />} />
-                                <Route path="/shopping-cart" element={<ShoppingCart />} />
+                                <Route path="/home/shopping-cart" element={<ShoppingCart />} />
+                                <Route path="/home/shopping-cart/checkout" element={<CheckOut />} />
+                                <Route path="/home/order-completed" element={<OrderCompleted />} />
                                 <Route path="/order" element={<Orders />}>
                                     <Route path="/order/account-orders" element={<Order />} />
                                     <Route
@@ -71,11 +76,9 @@ root.render(
                                         path="/order/account-payment/account-payment-edit"
                                         element={<AddPaymentMethod />}
                                     />
-                                    <Route
-                                        path="/order/account-payment-choose"
-                                        element={<ChoosePaymentMethod />}
-                                    ></Route>
+                                    <Route path="/order/account-payment-choose" element={<ChoosePaymentMethod />} />
                                 </Route>
+                                <Route path="/*" element={<NotFound />} />
                             </Route>
                         </Route>
                     </Route>

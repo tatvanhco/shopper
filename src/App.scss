@@ -3,3 +3,77 @@
     height: 15px !important;
     background-color: #ff6f61 !important;
 }
+
+.css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root {
+    background-color: #fff !important;
+    flex-direction: inherit;
+    padding: 0 !important;
+}
+
+.css-z9uefa-MuiButtonBase-root-MuiAccordionSummary-root {
+    padding: 12px 0 !important;
+    min-height: 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
+}
+
+.children .MuiPaper-root .css-z9uefa-MuiButtonBase-root-MuiAccordionSummary-root {
+    margin-top: 15px !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+.children .MuiPaper-root .MuiAccordionSummary-expandIconWrapper {
+    display: none !important;
+}
+
+.css-1betqn-MuiAccordionSummary-content {
+    margin: 0 !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+    font-family: 'Jost', sans-serif !important;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: #000 !important;
+}
+
+.css-1wr5dqe-MuiFormControl-root {
+    min-width: 120px !important;
+}
+
+.nav.default-nav {
+    display: none !important;
+}
+
+.react-slideshow-container + ul.indicators {
+    // background-color: #e5e5e5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+.react-slideshow-container + ul.indicators li {
+    margin: 0 3px !important;
+}
+
+.react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
+    background-color: #ff6f61 !important;
+}
+
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #fff;
+    background-color: #ff6f61 !important;
+}
+
+// .css-i4bv87-MuiSvgIcon-root {
+//     width: 4rem !important;
+//     height: 4rem !important;
+// }
+
+.notFound_icon {
+    width: 4rem !important;
+    height: 4rem !important;
+}
