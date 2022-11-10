@@ -1,10 +1,39 @@
 .errorMessage {
     font-size: 12px;
     padding: 3px;
-    color: red ;
-    display: none;
+    color: red;
+    display: block;
 }
 
-input:invalid ~ .errorMessage {
-    display: block;
+.login {
+    position: relative;
+
+    .login_from {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 30%);
+        min-width: 30rem;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+
+        .login_desc {
+        }
+    }
+}
+
+.register {
+    position: relative;
+
+    .register_from {
+        content: '';
+        position: absolute;
+        left: 50%;
+        transform: translate(-50%, 30%);
+        min-width: 30rem;
+        border-radius: 10px;
+        -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+        box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
+    }
 }

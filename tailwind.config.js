@@ -15,6 +15,7 @@ module.exports = {
                 color767676: '#767676',
                 e5e5e5: '#e5e5e5',
                 Gray400: '#909090',
+                hihi: 'red',
             },
         },
         height: {

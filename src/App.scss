@@ -1,46 +1,79 @@
-.container {
-    // padding: 0px 16px;
-    // margin: 0 380px;
+.css-to4x1n-MuiBadge-badge {
+    min-width: 15px !important;
+    height: 15px !important;
+    background-color: #ff6f61 !important;
 }
 
-.d-flex {
-    display: flex;
+.css-uvvswg-MuiButtonBase-root-MuiAccordionSummary-root {
+    background-color: #fff !important;
+    flex-direction: inherit;
+    padding: 0 !important;
 }
 
-ul {
-    list-style: none;
-    //padding-left: 0;
+.css-z9uefa-MuiButtonBase-root-MuiAccordionSummary-root {
+    padding: 12px 0 !important;
+    min-height: 0 !important;
+    border-bottom: 1px solid #e5e5e5 !important;
 }
 
-// li {
-//     list-style: none;
+.children .MuiPaper-root .css-z9uefa-MuiButtonBase-root-MuiAccordionSummary-root {
+    margin-top: 15px !important;
+    padding: 0 !important;
+    border-bottom: none !important;
+}
+
+.children .MuiPaper-root .MuiAccordionSummary-expandIconWrapper {
+    display: none !important;
+}
+
+.css-1betqn-MuiAccordionSummary-content {
+    margin: 0 !important;
+}
+
+.css-ahj2mt-MuiTypography-root {
+    font-family: 'Jost', sans-serif !important;
+}
+
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.Mui-checked,
+.css-12wnr2w-MuiButtonBase-root-MuiCheckbox-root.MuiCheckbox-indeterminate {
+    color: #000 !important;
+}
+
+.css-1wr5dqe-MuiFormControl-root {
+    min-width: 120px !important;
+}
+
+.nav.default-nav {
+    display: none !important;
+}
+
+.react-slideshow-container + ul.indicators {
+    // background-color: #e5e5e5;
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
+
+.react-slideshow-container + ul.indicators li {
+    margin: 0 3px !important;
+}
+
+.react-slideshow-container + ul.indicators .each-slideshow-indicator:before {
+    background-color: #ff6f61 !important;
+}
+
+.css-yuzg60-MuiButtonBase-root-MuiPaginationItem-root.Mui-selected {
+    color: #fff;
+    background-color: #ff6f61 !important;
+}
+
+// .css-i4bv87-MuiSvgIcon-root {
+//     width: 4rem !important;
+//     height: 4rem !important;
 // }
 
-// a {
-//     text-decoration: none;
-// }
-
-.title {
-    font-size: 15px;
-    line-height: 15px;
-    padding: 0 10px 0 2px;
-}
-
-.img-icon {
-    width: 20px;
-    height: 20px;
-    opacity: 0.6;
-
-    &:hover {
-        cursor: pointer;
-        opacity: 0.8;
-    }
-}
-
-.p-4p {
-    padding: 0 4px;
-}
-
-.p-6p {
-    padding: 0 6px;
+.notFound_icon {
+    width: 4rem !important;
+    height: 4rem !important;
 }

@@ -102,7 +102,6 @@ function Product() {
                                     <input hidden type="radio" name="sizeRadio" id="sizeRadio1" value="6" />
                                     <label htmlFor="sizeRadio1" className='border border-[#ddd] p-2 text-center min-w-[3rem] cursor-pointer inline-block text-[#767676]'>6</label>
                                 </div>
-                                
                             </div>
                         </div>
                     </form>
