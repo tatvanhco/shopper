@@ -9,7 +9,7 @@ import { InnerText } from 'components/innertext';
 import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
 import Orders from 'pages/orders';
 import Home from 'pages/home/home';
-import Product from 'pages/product/product';
+import Product from 'pages/product';
 import { LoginPage } from 'pages/auth/loginpage';
 import Address from 'pages/orders/components/Address';
 import AddAddress from 'pages/orders/components/AddAddress';

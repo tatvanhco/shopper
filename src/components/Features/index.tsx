@@ -1,5 +1,5 @@
 import React from 'react';
-import { FiRepeat, FiTruck } from 'react-icons/fi';
+import { FiLock, FiRepeat, FiTag, FiTruck } from 'react-icons/fi';
 import Feature, { FeatureProps } from './Feature';
 
 const Features = () => {
@@ -15,7 +15,7 @@ const Features = () => {
             descript: 'Hoàn trả tiền trong 30 days',
         },
         {
-            icon: <FiRepeat className="text-secondColor" size={'19'} />,
+            icon: <FiLock className="text-secondColor" size={'19'} />,
             title: 'SECURE SHOPPING',
             descript: 'Đưa đến tận tay khách hàng',
         },
