@@ -5,8 +5,8 @@ import { FiFacebook, FiInstagram, FiYoutube, FiTwitter } from 'react-icons/fi';
 function footer() {
     return (
         <footer
-            className="bg-cover bg-stone-900 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-2.svg')] text-white text-sm md:px-12 lg:px-[2rem] xl:px-[20%] p-10
-        "
+            className="bg-cover bg-stone-900 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-2.svg')] 
+            text-white text-sm md:px-12 lg:px-[2rem] xl:px-[20%] pt-10 pb-4"
         >
             <div className="flex flex-col mb-12 items-center">
                 <h1 className="text-2xl font-bold mb-6 tracking-wide">Want style Ideas and Treats? </h1>
@@ -21,7 +21,7 @@ function footer() {
                     </button>
                 </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6 sm:px-6 py:20">
+            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6 sm:px-6">
                 <div className="col-span-full lg:col-auto md:col-auto">
                     <h1 className="mb-3 text-3xl font-bold">Shopper.</h1>
                     <ul className="flex gap-3 text-footerColor">
@@ -131,7 +131,7 @@ function footer() {
                 </div>
             </div>
             <hr className="border-t border-thirdColor mt-12 pb-4" />
-            <div className="flex items-center justify-center pb-4 text-sm text-center">
+            <div className="flex items-center justify-center text-sm text-center">
                 <p>@shopper.com</p>
             </div>
         </footer>
