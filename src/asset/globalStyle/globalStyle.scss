@@ -1,0 +1,62 @@
+@import 'grid';
+@include grid;
+@import '../../asset/globalStyle/_colors.scss';
+
+* {
+    // box-sizing: border-box;
+}
+
+.pb-7 {
+    padding-bottom: 2rem !important;
+}
+
+.px-7 {
+    padding-left: 2rem!important;
+    padding-right: 2rem!important;
+}
+
+
+.d-flex {
+    display: flex;
+}
+
+.d-block {
+    display: block;
+}
+
+.flx-wrap {
+    flex-wrap: wrap;
+}
+
+
+.mb-0 {
+    margin-bottom: 0 !important;
+}
+.mb-1 {
+    margin-bottom: 0.25rem !important;
+}
+.mb-6 {
+    margin-bottom: 1.5rem!important;
+}
+
+.text-primary {
+    color: $secondary-color;
+}
+
+.fs-lg {
+    font-size: 1.125rem;
+}
+
+.fs-sm {
+    font-size: .9375rem!important;
+    color: #767676!important;
+}
+
+h6 {
+    line-height: 1.2;
+    margin-top: 0;
+}
+
+.border-bottom{
+    border-bottom: 1px solid #e5e5e5!important;
+}

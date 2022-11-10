@@ -1,0 +1,134 @@
+@import '../../asset/globalStyle/_colors.scss';
+
+.headerTop {
+    background-color: #f5f5f5;
+    color: $third-color;
+}
+
+.headerContact {
+    height: 45px;
+    justify-content: space-between;
+    vertical-align: middle;
+}
+
+.titleShip {
+    font-size: 11px;
+    line-height: 15px;
+    padding: 0px 48px 0 9px;
+    font-weight: 600;
+}
+
+.icon {
+    transform: translateY(-5px);
+}
+
+.headerContactRightItem {
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.headerContactLeftItems {
+    justify-content: space-between;
+
+    &:hover {
+        cursor: pointer;
+    }
+}
+
+.headerContactR {
+    padding-right: 40px;
+}
+
+/* header bottom */
+
+.headerBottom {
+    padding: 1rem 0;
+    margin: 0 2rem;
+    color: $third-color;
+    align-items: center;
+    background-color: aquamarine;
+}
+
+.headerBottom .brandName {
+    margin-right: 1rem;
+    font-size: 1.7rem;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.navMenu {
+    display: flex;
+
+    .navItem {
+        .navLink {
+            text-decoration: none;
+            padding-left: 1rem;
+            padding-right: 1rem;
+            font-size: 14px;
+            font-weight: 600;
+            color: $third-color;
+        }
+        .navLink:hover {
+            color: $secondary-color;
+        }
+    }
+}
+
+.navIcon {
+    display: flex;
+
+    .navIconItem {
+        cursor: pointer;
+        margin: 0 0.6rem;
+    }
+
+    .navIconItem:hover {
+        color: $secondary-color;
+    }
+
+    .cartNumber {
+        width: 18px;
+        height: 18px;
+        background-color: $secondary-color;
+        border-radius: 50%;
+        color: white;
+        font-size: 11px;
+        font-weight: 500;
+        display: inline-flex;
+        position: relative;
+        top: -0.9rem;
+        right: 0.4rem;
+        align-items: center;
+        justify-content: center;
+    }
+}
+
+@media screen and (max-width: 1000px) {
+    .Navigation {
+        display: none;
+    }
+    .mobileNavigation {
+        background: violet;
+    }
+
+    .btnMenu {
+        position: absolute;
+        right: 5%;
+        cursor: pointer;
+    }
+}
+@media screen and (min-width: 1000px) {
+    .Navigation {
+        background: none;
+        .nav {
+            display: flex;
+        }
+    }
+    .mobileNavigation {
+        display: none;
+    }
+    .btnMenu {
+        display: none;
+    }
+}

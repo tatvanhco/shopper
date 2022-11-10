@@ -1,0 +1,107 @@
+// .container {
+//     width: 100%;
+
+//     margin-left: auto;
+//     margin-right: auto;
+//     box-sizing: border-box;
+// }
+
+// footer {
+//     background: #1f1f1f;
+//     padding: 70px 20px;
+//     font-size: 14px;
+//     flex-flow: row wrap;
+//     display: -webkit-flex;
+//     display: -moz-flex;
+//     display: -ms-flexbox;
+//     display: -o flex;
+// }
+
+// .footer > * {
+//     flex: 1 100%;
+// }
+
+// /* Email Footer*/
+// .emailFooter {
+//     h3 {
+//         font-size: 1.5rem;
+//         margin-bottom: 2rem;
+//         text-align: center;
+//         color: rgb(227, 227, 227);
+//     }
+// }
+
+// .formEmail {
+//     margin-bottom: 5rem;
+//     display: flex;
+//     justify-content: center;
+//     align-items: center;
+
+//     input[type='email'] {
+//         background-color: #303030;
+//         border: none;
+//         padding: 1rem 2rem;
+//         color: rgb(227, 227, 227);
+//         outline: none;
+//         width: 400px;
+//         margin-right: 20px;
+//         line-height: 1.5;
+//     }
+//     input[type='email']::placeholder {
+//         color: #bababa;
+//     }
+//     button {
+//         background-color: #525252;
+//         border: none;
+//         color: #fff;
+//         font-size: 15px;
+//         font-weight: 600;
+//         padding: 1rem 2rem;
+//         cursor: pointer;
+//     }
+// }
+
+// /* Infor Footer */
+
+// .footerCol {
+//     width: 20%;
+//     padding: 0 15px;
+// }
+
+// .footerCol span {
+//     color: white;
+//     margin-right: 1rem;
+//     font-size: 1.7rem;
+//     text-decoration: none;
+//     font-weight: 600;
+// }
+// .footerCol .socialLinks a {
+//     display: inline-block;
+//     margin-right: 1rem;
+//     margin-top: 1rem;
+//     color: white;
+// }
+
+// .footerCol h4 {
+//     font-weight: 500;
+//     font-size: 14px;
+//     text-transform: uppercase;
+//     color: white;
+//     margin-bottom: 10px;
+// }
+// .footerCol ul {
+//     padding-left: 0;
+// }
+
+// .footerCol ul li {
+//     margin-bottom: 5px;
+// }
+// .footerCol ul li a {
+//     color: #bababa;
+//     text-decoration: none;
+//     display: block;
+// }
+
+// .footerCol ul li a:hover {
+//     color: #9e9e9e;
+// }

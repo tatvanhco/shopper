@@ -1,9 +1,17 @@
-.heading {
-    height: 500px;
-    background-color: aqua;
-    color: red;
+* {
+    box-sizing: border-box;
+}
+.navItem{
+    position: relative;
+    padding: 0.5rem 1rem;
+    font-weight: 600;
 }
 
-.active {
-    background-color: yellow;
+.navItem_active {
+    position: absolute;
+    content: '';
+    border-top: 1px solid #ff6f61;
+    bottom: 0.25rem;
+    left: 0.75rem;
+    right: 0.75rem;
 }

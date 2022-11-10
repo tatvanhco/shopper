@@ -1,14 +1,16 @@
 import React from 'react';
 import './App.scss';
-import Header from 'components/header/header';
-import Footer from 'components/footer/footer';
-import Home from 'pages/home/home';
+import Header from 'components/layouts/header/header';
+import Footer from 'components/layouts/footer/footer';
+import { Outlet } from 'react-router-dom';
 
 function App() {
     return (
         <div className="App">
             <Header />
-            <Home />
+            <div className="min-h-[50rem]">
+                <Outlet />
+            </div>
             <Footer />
         </div>
     );
