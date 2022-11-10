@@ -4,6 +4,7 @@ export const ProductItems = [
         name: 'Leather mid-heel Sandals',
         price: '$129.00',
         category: 'Shoes',
+        size: ['24', '25', '26'],
     },
     {
         id: 2,

@@ -1,13 +1,13 @@
 import React from 'react';
-import { FiRepeat, FiTruck } from 'react-icons/fi';
+import { FiLock, FiRepeat, FiTag, FiTruck } from 'react-icons/fi';
 import Feature, { FeatureProps } from './Feature';
 
 const Features = () => {
     const featureData: FeatureProps[] = [
         {
             icon: <FiTruck className="text-secondColor" size={'19'} />,
-            title: 'Nhin cai quan dui ne',
-            descript: 'Kkha cute',
+            title: 'FREE SHIPPING',
+            descript: 'From all orders over $100',
         },
         {
             icon: <FiRepeat className="text-secondColor" size={'19'} />,
@@ -15,13 +15,13 @@ const Features = () => {
             descript: 'Return money within 30 days',
         },
         {
-            icon: <FiRepeat className="text-secondColor" size={'19'} />,
+            icon: <FiLock className="text-secondColor" size={'19'} />,
             title: 'SECURE SHOPPING',
             descript: 'Youre in safe hands',
         },
         {
-            icon: <FiRepeat className="text-secondColor" size={'19'} />,
-            title: 'FREE RETURNS',
+            icon: <FiTag className="text-secondColor" size={'19'} />,
+            title: 'OVER 10,000 STYLES',
             descript: 'We have everything you need',
         },
     ];
