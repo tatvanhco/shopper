@@ -1,6 +1,43 @@
 import { FiArrowRight } from 'react-icons/fi';
 import { Link } from 'react-router-dom';
 
+interface Product {
+    id: string;
+    category: string;
+    name: string;
+    price: string;
+    cost: string;
+    status: string;
+    colors: string[];
+    sizes?: string[];
+    images: string[];
+}
+
+interface InfoProduct {
+    id: string;
+    title: string;
+}
+
+export const data: Product = {
+    id: 'SP101',
+    category: 'Sneakers',
+    name: 'Leather Sneakers',
+    price: '85.000',
+    cost: '115.000',
+    status: 'In Stock',
+    colors: ['Black', 'White'],
+    sizes: ['6222', '66', '8'],
+    images: [
+        'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-7.jpg',
+        'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-49.jpg',
+    ],
+};
+
+const InfoProduct: InfoProduct = {
+    id: '1',
+    title: 'Description',
+};
+
 export const ProductItems = [
     {
         id: 1,
@@ -72,6 +109,45 @@ export const ProductItems = [
         size: 'S',
         color: 'red',
         category: 'Shoes',
+        img: 'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
+    },
+];
+
+export const TopProduct = [
+    {
+        id: 1,
+        name: 'Leather mid-heel Sandals',
+        price: '$129.00',
+        size: 'S',
+        color: 'red',
+        category: 'Shoes',
+        img: 'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
+    },
+    {
+        id: 2,
+        name: 'Cotton floral print Dress',
+        price: '$40.00',
+        size: 'S',
+        color: 'red',
+        category: 'Dresses',
+        img: 'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
+    },
+    {
+        id: 3,
+        name: 'Leather Sneakers',
+        price: '$85.00',
+        size: 'S',
+        color: 'red',
+        category: 'Shoes',
+        img: 'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
+    },
+    {
+        id: 4,
+        name: 'Cropped cotton Top',
+        price: '$29.00',
+        size: 'S',
+        color: 'red',
+        category: 'Tops',
         img: 'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
     },
 ];

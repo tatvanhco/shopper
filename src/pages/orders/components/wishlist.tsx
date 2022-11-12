@@ -1,5 +1,6 @@
-import { ProductItems } from 'data/ProductItems';
-import React from 'react';
+import { Pagination } from '@mui/material';
+import { ProductItems } from 'data/Productdb';
+import React, { useState } from 'react';
 import ProductCard from './ProductCard';
 
 function OrderWishlist() {
@@ -15,11 +16,17 @@ function OrderWishlist() {
     }
 
     return (
-        <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-8">
-            {ProductItems.map((item, index) => {
-                return <ProductCard item={item}></ProductCard>;
-            })}
-        </div>
+        <>
+            <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-8">
+                {ProductItems.map((item, index) => {
+                    return <ProductCard item={item}></ProductCard>;
+                })}
+            </div>
+
+            <div className="float-right">
+                <Pagination />
+            </div>
+        </>
     );
 }
 

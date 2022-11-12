@@ -6,10 +6,10 @@ export const SubCheckOut = () => {
     return (
         <div className="">
             <h2 className="text-2xl font-semibold mb-4">số sản phẩm: 5</h2>
-            <Scrollbars style={{ width: 400, height: 300, padding: 0 }}>
+            <Scrollbars style={{ width: 350, height: 300, padding: 0 }}>
                 {ProductItems.map((item, index) => {
                     return (
-                        <div key={index} className="flex items-center p-5 border-y border-gray-200">
+                        <div key={index} className="flex items-center py-5 pr-5 border-y border-gray-200">
                             <div className="mr-5">
                                 <img className="w-[7rem] h-[7rem]" src={item.img} alt="" />
                             </div>

@@ -14,7 +14,7 @@ export const ShippDetail = () => {
                         <thead>
                             <tr>
                                 <th className="border border-slate-600 p-4">Chọn phương thức vận chuyển</th>
-                                <th className="border border-slate-600 p-4">Chi tiết</th>
+                                <th className="border border-slate-600 p-4">Thời gian vận chuyển</th>
                                 <th className="border border-slate-600 p-4">Chi phí vận chuyển</th>
                             </tr>
                         </thead>

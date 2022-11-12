@@ -1,67 +1,44 @@
-import * as React from 'react';
-import Tabs from '@mui/material/Tabs';
-import Tab from '@mui/material/Tab';
-import Typography from '@mui/material/Typography';
-import Box from '@mui/material/Box';
-
-interface TabPanelProps {
-    children?: React.ReactNode;
-    index: number;
-    value: number;
-}
-
-function TabPanel(props: TabPanelProps) {
-    const { children, value, index, ...other } = props;
-
+export const Description = () => {
     return (
-        <div
-            role="tabpanel"
-            hidden={value !== index}
-            id={`simple-tabpanel-${index}`}
-            aria-labelledby={`simple-tab-${index}`}
-            {...other}
-        >
-            {value === index && (
-                <Box sx={{ p: 3 }}>
-                    <Typography>{children}</Typography>
-                </Box>
-            )}
+        <div className="">
+            <p>
+                👞 👞 Chừng Nào Đôi Chân Tôi Còn Bước Trên Mặt Đất – Tôi Sẽ Chỉ Đi Các Đôi Giày Chất Nhất !!! 👞 👞 Bạn
+                Đã Sắm Được Cho Mình Một Đôi Giày Đã Thực Sự Vừa Lòng Chưa ???
+            </p>
+            <div className="flex justify-between mt-6">
+                <div>
+                    <ul>
+                        <li className="flex">
+                            <p className="font-semibold mr-2">Mã hàng:</p>
+                            <span>#61590437</span>
+                        </li>
+                        <li className="flex">
+                            <p className="font-semibold mr-2">Thể loại:</p>
+                            <span>thể thao</span>
+                        </li>
+                        <li className="flex">
+                            <p className="font-semibold mr-2">Xuất xứ:</p>
+                            <span>Italy</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <ul>
+                        <li className="flex">
+                            <p className="font-semibold mr-2">Chất liệu:</p>
+                            <span>Da 100%, Polyamide 100%</span>
+                        </li>
+                        <li className="flex">
+                            <p className="font-semibold mr-2">Lót:</p>
+                            <span>Polyester 100%</span>
+                        </li>
+                        <li className="flex">
+                            <p className="font-semibold mr-2">CounSoletry:</p>
+                            <span>Rubber 100%</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
         </div>
     );
-}
-
-function a11yProps(index: number) {
-    return {
-        id: `simple-tab-${index}`,
-        'aria-controls': `simple-tabpanel-${index}`,
-    };
-}
-
-export default function Description() {
-    const [value, setValue] = React.useState(0);
-
-    const handleChange = (event: React.SyntheticEvent, newValue: number) => {
-        setValue(newValue);
-    };
-
-    return (
-        <Box sx={{ width: '100%' }}>
-            <Box sx={{ borderBottom: 1, borderColor: 'divider' }}>
-                <Tabs value={value} onChange={handleChange} aria-label="basic tabs example">
-                    <Tab label="Item One" {...a11yProps(0)} />
-                    <Tab label="Item Two" {...a11yProps(1)} />
-                    <Tab label="Item Three" {...a11yProps(2)} />
-                </Tabs>
-            </Box>
-            <TabPanel value={value} index={0}>
-                Item One
-            </TabPanel>
-            <TabPanel value={value} index={1}>
-                Item Two
-            </TabPanel>
-            <TabPanel value={value} index={2}>
-                Item Three
-            </TabPanel>
-        </Box>
-    );
-}
+};

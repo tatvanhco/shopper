@@ -6,7 +6,6 @@ import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ChooseOptions } from './chooseOptions';
 import OrderWishlist from 'pages/orders/components/wishlist';
-import { PaginationSize } from 'components/layouts/Paginations/Paginations';
 import { LinkSite } from 'components/layouts/breadcrumb/BreadCrumb';
 
 export const BodyContent = () => {
@@ -20,7 +19,7 @@ export const BodyContent = () => {
             <div className="flex justify-between items-center mb-8">
                 <div className="">
                     <h2 className="text-4xl font-semibold tracking-wider mb-3">Shopping Now</h2>
-                    <LinkSite locate="shop"/>
+                    <LinkSite locate="shop" />
                 </div>
                 <div className="">
                     <Box sx={{ minWidth: 120 }}>
@@ -43,7 +42,7 @@ export const BodyContent = () => {
             </div>
             <ChooseOptions />
             <OrderWishlist />
-            <PaginationSize />
+            {/* <Pagination /> */}
         </>
     );
 };
