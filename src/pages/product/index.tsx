@@ -8,7 +8,7 @@ import { Suggestion } from './components/suggestion';
 
 export const Product = () => {
     return (
-        <div className="">
+        <div className="mt-5">
             <BodyContainer>
                 <LinkSite locate="shop" />
                 <ProductImg />

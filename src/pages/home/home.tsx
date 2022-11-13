@@ -128,18 +128,20 @@ function Home() {
                             return (
                                 <div className="flex flex-col w-[254px] h-[417px]" key={item.id}>
                                     <div>
-                                        <img
-                                            className="w-[254px] h-[302px]"
-                                            src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg"
-                                            alt=""
-                                        />
+                                        <Link to="/home/product">
+                                            <img
+                                                className="w-[254px] h-[302px]"
+                                                src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg"
+                                                alt=""
+                                            />
+                                        </Link>
                                     </div>
                                     <div className="p-6 px-0">
                                         <div className="text-sm">
-                                            <a href="">{item.category}</a>
+                                            <Link to="/shop">{item.category}</Link>
                                         </div>
                                         <div className="font-semibold">
-                                            <a href="">{item.name}</a>
+                                            <Link to="/home/product">{item.name}</Link>
                                         </div>
                                         <div className="text-[#767676] font-semibold"> {item.price} </div>
                                     </div>

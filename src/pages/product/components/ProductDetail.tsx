@@ -3,60 +3,12 @@ import { useState } from 'react';
 
 export const ProductDetail = () => {
     const [selectedSize, setSelectedSize] = useState(data.sizes?.at(0));
-    const [selectedColor, setSelectedColor] = useState(data.colors?.at(0));
 
     const handleClickSizeRadio = (e: any) => {
         setSelectedSize(e.target.value);
     };
-
-    const handleClickColor = (e: any) => {
-        setSelectedColor(e.target.value);
-    };
     return (
         <>
-            <div className="mb-6">
-                <p className="mb-5">
-                    Color:
-                    <strong id=""> {selectedColor} </strong>
-                </p>
-                <div className="mb-8 -ml-1 flex">
-                    <label className="mr-3 inline-flex cursor-pointer">
-                        <input
-                            type="radio"
-                            name="imgRadio"
-                            id="imgRadio1"
-                            value="Black"
-                            className="peer"
-                            checked
-                            onChange={(e) => handleClickColor(e)}
-                            hidden
-                        />
-                        <img
-                            id="imgRadio1"
-                            src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-7.jpg"
-                            alt=""
-                            className="opacity-80 peer-checked:border-[#1f1f1f] peer-checked:opacity-100 w-[70px] h-[70px] border-0 border-b-2 border-transparent"
-                        />
-                    </label>
-                    <label className="mr-3 inline-flex cursor-pointer">
-                        <input
-                            type="radio"
-                            name="imgRadio"
-                            id="imgRadio2"
-                            value="White"
-                            className="peer"
-                            onChange={(e) => handleClickColor(e)}
-                            hidden
-                        />
-                        <img
-                            id="imgRadio2"
-                            src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-49.jpg"
-                            alt=""
-                            className="opacity-80 peer-checked:border-b-[#1f1f1f] peer-checked:opacity-100 w-[70px] h-[70px] border-0 border-b-2 border-transparent"
-                        />
-                    </label>
-                </div>
-            </div>
             <div className="mb-6">
                 <p className="mb-5">
                     Size:
