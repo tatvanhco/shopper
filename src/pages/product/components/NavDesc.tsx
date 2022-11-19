@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState } from 'react';
 import Box from '@mui/material/Box';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -9,7 +9,7 @@ import { Description } from './Description';
 import { SizeFit } from './SizeFit';
 
 export const NavDesc = () => {
-    const [value, setValue] = React.useState('1');
+    const [value, setValue] = useState('1');
 
     const handleChange = (_event: React.SyntheticEvent, newValue: string) => {
         setValue(newValue);

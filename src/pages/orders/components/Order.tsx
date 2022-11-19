@@ -82,13 +82,20 @@ function Order() {
                                     </div>
                                 )}
                             </div>
-                            <div className="md:ml-14 ">
-                                <Link
-                                    to={'/order/account-orders/account-order-detail'}
-                                    className="text-sm font-bold tracking-wide border border-[#1f1f1f] px-3 py-3 flex justify-center items-center hover:text-white hover:bg-[#1f1f1f]"
-                                >
-                                    Order Details
-                                </Link>
+                            <div className=" flex  justify-between md:ml-14 ">
+                                <div className="mr-1 p-3">
+                                    <Link
+                                        to={'/order/account-orders/account-order-detail'}
+                                        className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex py-2 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                    >
+                                        chi tiết đơn hàng
+                                    </Link>
+                                </div>
+                                <div className="p-3">
+                                    <button className=" text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex  py-2 items-center hover:text-white hover:bg-[#1f1f1f]">
+                                        Hủy đơn hàng
+                                    </button>
+                                </div>
                             </div>
                         </div>
                     </div>

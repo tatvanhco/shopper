@@ -9,51 +9,18 @@ import { List } from '@mui/material';
 import { Scrollbars } from 'react-custom-scrollbars-2';
 import { MultipleSelect } from './choosePrice';
 
-// const [checkSize, setCheckSize] = React.useState(value: '');
-
-// const handleCheck = () => {
-//     setCheckSize(true)
-// };
-
-// function renderThumbHorizontalDefault({ style, ...props }) {
-//     const finalStyle = {
-//         ...style,
-//         cursor: 'pointer',
-//         borderRadius: 'inherit',
-//         backgroundColor: 'rgba(0,0,0,.2)',
-//     };
-//     return <div style={finalStyle} {...props} />;
-// }
-
 export const data: SideBarItem[] = [
-    {
-        label: <div className="font-semibold text-lg">Category</div>,
-        content: <div className="text-base mt-3">tất cả sản phẩm</div>,
-        children: [
-            {
-                label: <div className="">Áo</div>,
-                content: <CheckboxChildren groupName="shirt" />,
-            },
-            {
-                label: <div className="">Quần</div>,
-                content: <CheckboxChildren groupName="trousers" />,
-            },
-        ],
-    },
     {
         label: <div className="font-semibold text-lg">Thời trang theo mùa</div>,
         content: <CheckboxChildren groupName="season" />,
-        children: [],
     },
     {
         label: <div className="font-semibold text-lg">Kích cỡ</div>,
         content: <SizeCheckBox />,
-        children: [],
     },
     {
         label: <div className="font-semibold text-lg">Màu sắc</div>,
         content: <CheckboxChildren groupName="color" />,
-        children: [],
     },
     {
         label: <div className="font-semibold text-lg">Thương hiệu</div>,
@@ -85,7 +52,6 @@ export const data: SideBarItem[] = [
                 </Scrollbars>
             </>
         ),
-        children: [],
     },
     {
         label: <div className="font-semibold text-lg">Giá</div>,
@@ -97,6 +63,5 @@ export const data: SideBarItem[] = [
                 </div>
             </>
         ),
-        children: [],
     },
 ];

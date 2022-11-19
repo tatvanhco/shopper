@@ -33,60 +33,51 @@ import { CheckOut } from 'pages/checkout';
 import { OrderCompleted } from 'pages/orderCompleted/orderCompleted';
 import { Product } from 'pages/product';
 import { SrcollTopWrap } from 'components/srcollTopWrap';
-
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
 root.render(
-    <React.StrictMode>
-        <Provider store={store}>
-            <BrowserRouter>
-                <SrcollTopWrap>
-                    <Routes>
-                        <Route path="login" element={<PublicRoute />}>
-                            <Route path="/login" element={<LoginPage />} />
-                        </Route>
-                        <Route path="register" element={<RegisterPage />} />
-                        <Route path="forgotPassword" element={<ForgotPass />} />
-                        <Route path="confirm" element={<ConfirmPage />} />
-                        <Route path="resetpassword" element={<ResetPassword />} />
-                        <Route path="/" element={<InnerText />}>
-                            <Route path="/" element={<App />}>
-                                <Route path="/" element={<Navigate replace to="/home" />} />
-                                <Route path="/home" element={<Home />} />
-                                <Route path="/home/product" element={<Product />} />
-                                <Route path="/shop" element={<ShopPage />} />
-                                <Route path="/home/shopping-cart" element={<ShoppingCart />} />
-                                <Route path="/home/shopping-cart/checkout" element={<CheckOut />} />
-                                <Route path="/home/order-completed" element={<OrderCompleted />} />
-                                <Route path="/order" element={<Orders />}>
-                                    <Route path="/order/account-orders" element={<Order />} />
-                                    <Route
-                                        path="/order/account-orders/account-order-detail"
-                                        element={<OrderDetail />}
-                                    />
-                                    <Route path="/order/account-wishlist" element={<OrderWishlist />} />
-                                    <Route path="/order/account-personal-info" element={<PersonalInfo />} />
-                                    <Route path="/order/account-address" element={<Address />} />
-                                    <Route
-                                        path="/order/account-address/account-address-edit"
-                                        element={<AddAddress />}
-                                    />
-                                    <Route path="/order/account-payment" element={<PaymentMethods />} />
-                                    <Route
-                                        path="/order/account-payment/account-payment-edit"
-                                        element={<AddPaymentMethod />}
-                                    />
-                                    <Route path="/order/account-payment-choose" element={<ChoosePaymentMethod />} />
-                                </Route>
-                                <Route path="/*" element={<NotFound />} />
+    <Provider store={store}>
+        <BrowserRouter>
+            <SrcollTopWrap>
+                <Routes>
+                    <Route path="login" element={<PublicRoute />}>
+                        <Route path="/login" element={<LoginPage />} />
+                    </Route>
+                    <Route path="register" element={<RegisterPage />} />
+                    <Route path="forgotPassword" element={<ForgotPass />} />
+                    <Route path="confirm" element={<ConfirmPage />} />
+                    <Route path="resetpassword" element={<ResetPassword />} />
+                    <Route path="/" element={<InnerText />}>
+                        <Route path="/" element={<App />}>
+                            <Route path="/" element={<Navigate replace to="/home" />} />
+                            <Route path="/home" element={<Home />} />
+                            <Route path="/home/product/:id" element={<Product />} />
+                            <Route path="/shop" element={<ShopPage />} />
+                            <Route path="/home/shopping-cart" element={<ShoppingCart />} />
+                            <Route path="/home/shopping-cart/checkout" element={<CheckOut />} />
+                            <Route path="/home/order-completed" element={<OrderCompleted />} />
+                            <Route path="/order" element={<Orders />}>
+                                <Route path="/order/account-orders" element={<Order />} />
+                                <Route path="/order/account-orders/account-order-detail" element={<OrderDetail />} />
+                                <Route path="/order/account-wishlist" element={<OrderWishlist />} />
+                                <Route path="/order/account-personal-info" element={<PersonalInfo />} />
+                                <Route path="/order/account-address" element={<Address />} />
+                                <Route path="/order/account-address/account-address-edit" element={<AddAddress />} />
+                                <Route path="/order/account-payment" element={<PaymentMethods />} />
+                                <Route
+                                    path="/order/account-payment/account-payment-edit"
+                                    element={<AddPaymentMethod />}
+                                />
+                                <Route path="/order/account-payment-choose" element={<ChoosePaymentMethod />} />
                             </Route>
+                            <Route path="/*" element={<NotFound />} />
                         </Route>
-                    </Routes>
-                </SrcollTopWrap>
-            </BrowserRouter>
-        </Provider>
-    </React.StrictMode>,
+                    </Route>
+                </Routes>
+            </SrcollTopWrap>
+        </BrowserRouter>
+    </Provider>,
 );
 
 // If you want to start measuring performance in your app, pass a function

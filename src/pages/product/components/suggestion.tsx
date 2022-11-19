@@ -1,29 +1,22 @@
 import clsx from 'clsx';
-import { TopProduct } from 'data/Productdb';
+import { useEffect, useState } from 'react';
+import * as productServices from 'services/productServices';
+import { SuggestCard } from './suggestCard';
 
 export const Suggestion = () => {
+    const [products, setProducts] = useState<productServices.Product[]>([]);
+    useEffect(() => {
+        productServices.getProducts().then((data) => {
+            setProducts(data);
+        });
+    }, []);
     return (
         <div className="my-10">
             <h2 className="text-center text-3xl font-semibold my-10">Có thể bạn sẽ thích</h2>
             <div className="max-w-[100rem]">
                 <div className={clsx('flex')}>
-                    {TopProduct.map((item, index) => {
-                        return (
-                            <div key={index} className="mx-5">
-                                <img
-                                    className="max-w-[15rem] bg-clip-content bg-center bg-no-repeat bg-cover"
-                                    src={item.img}
-                                    alt=""
-                                />
-                                <div className="">
-                                    <span>{item.category}</span>
-                                    <div className="font-semibold">
-                                        <a href="">{item.name}</a>
-                                    </div>
-                                    <div className="text-[#767676] font-semibold"> {item.price} </div>
-                                </div>
-                            </div>
-                        );
+                    {products?.map((item, index) => {
+                        return index < 4 && <SuggestCard items={item}></SuggestCard>;
                     })}
                 </div>
             </div>

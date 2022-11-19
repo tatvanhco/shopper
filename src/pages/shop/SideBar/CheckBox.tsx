@@ -3,30 +3,30 @@ import { Checkbox, FormControlLabel, FormGroup } from '@mui/material';
 export const CheckboxChildren = (props: any) => {
     let groupItems: any;
     switch (props.groupName) {
-        case 'shirt':
-            groupItems = {
-                groupItem: (
-                    <FormGroup>
-                        <FormControlLabel control={<Checkbox />} label="Áo Polo" />
-                        <FormControlLabel control={<Checkbox />} label="Áo khoác da lộn" />
-                        <FormControlLabel control={<Checkbox />} label="Áo khoác nam kaki" />
-                    </FormGroup>
-                ),
-            };
-            break;
-        case 'trousers':
-            groupItems = {
-                groupItem: (
-                    <FormGroup>
-                        <FormControlLabel control={<Checkbox />} label="Quần Jeans" />
-                        <FormControlLabel control={<Checkbox />} label="Quần Tây" />
-                        <FormControlLabel control={<Checkbox />} label="Quần Kaki" />
-                        <FormControlLabel control={<Checkbox />} label="Quần thể thao" />
-                        <FormControlLabel control={<Checkbox />} label="Quần short" />
-                    </FormGroup>
-                ),
-            };
-            break;
+        // case 'shirt':
+        //     groupItems = {
+        //         groupItem: (
+        //             <FormGroup>
+        //                 <FormControlLabel control={<Checkbox />} label="Áo Polo" />
+        //                 <FormControlLabel control={<Checkbox />} label="Áo khoác da lộn" />
+        //                 <FormControlLabel control={<Checkbox />} label="Áo khoác nam kaki" />
+        //             </FormGroup>
+        //         ),
+        //     };
+        //     break;
+        // case 'trousers':
+        //     groupItems = {
+        //         groupItem: (
+        //             <FormGroup>
+        //                 <FormControlLabel control={<Checkbox />} label="Quần Jeans" />
+        //                 <FormControlLabel control={<Checkbox />} label="Quần Tây" />
+        //                 <FormControlLabel control={<Checkbox />} label="Quần Kaki" />
+        //                 <FormControlLabel control={<Checkbox />} label="Quần thể thao" />
+        //                 <FormControlLabel control={<Checkbox />} label="Quần short" />
+        //             </FormGroup>
+        //         ),
+        //     };
+        //     break;
         case 'season':
             groupItems = {
                 groupItem: (

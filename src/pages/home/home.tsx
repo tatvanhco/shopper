@@ -1,14 +1,21 @@
-import clsx from 'clsx';
-import styles from './home.module.scss';
-
 import '../../asset/globalStyle/globalStyle.scss';
 import { FiArrowRight, FiHeart } from 'react-icons/fi';
 import Features from 'components/Features';
 import { BodyContainer } from 'components/container';
 import { Link } from 'react-router-dom';
 import { ProductItems } from 'data/Productdb';
+import * as productServices from 'services/productServices';
+import { useEffect, useState } from 'react';
+import ProductCard from 'pages/orders/components/ProductCard';
 
 function Home() {
+    const [products, setProducts] = useState<productServices.Product[]>([]);
+    useEffect(() => {
+        productServices.getProducts().then((data) => {
+            setProducts(data);
+        });
+    }, []);
+
     return (
         <div className="home">
             <div className="mb-4 flex items-center justify-center bg-neutral-800 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-1.svg')] py-3">
@@ -124,38 +131,9 @@ function Home() {
                     </div>
 
                     <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        {ProductItems.map((item) => {
-                            return (
-                                <div className="flex flex-col w-[254px] h-[417px]" key={item.id}>
-                                    <div>
-                                        <Link to="/home/product">
-                                            <img
-                                                className="w-[254px] h-[302px]"
-                                                src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg"
-                                                alt=""
-                                            />
-                                        </Link>
-                                    </div>
-                                    <div className="p-6 px-0">
-                                        <div className="text-sm">
-                                            <Link to="/shop">{item.category}</Link>
-                                        </div>
-                                        <div className="font-semibold">
-                                            <Link to="/home/product">{item.name}</Link>
-                                        </div>
-                                        <div className="text-[#767676] font-semibold"> {item.price} </div>
-                                    </div>
-                                </div>
-                            );
+                        {products.map((item, index) => {
+                            return index < 8 && <ProductCard data={item}></ProductCard>;
                         })}
-                    </div>
-                </section>
-                <section className="pt-20">
-                    <div className="row justify-center">
-                        <div className="flex flex-col sm:basis-2/3 text-center px-8">
-                            <h6 className="mb-3 text-Gray400 text-sm font-[600] tracking-wide">WHAT BUYERS SAY</h6>
-                            <h2 className="mb-4 text-4xl font-semibold tracking-wide">Latest buyers Reviews</h2>
-                        </div>
                     </div>
                 </section>
             </BodyContainer>
@@ -185,7 +163,7 @@ function Home() {
                             <div className="flex items-center relative mx-3">
                                 <img
                                     className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
+                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-18.jpg"
                                     alt=""
                                 />
 
@@ -197,7 +175,7 @@ function Home() {
                             <div className="flex items-center relative mx-3">
                                 <img
                                     className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
+                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-14.jpg"
                                     alt=""
                                 />
 
@@ -209,7 +187,7 @@ function Home() {
                             <div className="flex items-center relative mx-3">
                                 <img
                                     className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
+                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-12.jpg"
                                     alt=""
                                 />
 
@@ -221,7 +199,7 @@ function Home() {
                             <div className="flex items-center relative mx-3">
                                 <img
                                     className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
+                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-14.jpg"
                                     alt=""
                                 />
 
@@ -233,7 +211,7 @@ function Home() {
                             <div className="flex items-center relative mx-3">
                                 <img
                                     className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
+                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-13.jpg"
                                     alt=""
                                 />
 

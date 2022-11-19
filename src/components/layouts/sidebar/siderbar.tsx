@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 function SideBar() {
     const useAuth = () => {
-        const checkLogin = localStorage.getItem('user');
+        const checkLogin = localStorage.getItem('user_token');
         if (checkLogin) {
             return true;
         } else {
@@ -18,7 +18,7 @@ function SideBar() {
     const user = useAuth();
 
     const handleLogout = () => {
-        localStorage.removeItem('user');
+        localStorage.removeItem('user_token');
         navigate('/login');
     };
     return (

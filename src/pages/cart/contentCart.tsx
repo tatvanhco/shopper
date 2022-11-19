@@ -1,27 +1,42 @@
-import { ProductItems } from 'data/Productdb';
+import React, { useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
 import { Link } from 'react-router-dom';
-
-export const ContentCart = () => {
+import * as cartServices from 'services/cartServices';
+import ClearIcon from '@mui/icons-material/Clear';
+import { Button } from '@mui/material';
+interface ContentCartProps {
+    data: cartServices.orderItems[];
+}
+export const ContentCart: React.FC<ContentCartProps> = ({ data }) => {
     return (
         <div className="col-span-2 md:px-0 px-8 md:mr-16">
             <Scrollbars style={{ width: 700, height: 420 }}>
-                {ProductItems.map((item, index) => {
+                {data?.map((item) => {
                     return (
-                        <div key={index} className="flex items-center p-6 border-y border-gray-200">
+                        <div key={item.cartId} className="flex p-6 border-y border-gray-200">
                             <div className="mr-8">
-                                <img className="w-[10rem] h-[10rem]" src={item.img} alt="" />
+                                <img
+                                    className="object-cover object-center w-[10rem] h-[10rem]"
+                                    src={item.product.avt}
+                                    alt=""
+                                />
                             </div>
-                            <div className="w-full">
+                            <div className="flex flex-col justify-between py-5 w-full">
                                 <div className="flex justify-between">
-                                    <p className="font-semibold">{item.name}</p>
-                                    <p>{item.price}</p>
+                                    <p className="font-semibold">{item.product.name}</p>
+                                    <p>{item.product.price} VND</p>
                                 </div>
-                                <p>size: {item.size}</p>
-                                <p>color: {item.color}</p>
                                 <div className="flex justify-between">
-                                    <p>khung select</p>
-                                    <p>Xóa</p>
+                                    <input
+                                        className="border border-gray-400 rounded"
+                                        type="number"
+                                        name="quality"
+                                        id="quality"
+                                    />
+                                    <Button className="text-black ">
+                                        Xóa
+                                        <ClearIcon />
+                                    </Button>
                                 </div>
                             </div>
                         </div>

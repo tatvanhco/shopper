@@ -1,5 +1,5 @@
 import { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import '../../../asset/globalStyle/globalStyle.scss';
 import { FiSearch, FiUser, FiHeart, FiShoppingCart, FiMenu } from 'react-icons/fi';
@@ -15,6 +15,18 @@ function Header() {
     const [state, setState] = React.useState({
         right: false,
     });
+
+    const useAuth = () => {
+        const checkLogin = localStorage.getItem('user_token');
+        if (checkLogin) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    // const location = useLocation();
+    // const navigate = useNavigate();
+    const user = useAuth();
 
     const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
         if (
@@ -75,23 +87,48 @@ function Header() {
                             {list('right')}
                         </SwipeableDrawer>
                     </li>
-                    <li>
-                        <Link to={'/order/account-orders'}>
-                            <FiUser className="cursor-pointer hover:text-secondColor" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={'/order/account-wishlist'}>
-                            <FiHeart className="cursor-pointer hover:text-secondColor" />
-                        </Link>
-                    </li>
-                    <li className="relative">
-                        <Link to="/home/shopping-cart">
-                            <Badge badgeContent={1} color="error" className="w-5 h-5">
-                                <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
-                            </Badge>
-                        </Link>
-                    </li>
+                    {user && (
+                        <>
+                            <li>
+                                <Link to={'/order/account-orders'}>
+                                    <FiUser className="cursor-pointer hover:text-secondColor" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'/order/account-wishlist'}>
+                                    <FiHeart className="cursor-pointer hover:text-secondColor" />
+                                </Link>
+                            </li>
+                            <li className="relative">
+                                <Link to="/home/shopping-cart">
+                                    <Badge badgeContent={1} color="error" className="w-5 h-5">
+                                        <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                                    </Badge>
+                                </Link>
+                            </li>
+                        </>
+                    )}
+                    {!user && (
+                        <>
+                            <li>
+                                <Link to={'/login'}>
+                                    <FiUser className="cursor-pointer hover:text-secondColor" />
+                                </Link>
+                            </li>
+                            <li>
+                                <Link to={'/login'}>
+                                    <FiHeart className="cursor-pointer hover:text-secondColor" />
+                                </Link>
+                            </li>
+                            <li className="relative">
+                                <Link to="/login">
+                                    <Badge color="error" className="w-5 h-5">
+                                        <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                                    </Badge>
+                                </Link>
+                            </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </div>

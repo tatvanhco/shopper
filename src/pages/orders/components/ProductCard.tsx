@@ -1,24 +1,26 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { FiX } from 'react-icons/fi';
-
-const ProductCard = ({ item }: IProductCardProps) => {
+import { Link } from 'react-router-dom';
+import * as productServices from 'services/productServices';
+interface ProductCardProps {
+    data: productServices.Product;
+}
+const ProductCard = ({ data }: ProductCardProps) => {
     return (
-        <div className="flex flex-col relative" key={item.id}>
-            {/* Image product */}
-            <div className="">
-                <div className="top-5 right-5 absolute w-[40px] h-[40px] bg-white rounded-full flex justify-center items-center cursor-pointer hover:text-white hover:bg-secondColor">
-                    <FiX />
+        <Link to={'/home/product/' + data.id}>
+            <div className="flex flex-col relative" key={data.id}>
+                <div className="">
+                    <img src={data.avt} alt="" />
                 </div>
-                <img src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg" alt="" />
-            </div>
-            {/* Info product*/}
-            <div className="p-6 px-0 flex flex-col items-center">
-                <div className="font-semibold">
-                    <a href="">{item.name}</a>
+                <div className="p-6 px-0 flex flex-col items-center">
+                    <p>tên thể loại ở đây</p>
+                    <div className="font-semibold">
+                        <a href="">{data.name}</a>
+                    </div>
+                    <div className="text-[#767676] font-semibold"> {data.price} </div>
                 </div>
-                <div className="text-[#767676] font-semibold"> {item.price} </div>
             </div>
-        </div>
+        </Link>
     );
 };
 

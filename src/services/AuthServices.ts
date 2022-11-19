@@ -1,25 +1,10 @@
-import { Alert } from '@mui/material';
 import Axios from 'axios';
-import { useEffect } from 'react';
-
-export const SigninServices = () => {
-    const payload = {
-        email: '',
-        password: '',
-    };
-    return Axios.post('http://localhost:8000/api/signin', payload)
+import { api } from './base';
+export const postUser = (payload: { email: string; password: string }) => {
+    return api
+        .post('/auth/signin', payload)
         .then((response) => {
-            return response.data.data;
+            return response;
         })
-        .catch((error) => {
-            // Alert(error.response.message);
-        });
+        .catch((error) => error.response);
 };
-
-// const [post, setPost];
-// useEffect(
-    // const response=SigninServices("sdadas","sâdasd");
-    // response.then(
-        // (data)=>setPost(data);
-    // )
-    // ,[]);

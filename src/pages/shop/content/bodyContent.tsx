@@ -5,11 +5,19 @@ import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import { ChooseOptions } from './chooseOptions';
-import OrderWishlist from 'pages/orders/components/wishlist';
 import { LinkSite } from 'components/layouts/breadcrumb/BreadCrumb';
+import ProductCard from 'pages/orders/components/ProductCard';
+import * as productServices from 'services/productServices';
+import { Pagination } from '@mui/material';
 
 export const BodyContent = () => {
     const [productFilter, setProductFilter] = React.useState('');
+    const [products, setProducts] = React.useState<productServices.Product[]>([]);
+    React.useEffect(() => {
+        productServices.getProducts().then((data) => {
+            setProducts(data);
+        });
+    }, []);
 
     const handleChange = (event: SelectChangeEvent) => {
         setProductFilter(event.target.value as string);
@@ -41,8 +49,14 @@ export const BodyContent = () => {
                 </div>
             </div>
             <ChooseOptions />
-            <OrderWishlist />
-            {/* <Pagination /> */}
+            <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-8">
+                {products.map((item) => {
+                    return <ProductCard data={item}></ProductCard>;
+                })}
+            </div>
+            <div className="float-right">
+                <Pagination />
+            </div>
         </>
     );
 };

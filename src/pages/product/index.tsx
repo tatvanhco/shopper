@@ -4,15 +4,28 @@ import { LinkSite } from 'components/layouts/breadcrumb/BreadCrumb';
 import { NavDesc } from './components/NavDesc';
 import { ProductImg } from './components/productImg';
 import { ReviewComment } from './components/reviewComment';
+import * as productServices from 'services/productServices';
+import { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
+import { SuggestCard } from './components/suggestCard';
 import { Suggestion } from './components/suggestion';
+interface ProductProps {}
+export const Product: React.FC<ProductProps> = () => {
+    
+    const [product, setProduct] = useState<productServices.ProductDetail>();
+   
 
-export const Product = () => {
+    const id: string = useParams().id as string;
+    useEffect(() => {
+        productServices.getProduct({ id: id }).then((data: productServices.ProductDetail) => setProduct(data));
+    }, []);
     return (
         <div className="mt-5">
             <BodyContainer>
                 <LinkSite locate="shop" />
-                <ProductImg />
+                <ProductImg imagess={product?.images} />
                 <NavDesc />
+                
                 <Suggestion />
                 <ReviewComment />
             </BodyContainer>

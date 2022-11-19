@@ -1,13 +1,25 @@
 import { Rating } from '@mui/material';
 import { data } from 'data/Productdb';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FiHeart, FiShoppingCart, FiX } from 'react-icons/fi';
 import { AddCartBtn } from './addCartBtn';
 import { ProductDetail } from './ProductDetail';
 import { SizeChart } from './SizeChart';
+import { useParams } from 'react-router-dom';
+import * as productServices from 'services/productServices';
+import * as cartServices from 'services/cartServices';
 
 export const SubProductImg = () => {
+    const [productCart, setProductCart] = useState<cartServices.orderItems>();
     const [value, setValue] = useState<number | null>(4);
+    const [product, setProduct] = useState<productServices.ProductDetail>();
+    const id: string = useParams().id as string;
+    useEffect(() => {
+        productServices.getProduct({ id: id }).then((data: productServices.ProductDetail) => setProduct(data));
+    }, []);
+    useEffect(() => {
+        cartServices.getCart().then((data: cartServices.orderItems) => setProductCart(data));
+    }, []);
 
     return (
         <>
@@ -33,23 +45,24 @@ export const SubProductImg = () => {
                     </div>
                 </div>
                 {/* Heading */}
-                <h3 className="mb-2 text-3xl font-semibold">{data.name}</h3>
+                <h3 className="mb-2 text-3xl font-semibold">{product?.name}</h3>
                 {/* Price */}
                 <div className="mb-7">
                     <span className="text-[#a6a6a6] line-through font-semibold">{data.cost}</span>
-                    <span className="text-secondColor font-bold text-2xl ml-2">{data.price}</span>
-                    <span className="text-base ml-1">({data.status})</span>
+                    <span className="text-secondColor font-bold text-2xl ml-2">{product?.price}</span>
+                    <span className="text-base ml-1">({product?.status})</span>
+                    <span className="text-mainColor font-bold text-2xl ml-2">VND</span>
                 </div>
                 {/* Form */}
                 <form action="">
                     <div className="">
-                        <ProductDetail />
+                        <ProductDetail Sizes={product?.sizes} />
                     </div>
 
                     {/* Size chart */}
                     <SizeChart />
 
-                    <AddCartBtn />
+                    <AddCartBtn  />
                 </form>
             </div>
         </>
