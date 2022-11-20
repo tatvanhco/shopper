@@ -1,25 +1,30 @@
 import { ProductItems } from 'data/Productdb';
 import Scrollbars from 'react-custom-scrollbars-2';
 import { Link } from 'react-router-dom';
+import * as cartServices from 'services/cartServices';
 
-export const SubCheckOut = () => {
+interface SubCheckOutProps {
+    data: cartServices.orderItems[];
+}
+
+export const SubCheckOut: React.FC<SubCheckOutProps> = ({ data }) => {
     return (
         <div className="">
             <h2 className="text-2xl font-semibold mb-4">số sản phẩm: 5</h2>
             <Scrollbars style={{ width: 350, height: 300, padding: 0 }}>
-                {ProductItems.map((item, index) => {
+                {data.map((item, index) => {
                     return (
                         <div key={index} className="flex items-center py-5 pr-5 border-y border-gray-200">
                             <div className="mr-5">
-                                <img className="w-[7rem] h-[7rem]" src={item.img} alt="" />
+                                <img className="w-[7rem] h-[7rem]" src={item.product.avt} alt="" />
                             </div>
                             <div className="w-full">
                                 <div className="mb-3">
-                                    <p className="font-semibold">{item.name}</p>
-                                    <p>{item.price}</p>
+                                    <p className="font-semibold">{item.product.name}</p>
+                                    <p>{item.product.price}</p>
                                 </div>
-                                <p>size: {item.size}</p>
-                                <p>color: {item.color}</p>
+                                {/* <p>size: {item.size}</p>
+                                <p>color: {item.color}</p> */}
                             </div>
                         </div>
                     );

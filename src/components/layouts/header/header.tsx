@@ -1,21 +1,31 @@
-import { Fragment, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import '../../../asset/globalStyle/globalStyle.scss';
 import { FiSearch, FiUser, FiHeart, FiShoppingCart, FiMenu } from 'react-icons/fi';
 import { ModalSearch } from '../modal/modalSearch';
-import React from 'react';
 import { Box, SwipeableDrawer } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import * as cartServices from 'services/cartServices';
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'top' | 'bottom' | 'right';
 
 function Header() {
-    let [openMain, setOpenMain] = useState(false);
+    const [openMain, setOpenMain] = useState(false);
     const [state, setState] = React.useState({
         right: false,
     });
+const total : any  = () => {
+     
+     const test = cartServices.getCart().then((data) => {
+        setCarts(data.length)
+     })
+     
+}
 
+    const [carts, setCarts] = useState(total);
+    console.log("carr: "+carts);
+    
     const useAuth = () => {
         const checkLogin = localStorage.getItem('user_token');
         if (checkLogin) {
@@ -24,9 +34,8 @@ function Header() {
             return false;
         }
     };
-    // const location = useLocation();
-    // const navigate = useNavigate();
     const user = useAuth();
+    console.log('hi');
 
     const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
         if (
@@ -101,7 +110,7 @@ function Header() {
                             </li>
                             <li className="relative">
                                 <Link to="/home/shopping-cart">
-                                    <Badge badgeContent={1} color="error" className="w-5 h-5">
+                                    <Badge badgeContent={carts} color="error" className="w-5 h-5">
                                         <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
                                     </Badge>
                                 </Link>

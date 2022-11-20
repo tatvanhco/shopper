@@ -1,14 +1,20 @@
 import React, { useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import * as cartServices from 'services/cartServices';
 import ClearIcon from '@mui/icons-material/Clear';
 import { Button } from '@mui/material';
+import { set } from 'immer/dist/internal';
 interface ContentCartProps {
     data: cartServices.orderItems[];
 }
 export const ContentCart: React.FC<ContentCartProps> = ({ data }) => {
-    const [quantity, setQuantity] = useState('1');
+    const navigate = useNavigate();
+    const handleDelete = (id: any) => {
+        cartServices.deleteCart(id);
+        navigate('/home/shopping-cart');
+    };
+
     return (
         <div className="col-span-2 md:px-0 px-8 md:mr-16">
             <Scrollbars style={{ width: 700, height: 420 }}>
@@ -33,9 +39,9 @@ export const ContentCart: React.FC<ContentCartProps> = ({ data }) => {
                                         type="number"
                                         name="quality"
                                         id="quality"
-                                        value={quantity}
+                                        value={item.quantity}
                                     />
-                                    <Button className="text-black ">
+                                    <Button onClick={() => handleDelete(item.cartId)} className="text-black ">
                                         Xóa
                                         <ClearIcon />
                                     </Button>

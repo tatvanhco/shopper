@@ -11,7 +11,6 @@ function ShoppingCart() {
     const [carts, setCarts] = useState<cartServices.orderItems[]>();
     useEffect(() => {
         cartServices.getCart().then((data) => {
-            console.log('ok:', data);
             setCarts(data);
         });
     }, []);
@@ -28,7 +27,7 @@ function ShoppingCart() {
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-14 sm:mx-10">
                                 <ContentCart data={carts} />
                                 <div className="col-span-1">
-                                    <TotalCart data={carts} />
+                                    <TotalCart data={carts} />;
                                 </div>
                             </div>
                         </>

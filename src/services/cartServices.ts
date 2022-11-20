@@ -51,3 +51,12 @@ export const postCart = (payload: PostCart) => {
         })
         .catch((error) => error.response);
 };
+
+export const deleteCart = (payload: string) => {
+    return api
+        .delete('/cart/' + payload)
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => error.response);
+};
