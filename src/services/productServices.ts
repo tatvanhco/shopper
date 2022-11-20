@@ -49,6 +49,8 @@ export const getProducts = () => {
         .get('/products')
         .then((response) => response.data)
         .then((response: ProductResonse) => {
+            console.log('data', response.data);
+
             return response.data;
         })
         .catch((error) => error.response);

@@ -2,8 +2,10 @@ import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEve
 import { useState } from 'react';
 import { FiHeart, FiShoppingCart } from 'react-icons/fi';
 import * as cartServices from 'services/cartServices';
-
-export const AddCartBtn = () => {
+interface AddCartBtnProps {
+    handleAdd: any;
+}
+export const AddCartBtn: React.FC<AddCartBtnProps> = ({ handleAdd }) => {
     const [quatity, setQuatity] = useState('');
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -11,7 +13,8 @@ export const AddCartBtn = () => {
     };
 
     const handleAddCart = () => {
-        console.log('data' + quatity);
+        handleAdd(quatity);
+        console.log('add', quatity);
     };
     return (
         <>

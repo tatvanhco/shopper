@@ -38,9 +38,14 @@ export const getCart = () => {
         .catch((error) => error.response);
 };
 
-export const postCart = () => {
+interface PostCart {
+    productId: string;
+    sizeId: string;
+    quantity: number;
+}
+export const postCart = (payload: PostCart) => {
     return api
-        .post('/cart')
+        .post('/cart', payload)
         .then((response) => {
             return response;
         })

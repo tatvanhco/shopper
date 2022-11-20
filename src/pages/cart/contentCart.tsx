@@ -8,6 +8,7 @@ interface ContentCartProps {
     data: cartServices.orderItems[];
 }
 export const ContentCart: React.FC<ContentCartProps> = ({ data }) => {
+    const [quantity, setQuantity] = useState('1');
     return (
         <div className="col-span-2 md:px-0 px-8 md:mr-16">
             <Scrollbars style={{ width: 700, height: 420 }}>
@@ -32,6 +33,7 @@ export const ContentCart: React.FC<ContentCartProps> = ({ data }) => {
                                         type="number"
                                         name="quality"
                                         id="quality"
+                                        value={quantity}
                                     />
                                     <Button className="text-black ">
                                         Xóa

@@ -17,9 +17,6 @@
         border-radius: 10px;
         -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
         box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);
-
-        .login_desc {
-        }
     }
 }
 
@@ -30,7 +27,7 @@
         content: '';
         position: absolute;
         left: 50%;
-        transform: translate(-50%, 30%);
+        transform: translate(-50%, 5%);
         min-width: 30rem;
         border-radius: 10px;
         -webkit-box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.7);

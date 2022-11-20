@@ -1,11 +1,31 @@
+import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import styles from '../auth/auth.module.scss';
+import * as authServices from 'services/authServices';
 
 export const RegisterPage = () => {
+    const [name, setName] = useState('');
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [confirmpassword, setConfirmpassword] = useState('');
+    const [address, setAddress] = useState('');
+    const [ward, setWard] = useState('');
+    const [district, setDistrict] = useState('');
+    const [city, setCity] = useState('');
+    const [phone, setPhone] = useState('');
+
     const navigate = useNavigate();
     const hanleregister = () => {
-        alert('đăng ký thành công');
-        navigate('/login');
+        if (password == confirmpassword) {
+            const items = { name, email, password, address, ward, district, city, phone };
+            authServices.postUser(items);
+            // console.log('send', items);
+        } else {
+            console.log('mật khẩu không khớp vui lòng nhập lại');
+        }
+
+        // alert('đăng ký thành công');
+        // navigate('/login');
     };
     return (
         <div className={styles.register}>
@@ -18,15 +38,10 @@ export const RegisterPage = () => {
                             <div className="md:col-span-2">
                                 <input
                                     type="text"
-                                    placeholder="First Name *"
+                                    placeholder="Full name *"
                                     className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
-                                />
-                            </div>
-                            <div className="md:col-span-2">
-                                <input
-                                    type="text"
-                                    placeholder="Last Name *"
-                                    className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setName(e.target.value)}
+                                    value={name}
                                 />
                             </div>
                             <div className="md:col-span-2">
@@ -34,6 +49,8 @@ export const RegisterPage = () => {
                                     type="email"
                                     placeholder="Email Address *"
                                     className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    value={email}
                                 />
                             </div>
                             <div className="md:col-span-1 mr-4">
@@ -41,6 +58,8 @@ export const RegisterPage = () => {
                                     type="password"
                                     placeholder="Password *"
                                     className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    value={password}
                                 />
                             </div>
                             <div className="md:col-span-1 ml-4">
@@ -48,6 +67,53 @@ export const RegisterPage = () => {
                                     type="password"
                                     placeholder="Confirm Password *"
                                     className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setConfirmpassword(e.target.value)}
+                                    value={confirmpassword}
+                                />
+                            </div>
+                            <div className="md:col-span-2">
+                                <input
+                                    type="text"
+                                    placeholder="Address *"
+                                    className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    value={address}
+                                />
+                            </div>
+                            <div className="md:col-span-1 mr-4">
+                                <input
+                                    type="text"
+                                    placeholder="ward *"
+                                    className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setWard(e.target.value)}
+                                    value={ward}
+                                />
+                            </div>
+                            <div className="md:col-span-1 ml-4">
+                                <input
+                                    type="text"
+                                    placeholder="district *"
+                                    className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setDistrict(e.target.value)}
+                                    value={district}
+                                />
+                            </div>
+                            <div className="md:col-span-2">
+                                <input
+                                    type="text"
+                                    placeholder="City *"
+                                    className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setCity(e.target.value)}
+                                    value={city}
+                                />
+                            </div>
+                            <div className="md:col-span-2">
+                                <input
+                                    type="phone"
+                                    placeholder="phone *"
+                                    className="mb-6 text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    value={phone}
                                 />
                             </div>
                             <div className="md:col-span-2 mb-6">
@@ -92,7 +158,6 @@ export const RegisterPage = () => {
                                 <Link to="/login">
                                     <button
                                         onClick={hanleregister}
-                                        type="submit"
                                         className="text-white text-sm font-semibold bg-[#1f1f1f] border border-[#1f1f1f] py-4 px-6 tracking-wide"
                                     >
                                         Đăng ký

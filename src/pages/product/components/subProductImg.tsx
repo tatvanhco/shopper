@@ -5,21 +5,58 @@ import { FiHeart, FiShoppingCart, FiX } from 'react-icons/fi';
 import { AddCartBtn } from './addCartBtn';
 import { ProductDetail } from './ProductDetail';
 import { SizeChart } from './SizeChart';
-import { useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 import * as productServices from 'services/productServices';
 import * as cartServices from 'services/cartServices';
+import { DateSchema } from 'yup';
 
 export const SubProductImg = () => {
+    const [sizeId, setSizeId] = useState<string>();
+    const [quantity, setQuantity] = useState<number>();
+
     const [productCart, setProductCart] = useState<cartServices.orderItems>();
     const [value, setValue] = useState<number | null>(4);
     const [product, setProduct] = useState<productServices.ProductDetail>();
     const id: string = useParams().id as string;
+    const navigate = useNavigate();
+
     useEffect(() => {
         productServices.getProduct({ id: id }).then((data: productServices.ProductDetail) => setProduct(data));
     }, []);
+
     useEffect(() => {
         cartServices.getCart().then((data: cartServices.orderItems) => setProductCart(data));
     }, []);
+
+    const handleAdd = (quantity: any) => {
+        if (!sizeId) {
+            alert('vui lòng chọn kích cỡ');
+            return;
+        }
+        if (!quantity) {
+            alert('vui lòng chọn số lượng cần mua');
+            return;
+        }
+        cartServices
+            .postCart({
+                productId: product?.id || '1',
+                sizeId: sizeId || 'S',
+                quantity: quantity,
+            })
+            .then((data: any) => {
+                console.log('data', data);
+                console.log('send', data.data);
+
+                console.log('status', data.status);
+
+                if (data.data.status == 1) {
+                    // setProductCart(data.data)
+                } else {
+                    alert('vui lòng đăng nhập trước khi mua hàng');
+                    navigate('/login');
+                }
+            });
+    };
 
     return (
         <>
@@ -56,13 +93,13 @@ export const SubProductImg = () => {
                 {/* Form */}
                 <form action="">
                     <div className="">
-                        <ProductDetail Sizes={product?.sizes} />
+                        <ProductDetail Sizes={product?.sizes} selectSize={(e: any) => setSizeId(e)} />
                     </div>
 
                     {/* Size chart */}
                     <SizeChart />
 
-                    <AddCartBtn  />
+                    <AddCartBtn handleAdd={handleAdd} />
                 </form>
             </div>
         </>

@@ -3,6 +3,7 @@ import { SubProductImg } from './subProductImg';
 
 interface ProductDetailProps {
     Sizes?: ProductSize[];
+    selectSize: any;
 }
 
 interface ProductSize {
@@ -11,13 +12,14 @@ interface ProductSize {
     quantity: number;
 }
 
-export const ProductDetail: FC<ProductDetailProps> = ({ Sizes }) => {
+export const ProductDetail: FC<ProductDetailProps> = ({ Sizes, selectSize }) => {
     const [selectedSize, setSelectedSize] = useState<ProductSize>();
 
     useEffect(() => setSelectedSize(Sizes?.at(0)), [Sizes]);
 
     const handleClickSizeRadio = (e: ProductSize) => {
         setSelectedSize(e);
+        selectSize(e.id);
     };
     return (
         <>
