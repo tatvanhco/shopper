@@ -60,8 +60,8 @@ export const SubProductImg = () => {
 
     return (
         <>
-            <div className="pl-16 pr-4">
-                <div className="grid grid-cols-2">
+            <div className="md:pl-16 md:pr-4">
+                <div className="grid grid-cols-2 pb-4">
                     <div className="grid-cols-1">
                         <a className="text-[#767676]" href="">
                             {data.category}
@@ -76,7 +76,7 @@ export const SubProductImg = () => {
                                 setValue(newValue);
                             }}
                         />
-                        <a className="ml-2 " href="">
+                        <a className="ml-2" href="">
                             Reviews (6)
                         </a>
                     </div>

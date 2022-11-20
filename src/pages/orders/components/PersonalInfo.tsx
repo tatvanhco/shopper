@@ -1,5 +1,3 @@
-import React from 'react';
-
 function PersonalInfo() {
     return (
         <div>
@@ -7,7 +5,7 @@ function PersonalInfo() {
                 <div className="grid md:grid-rows-5 grid-rows-7 md:grid-cols-2 grid-cols-1 text-[15px]">
                     <div className="md:mr-4">
                         <label htmlFor="accountFirstName" className="inline-block text-base mb-2">
-                            First Name *
+                            Họ *
                         </label>
                         <input
                             type="text"
@@ -18,7 +16,7 @@ function PersonalInfo() {
                     </div>
                     <div className="md:ml-4">
                         <label htmlFor="accountLastName" className="inline-block text-base mb-2">
-                            Last Name *
+                            Tên *
                         </label>
                         <input
                             type="text"
@@ -30,7 +28,7 @@ function PersonalInfo() {
                     </div>
                     <div className="md:col-span-2">
                         <label htmlFor="accountEmail" className="inline-block text-base mb-2">
-                            Email Address *
+                            Email *
                         </label>
                         <input
                             type="email"
@@ -42,7 +40,7 @@ function PersonalInfo() {
                     </div>
                     <div className="md:mr-4">
                         <label htmlFor="accountPassword" className="inline-block text-base mb-2">
-                            Current Password *
+                            Mật khẩu hiện tại *
                         </label>
                         <input
                             type="password"
@@ -53,7 +51,7 @@ function PersonalInfo() {
                     </div>
                     <div className="md:ml-4">
                         <label htmlFor="accountNewPassword" className="inline-block text-base mb-2">
-                            New Password *
+                            Mật khẩu mới *
                         </label>
                         <input
                             type="password"
@@ -63,7 +61,7 @@ function PersonalInfo() {
                         />
                     </div>
                     <div className="md:mr-4 mb-6">
-                        <label className="inline-block text-base mb-2">Date of Birth</label>
+                        <label className="inline-block text-base mb-2">Ngày sinh</label>
                         <div className="grid grid-cols-3 gap-5">
                             <div>
                                 <select
@@ -84,7 +82,7 @@ function PersonalInfo() {
                         </div>
                     </div>
                     <div className="md:ml-4 mb-6">
-                        <label className="inline-block text-base mb-5">Gender</label>
+                        <label className="inline-block text-base mb-5">Giới tính</label>
                         <div className="grid gap-2 auto-cols-min grid-flow-col">
                             <div className="">
                                 <input type="radio" name="gender" id="male" hidden className="peer" />
@@ -92,7 +90,7 @@ function PersonalInfo() {
                                     htmlFor="male"
                                     className="cursor-pointer border border-[#e5e5e5] px-6 py-3 peer-checked:border-[#111] hover:border-[#111]"
                                 >
-                                    Male
+                                    Nam
                                 </label>
                             </div>
                             <div className="">
@@ -101,7 +99,7 @@ function PersonalInfo() {
                                     htmlFor="female"
                                     className="cursor-pointer border border-[#e5e5e5] px-6 py-3 peer-checked:border-[#111] hover:border-[#111]"
                                 >
-                                    Female
+                                    Nữ
                                 </label>
                             </div>
                         </div>
@@ -109,9 +107,9 @@ function PersonalInfo() {
                     <div className="md:col-span-2 mt-4">
                         <button
                             type="submit"
-                            className="text-white text-[15px] font-semibold bg-[#1f1f1f] border border-[#1f1f1f] py-4 px-7 tracking-wide"
+                            className="text-white text-[16px] font-semibold bg-[#1f1f1f] border border-[#1f1f1f] py-4 px-7 tracking-wide"
                         >
-                            Save Changes
+                            Cập nhật
                         </button>
                     </div>
                 </div>

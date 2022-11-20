@@ -11,21 +11,19 @@ import { SuggestCard } from './components/suggestCard';
 import { Suggestion } from './components/suggestion';
 interface ProductProps {}
 export const Product: React.FC<ProductProps> = () => {
-    
     const [product, setProduct] = useState<productServices.ProductDetail>();
-   
 
     const id: string = useParams().id as string;
     useEffect(() => {
         productServices.getProduct({ id: id }).then((data: productServices.ProductDetail) => setProduct(data));
     }, []);
     return (
-        <div className="mt-5">
+        <div className="">
             <BodyContainer>
                 <LinkSite locate="shop" />
                 <ProductImg imagess={product?.images} />
                 <NavDesc />
-                
+
                 <Suggestion />
                 <ReviewComment />
             </BodyContainer>

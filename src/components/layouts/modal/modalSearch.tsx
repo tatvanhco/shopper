@@ -12,7 +12,7 @@ export const ModalSearch = () => {
                 <div className="grid grid-cols-1 grid-rows-2 text-base">
                     <div>
                         <label htmlFor="modalSearchCategories" className="hidden">
-                            Category:
+                            Sản phẩm:
                         </label>
                         <select
                             name=""
@@ -20,17 +20,19 @@ export const ModalSearch = () => {
                             className="w-full py-3 px-5 border border-[#e5e5e5] "
                         >
                             <option selected value="">
-                                All Categories
+                                --- Chọn danh mục ---
                             </option>
-                            <option value="">Women</option>
-                            <option value="">Men</option>
-                            <option value="">Kids</option>
+                            <option value="">Áo</option>
+                            <option value="">Quần</option>
+                            <option value="">Đồ lót</option>
+                            <option value="">Bộ Suit</option>
+                            <option value="">Phụ kiện</option>
                         </select>
                     </div>
                     <div className="flex items-center relative">
                         <input
                             type="search"
-                            placeholder="Search"
+                            placeholder="Tìm kiếm"
                             className="block mb-6 text-[15px] py-3 pl-5 pr-[4rem] border border-[#e5e5e5] focus:outline-none focus:border-black w-full"
                         />
                         <button type="submit" className=" absolute top-0 right-0 py-4 px-5 text-sm font-medium">
@@ -41,7 +43,7 @@ export const ModalSearch = () => {
             </form>
 
             <hr className="mb-6" />
-            <p className="">Search Results:</p>
+            <p className="">Kết quả tìm kiếm:</p>
             <div className="grid grid-rows-5 grid-cols-1">
                 {ProductItems.map((item, index) => {
                     return (
@@ -62,7 +64,7 @@ export const ModalSearch = () => {
             </div>
             <div className="group float-left p-3 mb-10">
                 <Link to="/shop" className=" text-base font-semibold flex justify-center items-center">
-                    Shop Now
+                    Xem Tất cả
                     <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
                 </Link>
             </div>

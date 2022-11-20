@@ -35,25 +35,25 @@ function Order() {
                         <div className="grid grid-cols-2 md:grid-cols-4 bg-[#f5f5f5] px-5 py-4">
                             <div className="md:mb-0 mb-5">
                                 <h6 className="text-[0.6875rem] font-semibold text-[#767676] uppercase tracking-wide mb-3">
-                                    Order No:
+                                    MÃ ĐƠN HÀNG:
                                 </h6>
                                 <p className="text-[0.9375rem] font-semibold">{item.id}</p>
                             </div>
                             <div className="">
                                 <h6 className="text-[0.6875rem] font-semibold text-[#767676] uppercase tracking-wide mb-3">
-                                    SHIPPED DATE:
+                                    NGÀY GIAO:
                                 </h6>
                                 <p className="text-[0.9375rem] font-bold">{item.orderDate}</p>
                             </div>
                             <div className="">
                                 <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
-                                    Status:
+                                    TÌNH TRẠNG:
                                 </h6>
                                 <p className="text-[0.9375rem] font-bold">{item.status}</p>
                             </div>
                             <div className="">
                                 <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
-                                    Order Amount:
+                                    THÀNH TIỀN:
                                 </h6>
                                 <p className="text-[0.9375rem] font-bold">{item.amount}</p>
                             </div>
@@ -82,17 +82,17 @@ function Order() {
                                     </div>
                                 )}
                             </div>
-                            <div className=" flex  justify-between md:ml-14 ">
-                                <div className="mr-1 p-3">
+                            <div className=" flex justify-between items-center md:ml-14">
+                                <div className="mr-1">
                                     <Link
                                         to={'/order/account-orders/account-order-detail'}
-                                        className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex py-2 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                        className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
                                     >
-                                        chi tiết đơn hàng
+                                        Xem chi tiết
                                     </Link>
                                 </div>
-                                <div className="p-3">
-                                    <button className=" text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex  py-2 items-center hover:text-white hover:bg-[#1f1f1f]">
+                                <div className="">
+                                    <button className=" text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]">
                                         Hủy đơn hàng
                                     </button>
                                 </div>

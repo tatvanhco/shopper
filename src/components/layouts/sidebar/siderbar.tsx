@@ -48,7 +48,7 @@ function SideBar() {
                     onClick={handleLogout}
                     className="flex items-center border border-[#e5e5e5] border-x-0 py-5"
                 >
-                    <span className="font-bold text-[#7c7c7c]">Logout</span>
+                    <span className="font-bold text-[#7c7c7c]">Đăng xuất</span>
                     <FiChevronRight className="ml-auto" />
                 </NavLink>
             </div>

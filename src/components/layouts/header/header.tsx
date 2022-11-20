@@ -45,7 +45,7 @@ function Header() {
             <div className=" ">
                 <div className="bg-white w-[450px] p-7">
                     <div className="flex px-4 items-center mb-6">
-                        <strong className="mx-auto text-xl">Search Products</strong>
+                        <strong className="mx-auto text-lg">Tìm kiếm</strong>
                         <ClearIcon
                             onClick={toggleDrawer(anchor, false)}
                             className="hover:cursor-pointer hover:opacity-50"
@@ -59,7 +59,7 @@ function Header() {
 
     return (
         <div className="header border-b">
-            <div className="p-6 bg-white md:flex md:items-center justify-between lg:px-[2rem] xl:px-[20%] px-10 ">
+            <div className="p-6 bg-white md:flex md:items-center justify-between lg:px-[2rem] xl:px-[10%] px-10">
                 <div className="flex justify-between">
                     <Link to="/home">
                         <span className="text-3xl font-bold">Shopper.</span>

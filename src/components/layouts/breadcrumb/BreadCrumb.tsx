@@ -10,7 +10,7 @@ export const LinkSite = (props: any) => {
         case 'shop':
             location = [
                 <Link underline="hover" key="1" color="inherit" href="/home">
-                    Trang chủ
+                    Trang Chủ
                 </Link>,
                 <Link underline="hover" key="2" color="text.primary" href="/shop">
                     Shop
@@ -43,10 +43,10 @@ export const LinkSite = (props: any) => {
         case 'user':
             location = [
                 <Link underline="hover" key="1" color="inherit" href="/home">
-                    Trang chủ
+                    Trang Chủ
                 </Link>,
                 <Link underline="hover" key="2" color="text.primary" href="/shop">
-                    My Account
+                    Tài Khoản
                 </Link>,
             ];
             break;
@@ -54,7 +54,7 @@ export const LinkSite = (props: any) => {
             break;
     }
     return (
-        <div className="pt-5">
+        <div className="py-5">
             <Stack spacing={2}>
                 <Breadcrumbs separator={<NavigateNextIcon fontSize="small" />} aria-label="breadcrumb">
                     {location}

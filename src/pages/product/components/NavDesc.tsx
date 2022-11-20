@@ -26,7 +26,7 @@ export const NavDesc = () => {
                             <Tab label="Vận chuyển" value="3" />
                         </TabList>
                     </Box>
-                    <div className="my-8 mx-[12rem] ">
+                    <div className="my-8 md:mx-[12rem]">
                         <TabPanel value="1">
                             <Description />
                         </TabPanel>

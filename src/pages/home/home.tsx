@@ -23,8 +23,12 @@ function Home() {
                     ⚡️ Happy Holiday Deals on Everything ⚡️
                 </span>
             </div>
-            <div className=" grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-1.jpg')]">
+            <div className="">
+                <img
+                    src="https://aristino.com/Data/upload/images/BANNER/2022-BST-OUTDOOR-IMPRINT-OF-TIME/Aristino-Banner-Slide-1920x900.jpg"
+                    alt=""
+                />
+                {/* <div className="object-fill bg-cover bg-[url('https://aristino.com/Data/upload/images/BANNER/2022-BST-OUTDOOR-IMPRINT-OF-TIME/Aristino-Banner-Slide-1920x900.jpg')]">
                     <div className="flex flex-col text-center p-10">
                         <div className="mt-32">
                             <h1 className="text-5xl font-extrabold text-white">Women</h1>
@@ -36,8 +40,8 @@ function Home() {
                             </Link>
                         </div>
                     </div>
-                </div>
-                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-2.jpg')]">
+                </div> */}
+                {/* <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-2.jpg')]">
                     <div className="flex flex-col text-center p-10">
                         <div className="mt-32">
                             <h1 className="text-5xl font-extrabold text-white">Men</h1>
@@ -62,21 +66,21 @@ function Home() {
                             </Link>
                         </div>
                     </div>
-                </div>
+                </div> */}
             </div>
-
+            <Features />
             <BodyContainer>
-                <Features />
                 <section className="pt-20">
                     <div className="row justify-center">
                         <div className="flex flex-col sm:basis-2/3 text-center px-8">
                             <h6 className="mb-3 text-Gray400 text-sm tracking-wide">NEW COLLECTION</h6>
 
-                            <h2 className="mb-4 text-4xl font-semibold">Best Picks 2022</h2>
+                            <h2 className="mb-4 text-4xl font-semibold">Thu Đông 2022</h2>
 
                             <p className="mb-6 text-Gray500">
-                                Appear, dry there darkness they're seas, dry waters thing fly midst. Beast, above fly
-                                brought Very green.
+                                Mang hơi thở của mùa thu đông nhưng vẫn vương vấn chút nắng ngày hè. Bộ sưu tập sử dụng
+                                những chất liệu cao cấp hội tụ cùng các gam màu xu hướng hiện nay, họa tiết bắt mắt
+                                nhưng không quá cầu kỳ.
                             </p>
                         </div>
                     </div>
@@ -126,7 +130,7 @@ function Home() {
                 <section className="pt-20">
                     <div className="row justify-center ">
                         <div className="flex flex-col sm:basis-2/3 text-center px-8">
-                            <h2 className="mb-4 text-4xl font-semibold">Top month Sellers</h2>
+                            <h2 className="mb-4 text-3xl font-semibold">Sản Phẩm Bán Chạy</h2>
                         </div>
                     </div>
 

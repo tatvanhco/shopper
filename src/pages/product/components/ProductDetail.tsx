@@ -38,8 +38,10 @@ export const ProductDetail: FC<ProductDetailProps> = ({ Sizes, selectSize }) => 
                                     onClick={() => handleClickSizeRadio(size)}
                                     htmlFor={`sizeRadio1?${size.id}`}
                                     className={`${
-                                        selectedSize?.id === size.id && ''
-                                    } border border-[#ddd] p-2 text-center min-w-[3rem] cursor-pointer inline-block text-[#767676] peer-checked:border-[#111]`}
+                                        selectedSize?.id === size.id
+                                            ? 'border p-2 text-center min-w-[3rem] cursor-pointer inline-block text-[#767676] border-[#111]'
+                                            : 'border p-2 text-center min-w-[3rem] cursor-pointer inline-block text-[#767676] border-[#ddd]'
+                                    }`}
                                 >
                                     {size.name}
                                 </label>
