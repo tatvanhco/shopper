@@ -1,6 +1,6 @@
 export const ShipTable = () => {
     return (
-        <div className="ml-9">
+        <div className="mx-[15%]">
             <table className="table-auto border-collapse border border-slate-500">
                 <thead>
                     <tr>

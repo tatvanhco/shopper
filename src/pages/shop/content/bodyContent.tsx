@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { useEffect, useState } from 'react';
 import Box from '@mui/material/Box';
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
@@ -8,16 +8,28 @@ import { ChooseOptions } from './chooseOptions';
 import { LinkSite } from 'components/layouts/breadcrumb/BreadCrumb';
 import ProductCard from 'pages/orders/components/ProductCard';
 import * as productServices from 'services/productServices';
-import { Pagination } from '@mui/material';
 
-export const BodyContent = () => {
-    const [productFilter, setProductFilter] = React.useState('');
-    const [products, setProducts] = React.useState<productServices.Product[]>([]);
-    React.useEffect(() => {
-        productServices.getProducts().then((data) => {
+export const BodyContent = (props: any) => {
+    const [productFilter, setProductFilter] = useState('');
+    const [products, setProducts] = useState<productServices.Product[]>([]);
+    const choose = props.choose;
+    useEffect(() => {
+        productServices.getSortProduct(productFilter).then((data) => {
             setProducts(data);
         });
-    }, []);
+    }, [productFilter]);
+    useEffect(() => {
+        productServices.getSortCategory(choose).then((data) => {
+            setProducts(data);
+        });
+    }, [choose]);
+
+    // const chooseItems: any = ['Áo thun', 'Áo khoác', '100.000 VND đến 199.000 VND'];
+    
+    console.log('lần cuối', choose);
+
+    // console.log('du lieu da qua', choose);
+    console.log('chooseSort', products);
 
     const handleChange = (event: SelectChangeEvent) => {
         setProductFilter(event.target.value as string);
@@ -40,23 +52,21 @@ export const BodyContent = () => {
                                 label="filter"
                                 onChange={handleChange}
                             >
-                                <MenuItem value={1}>Mới nhất</MenuItem>
-                                <MenuItem value={2}>Từ thấp đến cao</MenuItem>
-                                <MenuItem value={3}>Từ cao đến thấp</MenuItem>
+                                <MenuItem value="date">Mới nhất</MenuItem>
+                                <MenuItem value="price">Từ thấp đến cao</MenuItem>
+                                <MenuItem value="sold">đã bán</MenuItem>
                             </Select>
                         </FormControl>
                     </Box>
                 </div>
             </div>
-            <ChooseOptions />
+            {/* <ChooseOptions choose={chooseItems} /> */}
             <div className="grid grid-cols-2 md:grid-cols-3 grid-rows-2 gap-8">
-                {products.map((item) => {
-                    return <ProductCard data={item}></ProductCard>;
+                {products.map((item, index) => {
+                    return <ProductCard key={index} data={item}></ProductCard>;
                 })}
             </div>
-            <div className="float-right">
-                <Pagination />
-            </div>
+            <div className="float-right">{/* <PaginationPage /> */}</div>
         </>
     );
 };

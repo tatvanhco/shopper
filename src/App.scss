@@ -96,3 +96,19 @@
 .select::after {
     margin-right: 5px;
 }
+
+.css-i4bv87-MuiSvgIcon-root.shoppingIcon {
+    font-size: 4rem;
+    animation: changeColor 3s infinite;
+}
+
+@keyframes changeColor {
+    0% {
+        color: green;
+        opacity: 0.5;
+    }
+    100% {
+        color: green;
+        opacity: 1;
+    }
+}

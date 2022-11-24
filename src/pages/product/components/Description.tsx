@@ -11,5 +11,5 @@ export const Description = () => {
             descRef.current.innerHTML = data?.desc;
         });
     }, []);
-    return <div className="" ref={descRef}></div>;
+    return <div className="xl:mx-[15%]" ref={descRef}></div>;
 };

@@ -20,6 +20,7 @@ export const ProductDetail: FC<ProductDetailProps> = ({ Sizes, selectSize }) => 
     const handleClickSizeRadio = (e: ProductSize) => {
         setSelectedSize(e);
         selectSize(e.id);
+        
     };
     return (
         <>
@@ -30,8 +31,6 @@ export const ProductDetail: FC<ProductDetailProps> = ({ Sizes, selectSize }) => 
                 </p>
                 <div className="mb-2 flex flex-wrap">
                     {Sizes?.map((size) => {
-                        // console.log('test:', selectedSize?.id === size.id);
-
                         return (
                             <div className="flex items-center mb-2 mr-2 min-h-[1.5rem]">
                                 <label

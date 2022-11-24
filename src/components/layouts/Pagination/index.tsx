@@ -1,16 +1,16 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-Pagination.propTypes = {
+PaginationPage.propTypes = {
     pagination: PropTypes.object.isRequired,
     onPageChange: PropTypes.func,
 };
 
-Pagination.defaultProps = {
+PaginationPage.defaultProps = {
     onPageChange: null,
 };
 
-function Pagination(props: any) {
+function PaginationPage(props: any) {
     const { pagination, onPageChange } = props;
     const { page, limit, totalRows } = pagination;
     const totalPages = Math.ceil(totalRows / limit);
@@ -33,4 +33,4 @@ function Pagination(props: any) {
     );
 }
 
-export default Pagination;
+export default PaginationPage;

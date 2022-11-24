@@ -1,7 +1,7 @@
 import { Box, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent } from '@mui/material';
 import { useState } from 'react';
 import { FiHeart, FiShoppingCart } from 'react-icons/fi';
-import * as cartServices from 'services/cartServices';
+// import * as cartServices from 'services/cartServices';
 interface AddCartBtnProps {
     handleAdd: any;
 }
@@ -14,11 +14,11 @@ export const AddCartBtn: React.FC<AddCartBtnProps> = ({ handleAdd }) => {
 
     const handleAddCart = () => {
         handleAdd(quatity);
-        console.log('add', quatity);
+        // console.log('add', quatity);
     };
     return (
         <>
-            <div className="md:flex md:flex-row flex flex-col gap-5">
+            <div className="md:flex md:flex-row flex flex-col gap-5 justify-between">
                 <Box sx={{ minWidth: 120 }}>
                     <FormControl fullWidth>
                         <InputLabel id="demo-simple-select-label">quality</InputLabel>
@@ -38,24 +38,15 @@ export const AddCartBtn: React.FC<AddCartBtnProps> = ({ handleAdd }) => {
                         </Select>
                     </FormControl>
                 </Box>
-                <div className="min-w-[14rem]">
-                    <button
+                <div className="min-w-[14rem] xl:mr-[10rem]">
+                    <div
                         onClick={handleAddCart}
                         className="flex w-full justify-center items-center text-[15px] font-semibold border border-[#1f1f1f] py-4 px-6 tracking-wide
-                        hover:text-white hover:bg-[#1f1f1f]"
+                        hover:text-white hover:bg-[#1f1f1f] hover:cursor-pointer"
                     >
                         Add to Cart
                         <FiShoppingCart size={16} className="ml-2" />
-                    </button>
-                </div>
-                <div>
-                    <button
-                        className="flex w-full justify-center items-center text-[15px] font-semibold border border-[#1f1f1f] py-4 px-6 tracking-wide
-                                hover:text-white hover:bg-[#1f1f1f]"
-                    >
-                        Wishlist
-                        <FiHeart size={16} className="ml-2" />
-                    </button>
+                    </div>
                 </div>
             </div>
         </>

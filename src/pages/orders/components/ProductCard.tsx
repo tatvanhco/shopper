@@ -6,6 +6,9 @@ interface ProductCardProps {
     data: productServices.Product;
 }
 const ProductCard = ({ data }: ProductCardProps) => {
+    const format = (n: any, currency: any) => {
+        return n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + currency;
+    };
     return (
         <Link to={'/home/product/' + data.id}>
             <div className="flex flex-col relative" key={data.id}>
@@ -15,9 +18,9 @@ const ProductCard = ({ data }: ProductCardProps) => {
                 <div className="p-6 px-0 flex flex-col items-center">
                     <p>tên thể loại ở đây</p>
                     <div className="font-semibold">
-                        <a href="">{data.name}</a>
+                        <p className="text-center">{data.name}</p>
                     </div>
-                    <div className="text-[#767676] font-semibold"> {data.price} </div>
+                    <div className="text-[#767676] font-semibold">{format(data.price, ' VND')}</div>
                 </div>
             </div>
         </Link>

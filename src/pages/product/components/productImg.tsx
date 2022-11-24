@@ -10,21 +10,21 @@ interface ProductImage {
 }
 export const ProductImg: FC<ProductImgProps> = ({ imagess }) => {
     const [selectedProduct, setSelectedProduct] = useState<ProductImage>();
-    // console.log(imagess);
 
     useEffect(() => setSelectedProduct(imagess?.at(0)), [imagess]);
     function handleClickProduct(index: ProductImage) {
         setSelectedProduct(index);
     }
+
     return (
         <>
-            <div className="grid grid-cols-1 md:grid-cols-2">
+            <div className="grid grid-cols-1 md:grid-cols-2 sm:grid-cols-1">
                 <div className="">
                     <div className="mb-4">
                         <img src={selectedProduct?.link} alt="" />
                     </div>
                     <div className={clsx('imgSlider', 'overflow-hidden')}>
-                        <div className="flex overflow-x-scroll w-full mb-[-20px] h-[10rem]">
+                        <div className="flex overflow-x-scroll mb-[-20px] h-[10rem]">
                             {imagess?.map((image) => {
                                 return (
                                     <img

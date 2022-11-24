@@ -15,17 +15,15 @@ function Header() {
     const [state, setState] = React.useState({
         right: false,
     });
-const total : any  = () => {
-     
-     const test = cartServices.getCart().then((data) => {
-        setCarts(data.length)
-     })
-     
-}
+    const total: any = () => {
+        const test = cartServices.getCart().then((data) => {
+            setCarts(data.length);
+        });
+    };
 
     const [carts, setCarts] = useState(total);
-    console.log("carr: "+carts);
-    
+    // console.log("carr: "+carts);
+
     const useAuth = () => {
         const checkLogin = localStorage.getItem('user_token');
         if (checkLogin) {
@@ -35,7 +33,7 @@ const total : any  = () => {
         }
     };
     const user = useAuth();
-    console.log('hi');
+    // console.log('hi');
 
     const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
         if (
@@ -103,11 +101,11 @@ const total : any  = () => {
                                     <FiUser className="cursor-pointer hover:text-secondColor" />
                                 </Link>
                             </li>
-                            <li>
+                            {/* <li>
                                 <Link to={'/order/account-wishlist'}>
                                     <FiHeart className="cursor-pointer hover:text-secondColor" />
                                 </Link>
-                            </li>
+                            </li> */}
                             <li className="relative">
                                 <Link to="/home/shopping-cart">
                                     <Badge badgeContent={carts} color="error" className="w-5 h-5">

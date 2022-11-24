@@ -17,7 +17,7 @@ export const TotalCart: React.FC<TotalCartProps> = ({ data }) => {
         return tongcong;
     };
     const total = subTotal();
-    const tax: any = 12000;
+    const tax: any = 0;
     const format = (n: any, currency: any) => {
         return n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + currency;
     };

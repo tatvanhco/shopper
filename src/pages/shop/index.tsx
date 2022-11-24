@@ -1,20 +1,27 @@
-import { data } from 'pages/shop/SideBar/SideBarShop';
+import { BodyContainer } from 'components/container';
+import { useState } from 'react';
 import { ShopContent } from './content';
 import { SideBar } from './SideBar';
 
 export const ShopPage = () => {
+    const [chooseCategory, setCategory] = useState('');
+    const handleChange = (huhu: any) => {
+        setCategory(huhu);
+    };
+    console.log('cho index nha', chooseCategory);
+
     return (
-        <div className="">
-            <div className="lg:px-[2rem] xl:px-[20%] px-10 py-[4rem]">
+        <BodyContainer>
+            <div className="mt-10">
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-14 sm:mx-10">
                     <div className="">
-                        <SideBar data={data} />
+                        <SideBar handleChange={handleChange} />
                     </div>
                     <div className="col-span-2">
-                        <ShopContent />
+                        <ShopContent data={chooseCategory} />
                     </div>
                 </div>
             </div>
-        </div>
+        </BodyContainer>
     );
 };

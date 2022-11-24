@@ -1,108 +1,130 @@
 import { PaginationSize } from 'components/layouts/Paginations/Paginations';
+import { useEffect, useState } from 'react';
+import Scrollbars from 'react-custom-scrollbars-2';
 import { Link } from 'react-router-dom';
+import * as orderServices from 'services/orderServices';
 
-interface OrderProps {
-    id: string;
-    orderDate: string;
-    shippedDate?: string;
-    status: string;
-    amount: string;
-    products: string[];
-}
-const data: OrderProps[] = [
-    {
-        id: '66788943',
-        orderDate: '01 Oct, 2019',
-        status: 'Awaiting Delivery',
-        amount: '259.000',
-        products: [
-            'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
-            'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-112.jpg',
-            'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-7.jpg',
-            'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-6.jpg',
-            'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-10.jpg',
-            'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-10.jpg',
-        ],
-    },
-];
-function Order() {
+// interface OrderProps {
+//     id: string;
+//     orderDate: string;
+//     shippedDate?: string;
+//     status: string;
+//     amount: string;
+//     products: string[];
+// }
+// const data: OrderProps[] = [
+//     {
+//         id: '66788943',
+//         orderDate: '01 Oct, 2019',
+//         status: 'Awaiting Delivery',
+//         amount: '259.000',
+//         products: [
+//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
+//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-112.jpg',
+//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-7.jpg',
+//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-6.jpg',
+//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-10.jpg',
+//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-10.jpg',
+//         ],
+//     },
+// ];
+export const Order = () => {
+    const [orderItems, setOrderItems] = useState<orderServices.Orders[]>();
+    useEffect(() => {
+        orderServices.getOrders().then((data) => setOrderItems(data));
+    }, []);
+    console.log(orderItems);
+
+    // const handletotal = () => {
+    //     let tong: any;
+    //     orderItems?.map((item) => {
+    //         item.detail.map((items) => {
+    //             const productItems = items.product.price;
+    //             const quantity = items.size.quantity;
+    //             tong = productItems * quantity;
+    //         });
+    //     });
+    //     return tong;
+    // };
+
+    // const total = handletotal();
+
     const MAXITEMS = 3;
     return (
         <>
-            {data.map((item, index) => (
-                <div className="mb-5 border ">
-                    <div className="p-8 pb-0">
-                        <div className="grid grid-cols-2 md:grid-cols-4 bg-[#f5f5f5] px-5 py-4">
-                            <div className="md:mb-0 mb-5">
-                                <h6 className="text-[0.6875rem] font-semibold text-[#767676] uppercase tracking-wide mb-3">
-                                    MÃ ĐƠN HÀNG:
-                                </h6>
-                                <p className="text-[0.9375rem] font-semibold">{item.id}</p>
-                            </div>
-                            <div className="">
-                                <h6 className="text-[0.6875rem] font-semibold text-[#767676] uppercase tracking-wide mb-3">
-                                    NGÀY GIAO:
-                                </h6>
-                                <p className="text-[0.9375rem] font-bold">{item.orderDate}</p>
-                            </div>
-                            <div className="">
-                                <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
-                                    TÌNH TRẠNG:
-                                </h6>
-                                <p className="text-[0.9375rem] font-bold">{item.status}</p>
-                            </div>
-                            <div className="">
-                                <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
-                                    THÀNH TIỀN:
-                                </h6>
-                                <p className="text-[0.9375rem] font-bold">{item.amount}</p>
-                            </div>
-                        </div>
-                    </div>
-                    {/* Dang lam` */}
-                    <div className="p-8">
-                        <div className="grid md:grid-cols-2 grid-cols-1 items-center">
-                            <div className="grid grid-cols-4 md:mb-0 mb-4 md:gap-x-3">
-                                {item.products.slice(0, MAXITEMS).map((link) => {
-                                    const url = `url(` + link + ')';
-                                    return (
-                                        <img
-                                            className="object-cover md:h-[64px] md:w-[64px] h-[96px] w-[96px]"
-                                            src={link}
-                                        />
-                                    );
-                                })}
-                                {item.products.length > MAXITEMS && (
-                                    <div className="bg-[#f5f5f5] md:h-[64px] md:w-[64px] h-[96px] w-[96px] flex justify-center items-center">
-                                        <a href="" className="text-center text-[0.8rem] font-semibold">
-                                            +{item.products.length - MAXITEMS}
-                                            <br />
-                                            more
-                                        </a>
-                                    </div>
-                                )}
-                            </div>
-                            <div className=" flex justify-between items-center md:ml-14">
-                                <div className="mr-1">
-                                    <Link
-                                        to={'/order/account-orders/account-order-detail'}
-                                        className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
-                                    >
-                                        Xem chi tiết
-                                    </Link>
+            <Scrollbars style={{ width: '100%', height: 500 }}>
+                {orderItems?.map((item, index) => (
+                    <div key={index} className="mb-5 border ">
+                        <div className="p-8 pb-0">
+                            <div className="grid grid-cols-2 md:grid-cols-4 bg-[#f5f5f5] px-5 py-4">
+                                <div className="md:mb-0 mb-5">
+                                    <h6 className="text-[0.6875rem] font-semibold text-[#767676] uppercase tracking-wide mb-3">
+                                        MÃ ĐƠN HÀNG:
+                                    </h6>
+                                    <p className="text-[0.9375rem] font-semibold">{item.id}</p>
                                 </div>
                                 <div className="">
-                                    <button className=" text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]">
-                                        Hủy đơn hàng
-                                    </button>
+                                    <h6 className="text-[0.6875rem] font-semibold text-[#767676] uppercase tracking-wide mb-3">
+                                        NGÀY GIAO:
+                                    </h6>
+                                    <p className="text-[0.9375rem] font-bold">{item.date}</p>
+                                </div>
+                                <div className="">
+                                    <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
+                                        TÌNH TRẠNG:
+                                    </h6>
+                                    <p className="text-[0.9375rem] font-bold">{item.status}</p>
+                                </div>
+                                <div className="">
+                                    <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
+                                        THÀNH TIỀN:
+                                    </h6>
+                                    <p className="text-[0.9375rem] font-bold">{item.total}</p>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="p-8">
+                            <div className="grid md:grid-cols-2 grid-cols-1 items-center">
+                                <div className="grid grid-cols-4 md:mb-0 mb-4 md:gap-x-3">
+                                    {item.detail.slice(0, MAXITEMS).map((link) => {
+                                        const url = `url(` + link + ')';
+                                        return (
+                                            <img
+                                                className="object-cover md:h-[64px] md:w-[64px] h-[96px] w-[96px]"
+                                                src={link.product.image}
+                                            />
+                                        );
+                                    })}
+                                    {item.detail.length > MAXITEMS && (
+                                        <div className="bg-[#f5f5f5] md:h-[64px] md:w-[64px] h-[96px] w-[96px] flex justify-center items-center">
+                                            <a href="" className="text-center text-[0.8rem] font-semibold">
+                                                +{item.detail.length - MAXITEMS}
+                                                <br />
+                                                more
+                                            </a>
+                                        </div>
+                                    )}
+                                </div>
+                                <div className=" flex justify-between items-center md:ml-14">
+                                    <div className="mr-1">
+                                        <Link
+                                            to={'/order/account-orders/account-order-detail/' + `${item.id}`}
+                                            className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                        >
+                                            Xem chi tiết
+                                        </Link>
+                                    </div>
+                                    <div className="">
+                                        <button className=" text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]">
+                                            Hủy đơn hàng
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                </div>
-            ))}
+                ))}
+            </Scrollbars>
         </>
     );
-}
-
-export default Order;
+};

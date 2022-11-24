@@ -1,11 +1,15 @@
 import ClearIcon from '@mui/icons-material/Clear';
 
-const chooseItem = ['Áo thun', 'Áo khoác', '100.000 VND đến 199.000 VND'];
+// const chooseItem = ['Áo thun', 'Áo khoác', '100.000 VND đến 199.000 VND'];
 
-export const ChooseOptions = () => {
+interface chooseOptionsProps {
+    choose: any[];
+}
+
+export const ChooseOptions: React.FC<chooseOptionsProps> = ({ choose }) => {
     return (
         <div className="mb-8">
-            {chooseItem.map((item, index) => {
+            {choose.map((item, index) => {
                 return (
                     <div className="inline-block">
                         <div

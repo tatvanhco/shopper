@@ -1,7 +1,6 @@
-import Axios from 'axios';
 import { api } from './base';
 interface ProductRequest {}
-interface ProductResonse {
+export interface ProductResonse {
     data: Product[];
 }
 interface ProductDetailResponse {
@@ -13,6 +12,8 @@ export interface Product {
     price: number;
     avt: string;
     status: number;
+    categoryId: number;
+    category: string;
 }
 export interface ProductDetail {
     id: string;
@@ -21,6 +22,8 @@ export interface ProductDetail {
     avt: string;
     status: number;
     desc: string;
+    categoryId: number;
+    category: string;
     images: ProductImage[];
     sizes: ProductSize[];
 }
@@ -69,6 +72,36 @@ export const getProduct = (payload: { id: string }) => {
 export const getCateGory = () => {
     return api
         .get('/categories')
+        .then((response) => response.data)
+        .then((response: ProductDetailResponse) => {
+            return response.data;
+        })
+        .catch((error) => error.response);
+};
+
+export const getSortProduct = (payload: any) => {
+    return api
+        .get('/products?sort=' + payload)
+        .then((response) => response.data)
+        .then((response: ProductDetailResponse) => {
+            return response.data;
+        })
+        .catch((error) => error.response);
+};
+
+export const getChangePage = (payload: any) => {
+    return api
+        .get('/products?page=' + payload)
+        .then((response) => response.data)
+        .then((response: ProductDetailResponse) => {
+            return response.data;
+        })
+        .catch((error) => error.response);
+};
+
+export const getSortCategory = (payload: any) => {
+    return api
+        .get('/products?category=' + payload)
         .then((response) => response.data)
         .then((response: ProductDetailResponse) => {
             return response.data;

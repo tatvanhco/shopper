@@ -1,7 +1,7 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
 import SideBar from 'components/layouts/sidebar/siderbar';
-import ChoosePaymentMethod from './components/ChoosePaymentMethod';
+// import ChoosePaymentMethod from './components/ChoosePaymentMethod';
 import { LinkSite } from 'components/layouts/breadcrumb/BreadCrumb';
 
 function Orders() {
