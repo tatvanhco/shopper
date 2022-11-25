@@ -7,22 +7,27 @@ import { ModalSearch } from '../modal/modalSearch';
 import { Box, SwipeableDrawer } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
 import * as cartServices from 'services/cartServices';
+import { useAppSelector } from 'app/hooks';
 
 type Anchor = 'top' | 'bottom' | 'right';
 
-function Header() {
+function Header({ totalCart }: any) {
+    const count = useAppSelector((state) => state.cart.total);
+    // console.log('hahah', count);
+
     const [openMain, setOpenMain] = useState(false);
     const [state, setState] = React.useState({
         right: false,
     });
-    const total: any = () => {
-        const test = cartServices.getCart().then((data) => {
-            setCarts(data.length);
-        });
-    };
 
-    const [carts, setCarts] = useState(total);
-    // console.log("carr: "+carts);
+    const [sumcart, setSumCart] = useState('');
+
+    const test: any = sumcart?.length;
+    useEffect(() => {
+        cartServices.getCart().then((data) => {
+            setSumCart(data);
+        });
+    }, [test]);
 
     const useAuth = () => {
         const checkLogin = localStorage.getItem('user_token');
@@ -80,20 +85,6 @@ function Header() {
                         openMain ? 'pt-4 top-96' : 'top-[-400px]'
                     }`}
                 >
-                    <li>
-                        <FiSearch
-                            onClick={toggleDrawer('right', true)}
-                            className="cursor-pointer hover:text-secondColor"
-                        />
-                        <SwipeableDrawer
-                            anchor={'right'}
-                            open={state['right']}
-                            onClose={toggleDrawer('right', false)}
-                            onOpen={toggleDrawer('right', true)}
-                        >
-                            {list('right')}
-                        </SwipeableDrawer>
-                    </li>
                     {user && (
                         <>
                             <li>
@@ -101,14 +92,9 @@ function Header() {
                                     <FiUser className="cursor-pointer hover:text-secondColor" />
                                 </Link>
                             </li>
-                            {/* <li>
-                                <Link to={'/order/account-wishlist'}>
-                                    <FiHeart className="cursor-pointer hover:text-secondColor" />
-                                </Link>
-                            </li> */}
                             <li className="relative">
                                 <Link to="/home/shopping-cart">
-                                    <Badge badgeContent={carts} color="error" className="w-5 h-5">
+                                    <Badge badgeContent={count} color="error" className="w-5 h-5">
                                         <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
                                     </Badge>
                                 </Link>
@@ -120,11 +106,6 @@ function Header() {
                             <li>
                                 <Link to={'/login'}>
                                     <FiUser className="cursor-pointer hover:text-secondColor" />
-                                </Link>
-                            </li>
-                            <li>
-                                <Link to={'/login'}>
-                                    <FiHeart className="cursor-pointer hover:text-secondColor" />
                                 </Link>
                             </li>
                             <li className="relative">

@@ -10,7 +10,6 @@ export const SideBar = (props: any) => {
             setCategorys(data);
         });
     }, []);
-    console.log('âs', categorys);
 
     const handlechoose = (e: any) => {
         props.handleChange(e);
@@ -27,20 +26,13 @@ export const SideBar = (props: any) => {
                     {categorys?.map((categoryItem) => {
                         return (
                             <>
-                                <ListItemText>
-                                    <p className="text-xl font-semibold hover:cursor-default">{categoryItem.name}</p>
-                                </ListItemText>
-                                {categoryItem.childs.map((categoryItems) => {
-                                    return (
-                                        <>
-                                            <ListItemButton>
-                                                <ListItemText onClick={(e) => handlechoose(categoryItems.id)}>
-                                                    {categoryItems.name}
-                                                </ListItemText>
-                                            </ListItemButton>
-                                        </>
-                                    );
-                                })}
+                                <ListItemButton>
+                                    <ListItemText onClick={(e) => handlechoose(categoryItem.id)}>
+                                        <p className="text-xl font-semibold hover:cursor-default">
+                                            {categoryItem.name}
+                                        </p>
+                                    </ListItemText>
+                                </ListItemButton>
                             </>
                         );
                     })}

@@ -8,10 +8,10 @@ import * as productServices from 'services/productServices';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { Suggestion } from './components/suggestion';
+import { useOutletContext } from 'react-router-dom';
 interface ProductProps {}
 export const Product: React.FC<ProductProps> = () => {
     const [product, setProduct] = useState<productServices.ProductDetail>();
-
     const id: string = useParams().id as string;
     useEffect(() => {
         productServices.getProduct({ id: id }).then((data: productServices.ProductDetail) => setProduct(data));
@@ -27,7 +27,7 @@ export const Product: React.FC<ProductProps> = () => {
                     <NavDesc />
 
                     <Suggestion />
-                    <ReviewComment />
+                    {/* <ReviewComment /> */}
                 </div>
             </BodyContainer>
             <div className="bg-gray-100">

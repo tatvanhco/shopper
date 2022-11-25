@@ -57,3 +57,12 @@ export const createOrder = (payload: any) => {
         })
         .catch((error) => error.response);
 };
+
+export const deleteOrder = (payload: any) => {
+    return api
+        .delete('/orders/' + payload)
+        .then((response) => {
+            return response;
+        })
+        .catch((error) => error.response);
+};

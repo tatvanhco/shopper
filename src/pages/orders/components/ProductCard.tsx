@@ -16,7 +16,7 @@ const ProductCard = ({ data }: ProductCardProps) => {
                     <img src={data.avt} alt="" />
                 </div>
                 <div className="p-6 px-0 flex flex-col items-center">
-                    <p>tên thể loại ở đây</p>
+                    <p>{data.category}</p>
                     <div className="font-semibold">
                         <p className="text-center">{data.name}</p>
                     </div>

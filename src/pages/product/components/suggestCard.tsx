@@ -5,6 +5,9 @@ interface SuggestCardProps {
 }
 
 export const SuggestCard = ({ items }: SuggestCardProps) => {
+    const format = (n: any) => {
+        return n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' VND';
+    };
     return (
         <>
             <div className="flex flex-col relative xl:w-[18rem] xl:m-auto">
@@ -16,7 +19,7 @@ export const SuggestCard = ({ items }: SuggestCardProps) => {
                     <div className="text-center font-semibold">
                         <a href="">{items?.name}</a>
                     </div>
-                    <div className="text-[#767676] font-semibold"> {items?.price} </div>
+                    <div className="text-[#767676] font-semibold"> {format(items?.price)} </div>
                 </div>
             </div>
         </>

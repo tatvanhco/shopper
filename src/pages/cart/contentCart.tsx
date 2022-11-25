@@ -1,18 +1,22 @@
 import React, { useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
-import { Link, useNavigate } from 'react-router-dom';
 import * as cartServices from 'services/cartServices';
 import ClearIcon from '@mui/icons-material/Clear';
+import { useDispatch } from 'react-redux';
+import { fetchUserById } from './CartSlice';
 import { Button } from '@mui/material';
-import { set } from 'immer/dist/internal';
+import { useAppSelector } from 'app/hooks';
 interface ContentCartProps {
     data: cartServices.orderItems[];
+    getData: any;
 }
-export const ContentCart: React.FC<ContentCartProps> = ({ data }) => {
-    const navigate = useNavigate();
+export const ContentCart: React.FC<ContentCartProps> = ({ data, getData }) => {
+    const dispatch = useDispatch<any>();
+    dispatch(fetchUserById());
+
     const handleDelete = (id: any) => {
         cartServices.deleteCart(id);
-        navigate('/home/shopping-cart');
+        getData();
     };
 
     return (

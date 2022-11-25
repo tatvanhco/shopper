@@ -2,52 +2,52 @@ import { PaginationSize } from 'components/layouts/Paginations/Paginations';
 import { useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
 import { Link } from 'react-router-dom';
+import CheckIcon from '@mui/icons-material/Check';
 import * as orderServices from 'services/orderServices';
+import { Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle, Rating } from '@mui/material';
+import { number } from 'yup';
 
-// interface OrderProps {
-//     id: string;
-//     orderDate: string;
-//     shippedDate?: string;
-//     status: string;
-//     amount: string;
-//     products: string[];
-// }
-// const data: OrderProps[] = [
-//     {
-//         id: '66788943',
-//         orderDate: '01 Oct, 2019',
-//         status: 'Awaiting Delivery',
-//         amount: '259.000',
-//         products: [
-//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg',
-//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-112.jpg',
-//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-7.jpg',
-//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-6.jpg',
-//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-10.jpg',
-//             'https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-10.jpg',
-//         ],
-//     },
-// ];
 export const Order = () => {
     const [orderItems, setOrderItems] = useState<orderServices.Orders[]>();
+    const [open, setOpen] = useState(false);
+    const [opensubmit, setOpensubmit] = useState(false);
+    const [test, setTest] = useState(0);
     useEffect(() => {
-        orderServices.getOrders().then((data) => setOrderItems(data));
+        resetCart();
     }, []);
-    console.log(orderItems);
 
-    // const handletotal = () => {
-    //     let tong: any;
-    //     orderItems?.map((item) => {
-    //         item.detail.map((items) => {
-    //             const productItems = items.product.price;
-    //             const quantity = items.size.quantity;
-    //             tong = productItems * quantity;
-    //         });
-    //     });
-    //     return tong;
-    // };
+    const resetCart = () => {
+        orderServices.getOrders().then((data) => setOrderItems(data));
+    };
 
-    // const total = handletotal();
+    const format = (n: any) => {
+        return n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' VND';
+    };
+    const handleClose = () => {
+        setOpen(false);
+    };
+    const handleCloseSubmit = () => {
+        setOpensubmit(false);
+    };
+
+    const handleDelete = (id: number) => {
+        setTest(id);
+        setOpen(true);
+    };
+
+    const handleCancelOrder = (e: any) => {
+        orderServices.deleteOrder(e).then((data) => {
+            console.log('check', data.data.status);
+
+            if (data.data.status == 1) {
+                setOpen(false);
+                setOpensubmit(true);
+                resetCart();
+            } else {
+                alert('hủy không thành công');
+            }
+        });
+    };
 
     const MAXITEMS = 3;
     return (
@@ -79,7 +79,7 @@ export const Order = () => {
                                     <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
                                         THÀNH TIỀN:
                                     </h6>
-                                    <p className="text-[0.9375rem] font-bold">{item.total}</p>
+                                    <p className="text-[0.9375rem] font-bold">{format(item.total)}</p>
                                 </div>
                             </div>
                         </div>
@@ -87,7 +87,6 @@ export const Order = () => {
                             <div className="grid md:grid-cols-2 grid-cols-1 items-center">
                                 <div className="grid grid-cols-4 md:mb-0 mb-4 md:gap-x-3">
                                     {item.detail.slice(0, MAXITEMS).map((link) => {
-                                        const url = `url(` + link + ')';
                                         return (
                                             <img
                                                 className="object-cover md:h-[64px] md:w-[64px] h-[96px] w-[96px]"
@@ -109,13 +108,22 @@ export const Order = () => {
                                     <div className="mr-1">
                                         <Link
                                             to={'/order/account-orders/account-order-detail/' + `${item.id}`}
-                                            className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                            // className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                            className={`text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f] ${
+                                                item.status == 'Đã hủy' ? 'ml-[15rem]' : ''
+                                            }`}
                                         >
                                             Xem chi tiết
                                         </Link>
                                     </div>
                                     <div className="">
-                                        <button className=" text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]">
+                                        <button
+                                            onClick={() => handleDelete(item.id)}
+                                            // className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                            className={`text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f] ${
+                                                item.status == 'Đã hủy' ? 'hidden' : 'block'
+                                            }`}
+                                        >
                                             Hủy đơn hàng
                                         </button>
                                     </div>
@@ -124,6 +132,87 @@ export const Order = () => {
                         </div>
                     </div>
                 ))}
+                <Dialog
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <div className="py-[2rem] px-[5rem]">
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                <p className="text-2xl text-center font-semibold text-black">
+                                    Bạn có chắc chắn hủy đơn hàng này chứ
+                                </p>
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions className="flex justify-around">
+                            <div
+                                className="bg-white text-black border border-black hover:bg-black hover:text-white px-5 py-2 hover:cursor-pointer"
+                                onClick={handleClose}
+                            >
+                                Hủy
+                            </div>
+                            <div
+                                onClick={() => handleCancelOrder(test)}
+                                className="bg-white text-black border border-black hover:bg-black hover:text-white px-5 py-2 hover:cursor-pointer"
+                            >
+                                Đồng ý
+                            </div>
+                        </DialogActions>
+                    </div>
+                </Dialog>
+                <Dialog
+                    open={opensubmit}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                    // className="p-[50rem]"
+                >
+                    <div className="py-[2rem] px-[5rem]">
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                <div className="">
+                                    <CheckIcon className="shoppingIcon ml-[40%] mb-5" />
+                                </div>
+                                <p className="text-3xl font-semibold text-black">Đã hủy thành công</p>
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <div
+                                className="bg-white text-black border border-black hover:bg-black hover:text-white px-5 py-2 hover:cursor-pointer"
+                                onClick={handleCloseSubmit}
+                            >
+                                Đồng ý
+                            </div>
+                        </DialogActions>
+                    </div>
+                </Dialog>
+                {/* <Dialog
+                    open={openFallSubmit}
+                    onClose={handleClose}
+                    aria-labelledby="alert-dialog-title"
+                    aria-describedby="alert-dialog-description"
+                >
+                    <div className="py-[2rem] px-[5rem]">
+                        <DialogContent>
+                            <DialogContentText id="alert-dialog-description">
+                                <div className="">
+                                    <CheckIcon className="shoppingIcon ml-[40%] mb-5" />
+                                </div>
+                                <p className="text-3xl font-semibold text-black">Đã hủy không thành công</p>
+                            </DialogContentText>
+                        </DialogContent>
+                        <DialogActions>
+                            <div
+                                className="bg-white text-black border border-black hover:bg-black hover:text-white px-5 py-2 hover:cursor-pointer"
+                                onClick={handleFallSubmit}
+                            >
+                                Đồng ý
+                            </div>
+                        </DialogActions>
+                    </div>
+                </Dialog> */}
             </Scrollbars>
         </>
     );

@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './App.scss';
 import Header from 'components/layouts/header/header';
 import Footer from 'components/layouts/footer/footer';
 import { Outlet } from 'react-router-dom';
 
 function App() {
+
     return (
         <div className="App">
             <Header />
@@ -15,5 +16,4 @@ function App() {
         </div>
     );
 }
-
 export default App;

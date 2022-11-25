@@ -1,19 +1,15 @@
-import { configureStore, ThunkAction, Action, getDefaultMiddleware } from '@reduxjs/toolkit';
-import createSagaMiddleware from '@redux-saga/core';
-import rootSaga from './rootSaga';
+import { configureStore } from '@reduxjs/toolkit';
+import counterReducer from '../features/counter/counterSlice';
+import cartReducer from '../pages/cart/CartSlice';
 
-const sagaMiddleware = createSagaMiddleware();
 export const store = configureStore({
     reducer: {
-      
-    },
-    middleware: (getDefaultMiddleware) => {
-        return getDefaultMiddleware().concat(sagaMiddleware);
+        counter: counterReducer,
+        cart: cartReducer,
     },
 });
 
-sagaMiddleware.run(rootSaga);
-
-export type AppDispatch = typeof store.dispatch;
+// Infer the `RootState` and `AppDispatch` types from the store itself
 export type RootState = ReturnType<typeof store.getState>;
-export type AppThunk<ReturnType = void> = ThunkAction<ReturnType, RootState, unknown, Action<string>>;
+// Inferred type: {posts: PostsState, comments: CommentsState, users: UsersState}
+export type AppDispatch = typeof store.dispatch;

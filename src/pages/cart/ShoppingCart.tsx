@@ -6,14 +6,21 @@ import { useEffect, useState } from 'react';
 import * as cartServices from 'services/cartServices';
 import { Link } from 'react-router-dom';
 import { FiArrowLeft } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { fetchUserById } from './CartSlice';
 
 function ShoppingCart() {
     const [carts, setCarts] = useState<cartServices.orderItems[]>();
+    const dispatch = useDispatch<any>();
     useEffect(() => {
+        getData();
+    }, []);
+    const getData = () => {
         cartServices.getCart().then((data) => {
             setCarts(data);
         });
-    }, []);
+    }
+    dispatch(fetchUserById());
 
     return (
         <div className="relative">
@@ -26,7 +33,7 @@ function ShoppingCart() {
                     {carts?.length != 0 ? (
                         <>
                             <div className="grid grid-cols-1 md:grid-cols-3 gap-14 sm:mx-10">
-                                {carts ? <ContentCart data={carts} /> : null}
+                                {carts ? <ContentCart data={carts} getData={getData}  /> : null}
                                 <div className="col-span-1">{carts ? <TotalCart data={carts} /> : null}</div>
                             </div>
                         </>

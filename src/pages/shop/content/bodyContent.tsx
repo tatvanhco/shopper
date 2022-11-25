@@ -25,7 +25,7 @@ export const BodyContent = (props: any) => {
     }, [choose]);
 
     // const chooseItems: any = ['Áo thun', 'Áo khoác', '100.000 VND đến 199.000 VND'];
-    
+
     console.log('lần cuối', choose);
 
     // console.log('du lieu da qua', choose);

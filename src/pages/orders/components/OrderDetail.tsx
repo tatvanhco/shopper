@@ -9,23 +9,11 @@ function OrderDetail() {
         orderServices.getOrder({ id: id }).then((data) => setOrderItem(data));
     }, []);
     console.log(orderItem);
-
-    // const totalProducts = () => {
-    //     let tong: any;
-    //     orderItem?.detail.map((item) => {
-    //         const priceItems = item.product.price;
-    //         const quantityItems = item.size.quantity;
-    //         tong = priceItems * quantityItems;
-    //     });
-    //     return tong;
-    // };
-
-    // const total: number = totalProducts();
     const tax: number = 0;
-    // console.log('tong', total);
 
     const format = (n: any) => {
-        return n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,');
+        if (n) return n.toFixed(1).replace(/(\d)(?=(\d{3})+\.)/g, '$1,') + ' VND';
+        else return 0;
     };
 
     return (
@@ -55,7 +43,7 @@ function OrderDetail() {
                             <h6 className="text-[0.6875rem] font-bold text-[#767676] uppercase tracking-wide mb-3">
                                 Order Amount:
                             </h6>
-                            <p className="text-[0.9375rem] font-bold">{orderItem?.total} VND</p>
+                            <p className="text-[0.9375rem] font-bold">{format(orderItem?.total)}</p>
                         </div>
                     </div>
                 </div>

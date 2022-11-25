@@ -9,10 +9,13 @@ import { SizeChart } from './SizeChart';
 import { useNavigate, useParams } from 'react-router-dom';
 import * as productServices from 'services/productServices';
 import * as cartServices from 'services/cartServices';
+import { useDispatch } from 'react-redux';
+import { fetchUserById } from 'pages/cart/CartSlice';
 
 export const SubProductImg = () => {
     const [sizeId, setSizeId] = useState<string>();
-
+    const dispatch = useDispatch<any>();
+    
     const [productCart, setProductCart] = useState<cartServices.orderItems>();
     const [value, setValue] = useState<number | null>(4);
     const [product, setProduct] = useState<productServices.ProductDetail>();
@@ -61,12 +64,10 @@ export const SubProductImg = () => {
                 if (cartItem.data.status == 1) {
                     setProductCart(cartItem.data);
                     setOpen(true);
+                    dispatch(fetchUserById());
                 } else {
                     alert('vui lòng đăng nhập');
                     navigate('/login');
-                    // {
-                    //     user ? alert('kích cỡ mà bạn chọn đã hết vui lòng quay lại sau') :
-                    // }
                 }
             });
     };
@@ -74,14 +75,8 @@ export const SubProductImg = () => {
     return (
         <>
             <div className="md:pl-16 md:pr-4">
-                <div className="grid grid-cols-2 pb-4">
-                    <div className="grid-cols-1">
-                        <a className="text-[#767676]" href="">
-                            {data.category}
-                        </a>
-                    </div>
-                    {/* Rating */}
-                    <div className="ml-auto flex items-center">
+                <div className="grid grid-cols-1 pb-4">
+                    <div className="float-right flex items-center">
                         <Rating
                             name="simple-controlled"
                             value={value}
