@@ -11,7 +11,7 @@ export const OrderCompleted = () => {
                     Đơn hàng 673290789 của bạn đã được hoàn thành. Chi tiết đơn đặt hàng của bạn được hiển thị cho tài
                     khoản cá nhân của bạn.
                 </p>
-                <Link to="/order/account-orders" className="bg-black text-white p-4 ml-[17rem] mr-[16rem]">
+                <Link to="/order/account-orders" className="bg-black text-white p-4 ml-[42%]">
                     Xem hóa đơn của tôi
                 </Link>
             </div>

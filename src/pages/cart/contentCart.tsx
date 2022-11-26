@@ -1,55 +1,60 @@
-import { ProductItems } from 'data/Productdb';
+import React, { useEffect, useState } from 'react';
 import Scrollbars from 'react-custom-scrollbars-2';
-import { Link } from 'react-router-dom';
+import * as cartServices from 'services/cartServices';
+import ClearIcon from '@mui/icons-material/Clear';
+import { useDispatch } from 'react-redux';
+import { fetchUserById } from './CartSlice';
+import { Button } from '@mui/material';
+import { useAppSelector } from 'app/hooks';
+interface ContentCartProps {
+    data: cartServices.orderItems[];
+    getData: any;
+}
+export const ContentCart: React.FC<ContentCartProps> = ({ data, getData }) => {
+    const dispatch = useDispatch<any>();
+    dispatch(fetchUserById());
 
-export const ContentCart = () => {
+    const handleDelete = (id: any) => {
+        cartServices.deleteCart(id);
+        getData();
+    };
+
     return (
         <div className="col-span-2 md:px-0 px-8 md:mr-16">
-            <Scrollbars style={{ width: 700, height: 420 }}>
-                {ProductItems.map((item, index) => {
+            <Scrollbars style={{ width: '100%', height: 420 }}>
+                {data?.map((item) => {
                     return (
-                        <div key={index} className="flex items-center p-6 border-y border-gray-200">
+                        <div key={item.cartId} className="flex p-6 border-y border-gray-200 w-full">
                             <div className="mr-8">
-                                <img className="w-[10rem] h-[10rem]" src={item.img} alt="" />
+                                <img
+                                    className="object-cover object-center w-[10rem] h-[10rem]"
+                                    src={item.product.avt}
+                                    alt=""
+                                />
                             </div>
-                            <div className="w-full">
+                            <div className="flex flex-col justify-between py-5 w-full">
                                 <div className="flex justify-between">
-                                    <p className="font-semibold">{item.name}</p>
-                                    <p>{item.price}</p>
+                                    <p className="font-semibold">{item.product.name}</p>
+                                    <p>{item.product.price} VND</p>
                                 </div>
-                                <p>size: {item.size}</p>
-                                <p>color: {item.color}</p>
                                 <div className="flex justify-between">
-                                    <p>khung select</p>
-                                    <p>Xóa</p>
+                                    <input
+                                        className="border border-gray-400 rounded"
+                                        type="number"
+                                        name="quality"
+                                        id="quality"
+                                        value={item.quantity}
+                                    />
+                                    <Button onClick={() => handleDelete(item.cartId)} className="text-black ">
+                                        Xóa
+                                        <ClearIcon />
+                                    </Button>
                                 </div>
                             </div>
                         </div>
                     );
                 })}
             </Scrollbars>
-            <div className="flex justify-between mt-4">
-                <div className="flex">
-                    <div className="">
-                        <p className="mb-2">Mời nhập mã code:</p>
-                        <input
-                            type="text"
-                            className="block mb-6 text-[15px] py-3 pl-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-[15rem]"
-                            placeholder="Mời nhập mã giảm giá"
-                        />
-                    </div>
-                    <div className="mt-9 ml-5 rounded">
-                        <Link to="" className="py-4 px-5 bg-black text-white">
-                            Xác nhận
-                        </Link>
-                    </div>
-                </div>
-                <div className="mt-9 rounded">
-                    <Link to="" className="py-4 px-5 border border-black  hover:bg-black hover:text-white">
-                        Thêm vào giỏ hàng
-                    </Link>
-                </div>
-            </div>
         </div>
     );
 };

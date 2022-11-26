@@ -9,7 +9,7 @@ export interface FeatureProps {
 const Feature: FC<FeatureProps> = ({ icon, title, descript }) => {
     return (
         <div className="p-3">
-            <div className="flex">
+            <div className="flex justify-center">
                 {icon}
                 <div className="ml-4">
                     <h6 className="text-sm mb-1 font-semibold uppercase tracking-wide">{title}</h6>

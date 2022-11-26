@@ -1,20 +1,44 @@
-import { Fragment, useState } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import Badge from '@mui/material/Badge';
 import '../../../asset/globalStyle/globalStyle.scss';
 import { FiSearch, FiUser, FiHeart, FiShoppingCart, FiMenu } from 'react-icons/fi';
 import { ModalSearch } from '../modal/modalSearch';
-import React from 'react';
 import { Box, SwipeableDrawer } from '@mui/material';
 import ClearIcon from '@mui/icons-material/Clear';
+import * as cartServices from 'services/cartServices';
+import { useAppSelector } from 'app/hooks';
 
-type Anchor = 'top' | 'left' | 'bottom' | 'right';
+type Anchor = 'top' | 'bottom' | 'right';
 
-function Header() {
-    let [openMain, setOpenMain] = useState(false);
+function Header({ totalCart }: any) {
+    const count = useAppSelector((state) => state.cart.total);
+    // console.log('hahah', count);
+
+    const [openMain, setOpenMain] = useState(false);
     const [state, setState] = React.useState({
         right: false,
     });
+
+    const [sumcart, setSumCart] = useState('');
+
+    const test: any = sumcart?.length;
+    useEffect(() => {
+        cartServices.getCart().then((data) => {
+            setSumCart(data);
+        });
+    }, [test]);
+
+    const useAuth = () => {
+        const checkLogin = localStorage.getItem('user_token');
+        if (checkLogin) {
+            return true;
+        } else {
+            return false;
+        }
+    };
+    const user = useAuth();
+    // console.log('hi');
 
     const toggleDrawer = (anchor: Anchor, open: boolean) => (event: React.KeyboardEvent | React.MouseEvent) => {
         if (
@@ -33,7 +57,7 @@ function Header() {
             <div className=" ">
                 <div className="bg-white w-[450px] p-7">
                     <div className="flex px-4 items-center mb-6">
-                        <strong className="mx-auto text-xl">Search Products</strong>
+                        <strong className="mx-auto text-lg">Tìm kiếm</strong>
                         <ClearIcon
                             onClick={toggleDrawer(anchor, false)}
                             className="hover:cursor-pointer hover:opacity-50"
@@ -47,7 +71,7 @@ function Header() {
 
     return (
         <div className="header border-b">
-            <div className="p-6 bg-white md:flex md:items-center justify-between lg:px-[2rem] xl:px-[20%] px-10 ">
+            <div className="p-6 bg-white md:flex md:items-center justify-between lg:px-[2rem] xl:px-[10%] px-10">
                 <div className="flex justify-between">
                     <Link to="/home">
                         <span className="text-3xl font-bold">Shopper.</span>
@@ -61,37 +85,38 @@ function Header() {
                         openMain ? 'pt-4 top-96' : 'top-[-400px]'
                     }`}
                 >
-                    <li>
-                        <FiSearch
-                            onClick={toggleDrawer('right', true)}
-                            className="cursor-pointer hover:text-secondColor"
-                        />
-                        <SwipeableDrawer
-                            anchor={'right'}
-                            open={state['right']}
-                            onClose={toggleDrawer('right', false)}
-                            onOpen={toggleDrawer('right', true)}
-                        >
-                            {list('right')}
-                        </SwipeableDrawer>
-                    </li>
-                    <li>
-                        <Link to={'/order/account-orders'}>
-                            <FiUser className="cursor-pointer hover:text-secondColor" />
-                        </Link>
-                    </li>
-                    <li>
-                        <Link to={'/order/account-wishlist'}>
-                            <FiHeart className="cursor-pointer hover:text-secondColor" />
-                        </Link>
-                    </li>
-                    <li className="relative">
-                        <Link to="/home/shopping-cart">
-                            <Badge badgeContent={1} color="error" className="w-5 h-5">
-                                <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
-                            </Badge>
-                        </Link>
-                    </li>
+                    {user && (
+                        <>
+                            <li>
+                                <Link to={'/order/account-orders'}>
+                                    <FiUser className="cursor-pointer hover:text-secondColor" />
+                                </Link>
+                            </li>
+                            <li className="relative">
+                                <Link to="/home/shopping-cart">
+                                    <Badge badgeContent={count} color="error" className="w-5 h-5">
+                                        <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                                    </Badge>
+                                </Link>
+                            </li>
+                        </>
+                    )}
+                    {!user && (
+                        <>
+                            <li>
+                                <Link to={'/login'}>
+                                    <FiUser className="cursor-pointer hover:text-secondColor" />
+                                </Link>
+                            </li>
+                            <li className="relative">
+                                <Link to="/login">
+                                    <Badge color="error" className="w-5 h-5">
+                                        <FiShoppingCart className="cursor-pointer hover:text-secondColor" />
+                                    </Badge>
+                                </Link>
+                            </li>
+                        </>
+                    )}
                 </ul>
             </div>
         </div>

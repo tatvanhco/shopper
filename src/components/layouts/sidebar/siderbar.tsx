@@ -6,7 +6,7 @@ import clsx from 'clsx';
 
 function SideBar() {
     const useAuth = () => {
-        const checkLogin = localStorage.getItem('user');
+        const checkLogin = localStorage.getItem('user_token');
         if (checkLogin) {
             return true;
         } else {
@@ -18,7 +18,7 @@ function SideBar() {
     const user = useAuth();
 
     const handleLogout = () => {
-        localStorage.removeItem('user');
+        localStorage.removeItem('user_token');
         navigate('/login');
     };
     return (
@@ -48,7 +48,7 @@ function SideBar() {
                     onClick={handleLogout}
                     className="flex items-center border border-[#e5e5e5] border-x-0 py-5"
                 >
-                    <span className="font-bold text-[#7c7c7c]">Logout</span>
+                    <span className="font-bold text-[#7c7c7c]">Đăng xuất</span>
                     <FiChevronRight className="ml-auto" />
                 </NavLink>
             </div>

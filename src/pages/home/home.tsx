@@ -1,14 +1,21 @@
-import clsx from 'clsx';
-import styles from './home.module.scss';
-
 import '../../asset/globalStyle/globalStyle.scss';
 import { FiArrowRight, FiHeart } from 'react-icons/fi';
 import Features from 'components/Features';
 import { BodyContainer } from 'components/container';
 import { Link } from 'react-router-dom';
 import { ProductItems } from 'data/Productdb';
+import * as productServices from 'services/productServices';
+import { useEffect, useState } from 'react';
+import ProductCard from 'pages/orders/components/ProductCard';
 
 function Home() {
+    const [products, setProducts] = useState<productServices.Product[]>([]);
+    useEffect(() => {
+        productServices.getProducts().then((data) => {
+            setProducts(data);
+        });
+    }, []);
+
     return (
         <div className="home">
             <div className="mb-4 flex items-center justify-center bg-neutral-800 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-1.svg')] py-3">
@@ -16,60 +23,25 @@ function Home() {
                     ⚡️ Happy Holiday Deals on Everything ⚡️
                 </span>
             </div>
-            <div className=" grid lg:grid-cols-3 md:grid-cols-2 sm:grid-cols-1">
-                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-1.jpg')]">
-                    <div className="flex flex-col text-center p-10">
-                        <div className="mt-32">
-                            <h1 className="text-5xl font-extrabold text-white">Women</h1>
-                        </div>
-                        <div className="group mt-32 w-48 m-auto bg-white border-white p-3">
-                            <Link to="/shop" className=" text-base font-semibold flex justify-center items-center">
-                                Shop Now
-                                <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-2.jpg')]">
-                    <div className="flex flex-col text-center p-10">
-                        <div className="mt-32">
-                            <h1 className="text-5xl font-extrabold text-white">Men</h1>
-                        </div>
-                        <div className="group mt-32 w-40 m-auto bg-white border-white p-3">
-                            <Link to="/shop" className=" text-base font-semibold flex justify-center items-center">
-                                Shop Now
-                                <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
-                <div className="bg-cover bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/covers/cover-3.jpg')]">
-                    <div className="flex flex-col text-center p-10">
-                        <div className="mt-32">
-                            <h1 className="text-5xl font-extrabold text-white">Kids</h1>
-                        </div>
-                        <div className="group mt-32 w-40 m-auto bg-white border-white p-3">
-                            <Link to="/shop" className=" text-base font-semibold flex justify-center items-center">
-                                Shop Now
-                                <FiArrowRight className="text-black duration-300 ml-2 group-hover:ml-4" size={'16'} />
-                            </Link>
-                        </div>
-                    </div>
-                </div>
+            <div className="">
+                <img
+                    src="https://aristino.com/Data/upload/images/BANNER/2022-BST-OUTDOOR-IMPRINT-OF-TIME/Aristino-Banner-Slide-1920x900.jpg"
+                    alt=""
+                />
             </div>
-
+            <Features />
             <BodyContainer>
-                <Features />
                 <section className="pt-20">
                     <div className="row justify-center">
                         <div className="flex flex-col sm:basis-2/3 text-center px-8">
                             <h6 className="mb-3 text-Gray400 text-sm tracking-wide">NEW COLLECTION</h6>
 
-                            <h2 className="mb-4 text-4xl font-semibold">Best Picks 2022</h2>
+                            <h2 className="mb-4 text-4xl font-semibold">Thu Đông 2022</h2>
 
                             <p className="mb-6 text-Gray500">
-                                Appear, dry there darkness they're seas, dry waters thing fly midst. Beast, above fly
-                                brought Very green.
+                                Mang hơi thở của mùa thu đông nhưng vẫn vương vấn chút nắng ngày hè. Bộ sưu tập sử dụng
+                                những chất liệu cao cấp hội tụ cùng các gam màu xu hướng hiện nay, họa tiết bắt mắt
+                                nhưng không quá cầu kỳ.
                             </p>
                         </div>
                     </div>
@@ -119,41 +91,14 @@ function Home() {
                 <section className="pt-20">
                     <div className="row justify-center ">
                         <div className="flex flex-col sm:basis-2/3 text-center px-8">
-                            <h2 className="mb-4 text-4xl font-semibold">Top month Sellers</h2>
+                            <h2 className="mb-4 text-3xl font-semibold">Sản Phẩm Bán Chạy</h2>
                         </div>
                     </div>
 
                     <div className="grid grid-cols-2 grid-rows-2 md:grid-cols-3 lg:grid-cols-4 gap-8">
-                        {ProductItems.map((item) => {
-                            return (
-                                <div className="flex flex-col w-[254px] h-[417px]" key={item.id}>
-                                    <div>
-                                        <img
-                                            className="w-[254px] h-[302px]"
-                                            src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-5.jpg"
-                                            alt=""
-                                        />
-                                    </div>
-                                    <div className="p-6 px-0">
-                                        <div className="text-sm">
-                                            <a href="">{item.category}</a>
-                                        </div>
-                                        <div className="font-semibold">
-                                            <a href="">{item.name}</a>
-                                        </div>
-                                        <div className="text-[#767676] font-semibold"> {item.price} </div>
-                                    </div>
-                                </div>
-                            );
+                        {products.map((item, index) => {
+                            return index < 8 && <ProductCard data={item}></ProductCard>;
                         })}
-                    </div>
-                </section>
-                <section className="pt-20">
-                    <div className="row justify-center">
-                        <div className="flex flex-col sm:basis-2/3 text-center px-8">
-                            <h6 className="mb-3 text-Gray400 text-sm font-[600] tracking-wide">WHAT BUYERS SAY</h6>
-                            <h2 className="mb-4 text-4xl font-semibold tracking-wide">Latest buyers Reviews</h2>
-                        </div>
                     </div>
                 </section>
             </BodyContainer>
@@ -168,78 +113,15 @@ function Home() {
                             </p>
                         </div>
                         <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-6 mb-10 mx-1">
-                            <div className="flex items-center relative mx-3">
-                                <img
-                                    className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
-                                    alt=""
-                                />
-
-                                <div className="w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white">
-                                    <FiHeart /> 248
-                                    <FiHeart /> 7
-                                </div>
-                            </div>
-                            <div className="flex items-center relative mx-3">
-                                <img
-                                    className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
-                                    alt=""
-                                />
-
-                                <div className="w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white">
-                                    <FiHeart /> 248
-                                    <FiHeart /> 7
-                                </div>
-                            </div>
-                            <div className="flex items-center relative mx-3">
-                                <img
-                                    className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
-                                    alt=""
-                                />
-
-                                <div className="w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white">
-                                    <FiHeart /> 248
-                                    <FiHeart /> 7
-                                </div>
-                            </div>
-                            <div className="flex items-center relative mx-3">
-                                <img
-                                    className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
-                                    alt=""
-                                />
-
-                                <div className="w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white">
-                                    <FiHeart /> 248
-                                    <FiHeart /> 7
-                                </div>
-                            </div>
-                            <div className="flex items-center relative mx-3">
-                                <img
-                                    className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
-                                    alt=""
-                                />
-
-                                <div className="w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white">
-                                    <FiHeart /> 248
-                                    <FiHeart /> 7
-                                </div>
-                            </div>
-                            <div className="flex items-center relative mx-3">
-                                <img
-                                    className=""
-                                    src="https://yevgenysim-turkey.github.io/shopper/assets/img/products/product-16.jpg"
-                                    alt=""
-                                />
-
-                                <div className="w-full flex justify-center items-center transition ease-in-out bg-yellow-200 absolute text-white">
-                                    <FiHeart /> 248
-                                    <FiHeart /> 7
-                                </div>
-                            </div>
+                            {products.map((item, index) => {
+                                return (
+                                    index < 6 && (
+                                        <div className="flex items-center relative mx-3">
+                                            <img className="" src={item.avt} alt="" />
+                                        </div>
+                                    )
+                                );
+                            })}
                         </div>
                     </div>
                 </BodyContainer>

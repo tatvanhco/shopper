@@ -5,8 +5,9 @@ export const ForgotPass = () => {
     const navigate = useNavigate();
     const hanlesendSubmit = () => {
         alert('Đã gửi mã xác nhận');
-        navigate('/confirmPage');
+        navigate('/resetpassword');
     };
+    
     return (
         <div className={styles.register}>
             <div className={styles.register_from}>
@@ -23,7 +24,7 @@ export const ForgotPass = () => {
                                 />
                             </div>
                             <div className="md:col-span-2 flex justify-center">
-                                <Link to="/confirm">
+                                <Link to="/resetpassword">
                                     <button
                                         onClick={hanlesendSubmit}
                                         type="submit"

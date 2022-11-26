@@ -10,7 +10,8 @@ export const ConfirmPage = () => {
 
     return (
         <div className={styles.register}>
-            <div className={styles.register_from}>
+            hh
+            {/* <div className={styles.register_from}>
                 <div className="p-10">
                     <h1 className="mb-8 text-4xl font-bold tracking-widest text-center text">SHOPPER</h1>
                     <p className="mb-5">Chúng tôi đã gửi mã xác nhận đến email của bạn. Vui lòng kiểm tra!</p>
@@ -37,7 +38,7 @@ export const ConfirmPage = () => {
                         </div>
                     </form>
                 </div>
-            </div>
+            </div> */}
         </div>
     );
 };

@@ -2,8 +2,26 @@ import { BodyContainer } from 'components/container';
 import { LinkSite } from 'components/layouts/breadcrumb/BreadCrumb';
 import { ContentCart } from './contentCart';
 import { TotalCart } from './totalCart';
+import { useEffect, useState } from 'react';
+import * as cartServices from 'services/cartServices';
+import { Link } from 'react-router-dom';
+import { FiArrowLeft } from 'react-icons/fi';
+import { useDispatch } from 'react-redux';
+import { fetchUserById } from './CartSlice';
 
 function ShoppingCart() {
+    const [carts, setCarts] = useState<cartServices.orderItems[]>();
+    const dispatch = useDispatch<any>();
+    useEffect(() => {
+        getData();
+    }, []);
+    const getData = () => {
+        cartServices.getCart().then((data) => {
+            setCarts(data);
+        });
+    }
+    dispatch(fetchUserById());
+
     return (
         <div className="relative">
             <BodyContainer>
@@ -12,12 +30,30 @@ function ShoppingCart() {
                     <div className="flex justify-center text-center my-14">
                         <h3 className="text-3xl font-semibold tracking-wide">Shopping Cart</h3>
                     </div>
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-14 sm:mx-10">
-                        <ContentCart />
-                        <div className="col-span-1">
-                            <TotalCart />
-                        </div>
-                    </div>
+                    {carts?.length != 0 ? (
+                        <>
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-14 sm:mx-10">
+                                {carts ? <ContentCart data={carts} getData={getData}  /> : null}
+                                <div className="col-span-1">{carts ? <TotalCart data={carts} /> : null}</div>
+                            </div>
+                        </>
+                    ) : (
+                        <>
+                            <div className="">
+                                <div className="text-center mt-[15%] text-4xl font-semibold">không có sản phẩm nào</div>
+                                <Link
+                                    to="/shop"
+                                    className=" text-base font-semibold flex justify-center items-center mt-5"
+                                >
+                                    <FiArrowLeft
+                                        className="text-black duration-300 mr-2 group-hover:mr-4"
+                                        size={'20'}
+                                    />
+                                    <p className="text-xl">Shop Now</p>
+                                </Link>
+                            </div>
+                        </>
+                    )}
                 </div>
             </BodyContainer>
         </div>

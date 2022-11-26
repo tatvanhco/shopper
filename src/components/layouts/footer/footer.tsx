@@ -1,27 +1,28 @@
 import '../../../asset/globalStyle/globalStyle.scss';
 import '../../../asset/globalStyle/_grid.scss';
 import { FiFacebook, FiInstagram, FiYoutube, FiTwitter } from 'react-icons/fi';
+import FooterFeature from './footerFeature';
 
 function footer() {
     return (
         <footer
-            className="bg-cover bg-stone-900 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-2.svg')] text-white text-sm md:px-12 lg:px-[2rem] xl:px-[20%] p-10
-        "
+            className="bg-cover bg-stone-900 bg-[url('https://yevgenysim-turkey.github.io/shopper/assets/img/patterns/pattern-2.svg')] 
+            text-white text-sm px-10 lg:px-12 xl:px-[10%] pt-16 pb-4"
         >
             <div className="flex flex-col mb-12 items-center">
-                <h1 className="text-2xl font-bold mb-6 tracking-wide">Want style Ideas and Treats? </h1>
+                <h1 className="text-lg font-bold mb-6 tracking-wide">Nhận thông báo mới nhất từ chúng tôi!</h1>
                 <div className="flex gap-5">
                     <input
                         type="text"
-                        placeholder="Enter Email *"
+                        placeholder="Nhập email *"
                         className=" text-white text-base border-none outline-none pl-8 py-4 bg-thirdColor md:w-[24rem] sm:w-[24rem] w-[18rem]"
                     />
                     <button className="bg-Gray500 text-white text-sm font-semibold px-8 py-4 tracking-wider">
-                        Subscribe
+                        ĐĂNG KÝ
                     </button>
                 </div>
             </div>
-            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6 sm:px-6 py:20">
+            <div className="grid grid-cols-2 md:grid-cols-5 lg:grid-cols-5 gap-6 sm:px-6">
                 <div className="col-span-full lg:col-auto md:col-auto">
                     <h1 className="mb-3 text-3xl font-bold">Shopper.</h1>
                     <ul className="flex gap-3 text-footerColor">
@@ -39,7 +40,8 @@ function footer() {
                         </li>
                     </ul>
                 </div>
-                <div>
+                <FooterFeature />
+                {/* <div>
                     <h1 className="mb-3 font-semibold uppercase">Support</h1>
                     <ul className="text-footerColor">
                         <li>
@@ -128,10 +130,10 @@ function footer() {
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div> */}
             </div>
             <hr className="border-t border-thirdColor mt-12 pb-4" />
-            <div className="flex items-center justify-center pb-4 text-sm text-center">
+            <div className="flex items-center justify-center text-sm text-center">
                 <p>@shopper.com</p>
             </div>
         </footer>

@@ -3,6 +3,7 @@ import styles from '../auth/auth.module.scss';
 import * as Yup from 'yup';
 import { Field, Form, Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
+import * as authServices from 'services/authServices';
 
 const signInSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Please enter your email'),
@@ -20,13 +21,28 @@ export const LoginPage = () => {
 
     const navigate = useNavigate();
 
-    const login = () => {
-        localStorage.setItem('user', JSON.stringify({ role: 'ADMIN' }));
-        navigate('/home');
+    const [open, setOpen] = useState(true);
+    const handleClose = (event?: React.SyntheticEvent | Event, reason?: string) => {
+        if (reason === 'clickaway') {
+            return;
+        }
+
+        setOpen(false);
     };
 
-    const handleSubmit = (e: any) => {
-        e.preventDefault();
+    const handleSubmit = async (values: any) => {
+        const { data, status } = await authServices.postUser(values);
+        if (status === 200) {
+            setOpen(true);
+            if (data.status === 1) {
+                localStorage.setItem('user_token', data.data.token);
+                // localStorage.setItem('user_name', data.data.name);
+                navigate('/home');
+            }
+            if (data.status === 0) {
+                alert('tên tài khoản hoặc mật khẩu sai!!');
+            }
+        }
     };
     const onChange = (e: any) => {
         setValues({ ...values, [e.target.name]: e.target.value });
@@ -47,7 +63,7 @@ export const LoginPage = () => {
                             password: '',
                         }}
                         validationSchema={signInSchema}
-                        onSubmit={(values) => console.log(values)}
+                        onSubmit={handleSubmit}
                     >
                         {({ errors, touched }: any) => (
                             <Form>
@@ -94,7 +110,7 @@ export const LoginPage = () => {
                                                 htmlFor="checkbox1"
                                                 className="text-[#767676] peer-checked:text-[#1f1f1f] cursor-pointer"
                                             >
-                                                Duy trì đăng nhập
+                                                Ghi nhớ mật khẩu
                                             </label>
                                         </div>
                                     </div>
@@ -103,7 +119,7 @@ export const LoginPage = () => {
                                     </div>
                                     <div className="md:col-span-full mb-6 flex justify-center">
                                         <button
-                                            onClick={login} //tạm thời
+                                            onClick={handleSubmit}
                                             type="submit"
                                             className="text-white text-sm font-semibold bg-[#1f1f1f] border border-[#1f1f1f] py-4 px-6 tracking-wide"
                                         >
@@ -129,5 +145,3 @@ export const LoginPage = () => {
         </div>
     );
 };
-
-//export default LoginPage;
