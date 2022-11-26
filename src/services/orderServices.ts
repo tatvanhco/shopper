@@ -7,6 +7,7 @@ export interface Orders {
     receive: string;
     total: number;
     status: string;
+    statusId: number;
     locateId: string;
     detail: detailItems[];
 }

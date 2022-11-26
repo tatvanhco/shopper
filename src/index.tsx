@@ -33,6 +33,7 @@ import { OrderCompleted } from 'pages/orderCompleted/orderCompleted';
 import { Product } from 'pages/product';
 import { SrcollTopWrap } from 'components/srcollTopWrap';
 import { Order } from 'pages/orders/components/Order';
+import Verify from 'pages/auth/Verify';
 const container = document.getElementById('root')!;
 const root = createRoot(container);
 
@@ -41,9 +42,10 @@ root.render(
         <BrowserRouter>
             <SrcollTopWrap>
                 <Routes>
-                    <Route path="login" element={<PublicRoute />}>
-                        <Route path="/login" element={<LoginPage />} />
-                    </Route>
+                    <Route path="/verify" element={<Verify />} />
+                    {/* <Route path="login" element={<PublicRoute />}> */}
+                    <Route path="/login" element={<LoginPage />} />
+                    {/* </Route> */}
                     <Route path="register" element={<RegisterPage />} />
                     <Route path="forgotPassword" element={<ForgotPass />} />
                     <Route path="confirm" element={<ConfirmPage />} />

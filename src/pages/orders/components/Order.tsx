@@ -117,15 +117,17 @@ export const Order = () => {
                                         </Link>
                                     </div>
                                     <div className="">
-                                        <button
-                                            onClick={() => handleDelete(item.id)}
-                                            // className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
-                                            className={`text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f] ${
-                                                item.status == 'Đã hủy' ? 'hidden' : 'block'
-                                            }`}
-                                        >
-                                            Hủy đơn hàng
-                                        </button>
+                                        {item.statusId == 1 && (
+                                            <button
+                                                onClick={() => handleDelete(item.id)}
+                                                // className="text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f]"
+                                                className={`text-center text-sm font-bold tracking-wide border border-[#1f1f1f] flex p-3 items-center hover:text-white hover:bg-[#1f1f1f] ${
+                                                    item.status == 'Đã hủy' ? 'hidden' : 'block'
+                                                }`}
+                                            >
+                                                Hủy đơn hàng
+                                            </button>
+                                        )}
                                     </div>
                                 </div>
                             </div>

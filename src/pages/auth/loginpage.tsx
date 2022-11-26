@@ -3,12 +3,12 @@ import styles from '../auth/auth.module.scss';
 import * as Yup from 'yup';
 import { Field, Form, Formik } from 'formik';
 import { Link, useNavigate } from 'react-router-dom';
-import * as authServices from 'services/authServices';
+import * as authServices from '../../services/AuthServices';
 
 const signInSchema = Yup.object().shape({
     email: Yup.string().email('Invalid email address').required('Please enter your email'),
     password: Yup.string()
-        .min(8, 'Your password must contain at least 8 characters')
+        .min(6, 'Your password must contain at least 6   characters')
         .required('Please enter your password'),
 });
 
@@ -36,7 +36,7 @@ export const LoginPage = () => {
             setOpen(true);
             if (data.status === 1) {
                 localStorage.setItem('user_token', data.data.token);
-                // localStorage.setItem('user_name', data.data.name);
+                localStorage.setItem('user_name', data.data.name);
                 navigate('/home');
             }
             if (data.status === 0) {
@@ -80,6 +80,7 @@ export const LoginPage = () => {
                                     </div>
                                     <div className="md:col-span-3 mb-6">
                                         <Field
+                                            type="password"
                                             name="password"
                                             placeholder="Mật khẩu *"
                                             className="text-[15px] py-3 px-5 border border-[#e5e5e5] focus:outline-none focus:border-black w-full"

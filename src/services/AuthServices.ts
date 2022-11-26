@@ -11,7 +11,7 @@ interface signUpUser {
     phone: number;
 }
 
-export const postUser = (payload: { email: string; password: string }) => {
+export const postUser = (payload: any) => {
     return api
         .post('/auth/signin', payload)
         .then((response) => {
@@ -20,7 +20,7 @@ export const postUser = (payload: { email: string; password: string }) => {
         .catch((error) => error.response);
 };
 
-export const signUp = (payload: signUpUser) => {
+export const signUp = (payload: any) => {
     return api
         .post('/auth/signup', payload)
         .then((response) => {
